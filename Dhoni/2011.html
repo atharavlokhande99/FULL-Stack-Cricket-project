@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS Dhoni - 2011 World Cup Victory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-image {
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        }
+        
+        .hero-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.6);
+        }
+        
+        .golden-filter {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(255,215,0,0.2) 0%, rgba(255,215,0,0.4) 70%, transparent 100%);
+            mix-blend-mode: overlay;
+            z-index: 1;
+        }
+        
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px;
+            animation: explode 2s ease-out infinite;
+            opacity: 0;
+        }
+        
+        @keyframes explode {
+            0% { transform: translateY(0) scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100px) scale(2); opacity: 0; }
+        }
+        
+        .flag-wave {
+            animation: wave 3s ease-in-out infinite alternate;
+            transform-origin: left center;
+        }
+        
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(5deg); }
+        }
+        
+        .player-bounce {
+            animation: bounce 2s ease infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confetti-fall 5s linear infinite;
+        }
+        
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(500px) rotate(360deg); opacity: 0; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="max-w-6xl w-full">
+        <h1 class="text-4xl md:text-6xl font-bold text-center text-yellow-400 mb-8 fade-in glow-text">
+            <i class="fas fa-trophy mr-4"></i> 
+            The Night India Stood Still
+            <i class="fas fa-flag ml-4"></i>
+        </h1>
+        
+        <div class="hero-image rounded-lg mx-auto mb-10 fade-in h-96 md:h-[32rem] relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80" 
+                 alt="Cricket Stadium at Night" 
+                 class="w-full h-full object-cover">
+            
+            <div class="golden-filter"></div>
+            
+            <!-- Indian Flag -->
+            <div class="absolute top-10 right-10 w-24 h-16 md:w-32 md:h-20 flag-wave">
+                <div class="w-full h-1/3 bg-saffron"></div>
+                <div class="w-full h-1/3 bg-white flex justify-center items-center">
+                    <div class="w-4 h-4 rounded-full bg-blue-600"></div>
+                </div>
+                <div class="w-full h-1/3 bg-green"></div>
+            </div>
+            
+            <!-- Dhoni Silhouette with Trophy -->
+            <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-40 h-60 md:w-60 md:h-80">
+                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-40 bg-blue-900 rounded-t-full"></div>
+                <div class="absolute bottom-40 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-yellow-400 rounded-full"></div>
+                <div class="absolute bottom-36 left-1/2 transform -translate-x-1/2 w-8 h-24 bg-yellow-300"></div>
+                <div class="absolute bottom-32 left-1/2 transform -translate-x-1/2 w-24 h-8 bg-yellow-400 rounded-full"></div>
+            </div>
+            
+            <!-- Teammates -->
+            <div class="absolute bottom-20 left-20 w-16 h-32 bg-blue-800 rounded-t-full player-bounce" style="animation-delay: 0.2s;"></div>
+            <div class="absolute bottom-20 right-20 w-16 h-32 bg-blue-800 rounded-t-full player-bounce" style="animation-delay: 0.4s;"></div>
+            <div class="absolute bottom-16 left-40 w-14 h-28 bg-blue-700 rounded-t-full player-bounce" style="animation-delay: 0.3s;"></div>
+            <div class="absolute bottom-16 right-40 w-14 h-28 bg-blue-700 rounded-t-full player-bounce" style="animation-delay: 0.5s;"></div>
+            
+            <!-- Fireworks -->
+            <div id="fireworks-container"></div>
+            
+            <!-- Confetti -->
+            <div id="confetti-container"></div>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-70 p-6 rounded-lg shadow-lg mb-8 fade-in border border-yellow-600">
+            <p class="text-white text-lg md:text-xl mb-4 italic">
+                "Dhoni finishes off in style! A magnificent strike into the crowd! India lift the World Cup after 28 years!"
+            </p>
+            <div class="flex items-center justify-between">
+                <p class="text-yellow-400 font-semibold">- Ravi Shastri's iconic commentary</p>
+                <div class="flex space-x-4">
+                    <button id="playBtn" class="bg-yellow-600 hover:bg-yellow-700 text-white p-3 rounded-full transition transform hover:scale-110">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button id="shareBtn" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition transform hover:scale-110">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <button id="memoriesBtn" class="bg-green-600 hover:bg-green-700 text-white p-3 rounded-full transition transform hover:scale-110">
+                        <i class="fas fa-images"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="bg-gray-800 bg-opacity-70 p-6 rounded-lg shadow-md hover:shadow-lg transition fade-in border border-yellow-600 hover:border-yellow-400">
+                <div class="text-yellow-400 text-3xl mb-3"><i class="fas fa-history"></i></div>
+                <h3 class="font-bold text-lg mb-2 text-white">Historic Moment</h3>
+                <p class="text-gray-300">April 2, 2011 - The day India became World Champions after 28 long years.</p>
+            </div>
+            <div class="bg-gray-800 bg-opacity-70 p-6 rounded-lg shadow-md hover:shadow-lg transition fade-in border border-yellow-600 hover:border-yellow-400">
+                <div class="text-yellow-400 text-3xl mb-3"><i class="fas fa-home"></i></div>
+                <h3 class="font-bold text-lg mb-2 text-white">Wankhede Stadium</h3>
+                <p class="text-gray-300">Mumbai erupted in joy as Dhoni hit the winning six in front of home crowd.</p>
+            </div>
+            <div class="bg-gray-800 bg-opacity-70 p-6 rounded-lg shadow-md hover:shadow-lg transition fade-in border border-yellow-600 hover:border-yellow-400">
+                <div class="text-yellow-400 text-3xl mb-3"><i class="fas fa-users"></i></div>
+                <h3 class="font-bold text-lg mb-2 text-white">Team Effort</h3>
+                <p class="text-gray-300">From Gambhir's 97 to Kohli's 35, every player contributed to this historic win.</p>
+            </div>
+        </div>
+        
+        <div class="bg-gray-800 bg-opacity-70 p-6 rounded-lg shadow-lg mb-8 fade-in border border-yellow-600">
+            <h2 class="text-2xl font-bold text-yellow-400 mb-4">Match Summary</h2>
+            <div class="grid grid-cols-2 gap-4 text-white">
+                <div>
+                    <h3 class="font-semibold text-lg mb-2">India</h3>
+                    <p>277/4 in 48.2 overs</p>
+                    <p class="mt-2">G Gambhir: 97</p>
+                    <p>MS Dhoni: 91*</p>
+                    <p>V Kohli: 35</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-2">Sri Lanka</h3>
+                    <p>274/6 in 50 overs</p>
+                    <p class="mt-2">M Jayawardene: 103*</p>
+                    <p>T Dilshan: 33</p>
+                    <p>K Sangakkara: 48</p>
+                </div>
+            </div>
+            <div class="mt-4 text-yellow-300">
+                <p><i class="fas fa-award mr-2"></i> <strong>Player of the Match:</strong> MS Dhoni</p>
+                <p class="mt-2"><i class="fas fa-trophy mr-2"></i> <strong>Player of the Tournament:</strong> Yuvraj Singh</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="text-center text-gray-400 text-sm mt-8 pb-4 fade-in">
+        <p>A tribute to the historic 2011 Cricket World Cup victory led by MS Dhoni</p>
+        <p class="mt-1">© 2023 Cricket Glory Moments. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create fireworks
+            const fireworksContainer = document.getElementById('fireworks-container');
+            const colors = ['#ff0000', '#ffff00', '#00ff00', '#00ffff', '#ff00ff', '#ffffff'];
+            
+            for (let i = 0; i < 20; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = Math.random() * 100 + '%';
+                firework.style.top = Math.random() * 50 + 10 + '%';
+                firework.style.color = colors[Math.floor(Math.random() * colors.length)];
+                firework.style.animationDelay = Math.random() * 5 + 's';
+                fireworksContainer.appendChild(firework);
+            }
+            
+            // Create confetti
+            const confettiContainer = document.getElementById('confetti-container');
+            const confettiColors = ['#ff0000', '#ffff00', '#00ff00', '#ffffff', '#ff9900', '#0099ff'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                confettiContainer.appendChild(confetti);
+            }
+            
+            // Button functionality
+            document.getElementById('playBtn').addEventListener('click', function() {
+                alert("Playing the iconic commentary of the final moments...");
+            });
+            
+            document.getElementById('shareBtn').addEventListener('click', function() {
+                alert("Sharing this historic moment on social media...");
+            });
+            
+            document.getElementById('memoriesBtn').addEventListener('click', function() {
+                alert("Showing gallery of 2011 World Cup memories...");
+            });
+            
+            // Add golden glow to text on hover
+            const glowTexts = document.querySelectorAll('.glow-text');
+            glowTexts.forEach(text => {
+                text.addEventListener('mouseover', function() {
+                    this.style.textShadow = '0 0 15px rgba(255, 215, 0, 1)';
+                });
+                text.addEventListener('mouseout', function() {
+                    this.style.textShadow = '0 0 10px rgba(255, 215, 0, 0.7)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

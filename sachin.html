@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sachin Tendulkar - The God of Cricket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts-.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(https://wallpapers.com/images/hd/sachin-tendulkar-1200-x-900-wallpaper-d8c4m34owpzpnyqq.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .record-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .record-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .quote::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            left: -20px;
+            top: -20px;
+            color: rgba(30, 64, 175, 0.2);
+        }
+        
+        .quote::after {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            right: -20px;
+            bottom: -40px;
+            color: rgba(30, 64, 175, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            line-height: 1;
+            background: linear-gradient(to right, #1e40af, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen flex items-center justify-center text-white py-20 px-4">
+        <div class="container mx-auto text-center">
+            <h1 class="title-font text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+                Sachin Tendulkar
+            </h1>
+            <h2 class="title-font text-2xl md:text-3xl lg:text-4xl font-semibold mb-8">
+                The Master Blaster, The God of Cricket
+            </h2>
+            <div class="max-w-3xl mx-auto">
+                <p class="text-lg md:text-xl leading-relaxed mb-8">
+                    A living legend, Sachin Tendulkar has inspired generations with his unmatched skill, humility, and dedication to the game of cricket. 
+                    His name is synonymous with greatness and respect, both on and off the field.
+                </p>
+                <a href="#about" class="inline-block bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-full transition duration-300">
+                    Discover The Legend
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4 bg-white">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="title-font text-3xl md:text-4xl text-center font-bold mb-12 text-blue-900">
+                The Boy Who Became Cricket's Immortal
+            </h2>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Sachin Tendulkar" 
+                         class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div class="lg:w-1/2">
+                    <p class="text-lg mb-6">
+                        Born on April 24, 1973, in Mumbai, Sachin Ramesh Tendulkar was destined for cricketing immortality. 
+                        His prodigious talent was evident from childhood when he scored an unbeaten 326 runs in a school match at just 11 years old.
+                    </p>
+                    <p class="text-lg mb-6">
+                        At the tender age of 16, Sachin made his international debut against Pakistan, facing one of cricket's most fearsome bowling attacks. 
+                        His technical perfection, combined with an unflappable temperament under pressure, quickly marked him as a once-in-a-generation talent.
+                    </p>
+                    <p class="text-lg">
+                        Over his 24-year career, Sachin became cricket's most complete batsman, combining classical technique with innovative strokeplay. 
+                        His straight drive became the gold standard of batting, executed with a grace and precision that left spectators and opponents in awe.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 px-4 bg-blue-900 text-white">
+        <div class="container mx-auto max-w-6xl text-center">
+            <h2 class="title-font text-3xl md:text-4xl font-bold mb-12">
+                By The Numbers
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="p-4">
+                    <div class="stat-number font-bold mb-2">34,357</div>
+                    <div class="text-blue-200">International Runs</div>
+                </div>
+                <div class="p-4">
+                    <div class="stat-number font-bold mb-2">100</div>
+                    <div class="text-blue-200">International Centuries</div>
+                </div>
+                <div class="p-4">
+                    <div class="stat-number font-bold mb-2">200*</div>
+                    <div class="text-blue-200">Highest ODI Score</div>
+                </div>
+                <div class="p-4">
+                    <div class="stat-number font-bold mb-2">24</div>
+                    <div class="text-blue-200">Years Played</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Records Section -->
+    <section class="py-16 px-4 bg-white">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="title-font text-3xl md:text-4xl text-center font-bold mb-12 text-blue-900">
+                Records That Redefined Cricket
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Record Card -->
+                <div class="record-card bg-white rounded-lg p-6 shadow-lg border border-gray-100">
+                    <div class="text-blue-700 mb-4">
+                        <i class="fas fa-hashtag text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-blue-900">100 International Centuries</h3>
+                    <p class="text-gray-700">
+                        The only player in history to score 100 international centuries across Tests and ODIs - a milestone that may never be surpassed.
+                    </p>
+                </div>
+                
+                <!-- Record Card -->
+                <div class="record-card bg-white rounded-lg p-6 shadow-lg border border-gray-100">
+                    <div class="text-blue-700 mb-4">
+                        <i class="fas fa-running text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-blue-900">First ODI Double Century</h3>
+                    <p class="text-gray-700">
+                        Redefined limited-overs batting by becoming the first player to score a double century in ODI cricket against South Africa.
+                    </p>
+                </div>
+                
+                <!-- Record Card -->
+                <div class="record-card bg-white rounded-lg p-6 shadow-lg border border-gray-100">
+                    <div class="text-blue-700 mb-4">
+                        <i class="fas fa-medal text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-blue-900">Bharat Ratna</h3>
+                    <p class="text-gray-700">
+                        Honored with India's highest civilian award, becoming the first sportsperson and youngest recipient of the Bharat Ratna.
+                    </p>
+                </div>
+                
+                <!-- Record Card -->
+                <div class="record-card bg-white rounded-lg p-6 shadow-lg border border-gray-100">
+                    <div class="text-blue-700 mb-4">
+                        <i class="fas fa-globe-asia text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-blue-900">Global Recognition</h3>
+                    <p class="text-gray-700">
+                        Named in Time magazine's 100 most influential people in the world and awarded honorary membership to the Order of Australia.
+                    </p>
+                </div>
+                
+                <!-- Record Card -->
+                <div class="record-card bg-white rounded-lg p-6 shadow-lg border border-gray-100">
+                    <div class="text-blue-700 mb-4">
+                        <i class="fas fa-trophy text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-blue-900">World Cup Champion</h3>
+                    <p class="text-gray-700">
+                        Played a pivotal role in India's 2011 World Cup victory, fulfilling the dream of a billion people after six tournament appearances.
+                    </p>
+                </div>
+                
+                <!-- Record Card -->
+                <div class="record-card bg-white rounded-lg p-6 shadow-lg border border-gray-100">
+                    <div class="text-blue-700 mb-4">
+                        <i class="fas fa-award text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-blue-900">Wisden Cricketer</h3>
+                    <p class="text-gray-700">
+                        Named Wisden Leading Cricketer in the World twice and featured in Wisden's All-Time Test World XI.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legacy Section -->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The God of Cricket – Iconic Innings of Sachin Tendulkar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        .card-delay-1 { animation-delay: 0.2s; }
+        .card-delay-2 { animation-delay: 0.4s; }
+        .card-delay-3 { animation-delay: 0.6s; }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 40, 0.8), rgba(0, 0, 40, 0.8)), url('https://wallpapers.com/images/hd/sachin-tendulkar-1600-x-1200-wallpaper-v6uh8vlgs5lvz9db.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .backdrop-blur {
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <section class="hero-section min-h-screen flex flex-col items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                The <span class="text-yellow-400">God of Cricket</span>
+            </h1>
+            <h2 class="text-2xl md:text-3xl text-white opacity-90">
+                Iconic Innings of <span class="font-bold">Sachin Tendulkar</span>
+            </h2>
+        </div>
+
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="fade-in card-delay-1 bg-white bg-opacity-90 rounded-xl p-6 backdrop-blur shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <span class="text-5xl font-bold text-yellow-600">200</span>
+                        <span class="text-gray-600 text-sm">*</span>
+                    </div>
+                    <div class="text-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">vs South Africa</h3>
+                        <p class="text-gray-600">2010, Gwalior</p>
+                    </div>
+                    <p class="text-gray-700">
+                        First-ever double century in ODI history. A masterclass in controlled aggression, featuring 25 fours and 3 sixes. Tendulkar's innings set a new benchmark in limited-overs cricket.
+                    </p>
+                    <div class="mt-4 flex justify-center">
+                        <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">ODI World Record</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="fade-in card-delay-2 bg-white bg-opacity-90 rounded-xl p-6 backdrop-blur shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <span class="text-5xl font-bold text-yellow-600">136</span>
+                    </div>
+                    <div class="text-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">vs Pakistan</h3>
+                        <p class="text-gray-600">1999, Chennai</p>
+                    </div>
+                    <p class="text-gray-700">
+                        Played with a severe back injury against a fierce Pakistan attack. Tendulkar almost single-handedly won the match, falling just 17 runs short in a heartbreaking finish.
+                    </p>
+                    <div class="mt-4 flex justify-center">
+                        <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">Epic Rivalry</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="fade-in card-delay-3 bg-white bg-opacity-90 rounded-xl p-6 backdrop-blur shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="text-center mb-4">
+                        <span class="text-5xl font-bold text-yellow-600">241</span>
+                        <span class="text-gray-600 text-sm">*</span>
+                    </div>
+                    <div class="text-center mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">vs Australia</h3>
+                        <p class="text-gray-600">2004, Sydney</p>
+                    </div>
+                    <p class="text-gray-700">
+                        A flawless, patient knock where he didn't play a single cover drive off the offside until reaching 200+. This innings showcased Tendulkar's technical perfection and mental discipline.
+                    </p>
+                    <div class="mt-4 flex justify-center">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Test Masterclass</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <button class="pulse bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold py-3 px-8 rounded-full transition-all duration-300 hover:scale-110">
+                    Explore More Innings <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="mt-16 text-center text-white opacity-80">
+            <p>"Cricket is my life and will continue to be so."</p>
+            <p class="mt-2 text-yellow-400">- Sachin Tendulkar</p>
+        </div>
+    </section>
+
+    <script>
+        // Simple script to ensure animations play when elements are in viewport
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
+
+    <!-- Closing Tribute -->
+    <section class="py-20 px-4 bg-blue-900 text-white text-center">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="title-font text-3xl md:text-4xl font-bold mb-8">
+                Eternal Inspiration
+            </h2>
+            <p class="text-xl md:text-2xl leading-relaxed mb-8">
+                Sachin Tendulkar's legacy is eternal — a beacon of excellence and a source of pride for millions. 
+                His journey reminds us that greatness is achieved through passion, discipline, and respect.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="https://www.sachintendulkar.com/" target="_blank" class="inline-flex items-center bg-white text-blue-900 px-4 py-2 rounded-full">
+                    <i class="fas fa-globe mr-2"></i> Official Website
+                </a>
+                <a href="https://en.wikipedia.org/wiki/Sachin_Tendulkar" target="_blank" class="inline-flex items-center bg-white text-blue-900 px-4 py-2 rounded-full">
+                    <i class="fas fa-book mr-2"></i> Biography
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 bg-gray-900 text-gray-400 text-center text-sm">
+        <div class="container mx-auto">
+            <p class="mb-4">
+                Created with respect and admiration for Sachin Tendulkar | Not affiliated with the Tendulkar family
+            </p>
+            <p>
+                Images used for educational purposes only | Sources: ESPN Cricinfo, Wisden, BCCI
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

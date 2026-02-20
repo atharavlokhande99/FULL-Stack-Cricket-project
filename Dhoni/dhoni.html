@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS Dhoni - The Legend Lives On</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:wght@400;700;900&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://www.sportzcraazy.com/wp-content/uploads/2020/01/ms-dhoni-indian-captain.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .moment-card {
+            transition: all 0.3s ease;
+        }
+        
+        .moment-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(255, 215, 0, 0.1), 0 10px 10px -5px rgba(255, 215, 0, 0.04);
+        }
+        
+        .quote-card {
+            background: linear-gradient(135deg, rgba(0, 33, 71, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
+            border-left: 4px solid #FFD700;
+        }
+        
+        .tribute-input {
+            background: rgba(0, 33, 71, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .tribute-input:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+        
+        .tribute-message {
+            background: linear-gradient(135deg, rgba(0, 33, 71, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
+            border-left: 3px solid #FFD700;
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .gold-text {
+            color: #FFD700;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+        
+        .section-divider {
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(0, 33, 71, 1), rgba(0, 0, 0, 1));
+        }
+        
+        .legacy-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1605&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen flex items-center justify-center text-center px-4 fade-in">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="playfair text-4xl md:text-6xl font-bold mb-6 gold-text">MAHENDRA SINGH DHONI</h1>
+            <p class="text-xl md:text-2xl mb-8 italic">"Not all heroes wear capes. Some hold bats and keep wickets."</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#legend" class="px-6 py-3 bg-transparent border border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-black transition duration-300 rounded">Explore Legacy</a>
+                <a href="#tributes" class="px-6 py-3 bg-gold-500 text-black hover:bg-transparent hover:text-gold-500 hover:border hover:border-gold-500 transition duration-300 rounded">Leave Tribute</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Legend Section -->
+    <section id="legend" class="py-20 px-4 bg-gradient-to-b from-black to-blue-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="playfair text-3xl md:text-5xl font-bold text-center mb-16 gold-text">THE LEGEND OF "CAPTAIN COOL"</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://wallpaperaccess.com/full/1281416.jpg " alt="MS Dhoni" class="rounded-lg shadow-2xl w-full h-auto">
+                </div>
+                <div>
+                    <p class="text-lg mb-6">Mahendra Singh Dhoni, affectionately known as "Mahi" or "Thala" by his fans, redefined leadership in Indian cricket with his calm demeanor and sharp cricketing mind.</p>
+                    <p class="text-lg mb-6">From a small-town boy in Ranchi to lifting the World Cup in 2011, Dhoni's journey is the stuff of legends. His ability to remain composed under pressure earned him the nickname "Captain Cool," while his finishing prowess made him "The Finisher."</p>
+                    <p class="text-lg mb-6">Beyond statistics, Dhoni's true legacy lies in how he transformed the Indian cricket team's mindset, fostering a culture of self-belief and resilience that continues to inspire generations.</p>
+                    <div class="flex flex-wrap gap-3 mt-8">
+                        <span class="px-4 py-2 bg-blue-900 rounded-full text-sm">Captain Cool</span>
+                        <span class="px-4 py-2 bg-blue-900 rounded-full text-sm">The Finisher</span>
+                        <span class="px-4 py-2 bg-blue-900 rounded-full text-sm">World Champion</span>
+                        <span class="px-4 py-2 bg-blue-900 rounded-full text-sm">Helicopter Shot</span>
+                        <span class="px-4 py-2 bg-blue-900 rounded-full text-sm">Mentor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Iconic Moments Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-blue-900 to-black">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="playfair text-3xl md:text-5xl font-bold text-center mb-16 gold-text">ICONIC MOMENTS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Moment 1 -->
+                <div class="moment-card bg-blue-900 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://c.ndtvimg.com/2023-04/cd4cn94o_ms-dhoni_625x300_02_April_23.jpg" alt="2011 World Cup" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 gold-text">2011 World Cup Winning Six</h3>
+                        <p class="text-gray-300">April 2, 2011 - The moment that defined a generation. Dhoni's towering six to seal India's World Cup victory after 28 years.</p>
+                    </div>
+                </div>
+                
+                <!-- Moment 2 -->
+                <div class="moment-card bg-blue-900 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://media.sportstiger.com/media/ms-dhoni-halicopter-shoot-sportstiger-1689679908517-original.jpg">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 gold-text">The Helicopter Shot</h3>
+                        <p class="text-gray-300">Dhoni's signature shot that became a symbol of his innovative batting style and power hitting in the death overs.</p>
+                    </div>
+                </div>
+                
+                <!-- Moment 3 -->
+                <div class="moment-card bg-blue-900 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="dhoni-runout.jpg" alt="Retirement" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 gold-text">The Final Walk</h3>
+                        <p class="text-gray-300">10 July, 2019 - Dhoni's last international match, walking off the field alone, marking the end of an era in Indian cricket.</p>
+                    </div>
+                </div>
+                
+                <!-- Moment 4 -->
+                <div class="moment-card bg-blue-900 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://pbs.twimg.com/media/EipwwDNX0AMVUYG.jpg:large">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 gold-text">2007 T20 World Cup</h3>
+                        <p class="text-gray-300">The beginning of Dhoni's captaincy era, leading a young Indian team to victory in the inaugural T20 World Cup.</p>
+                    </div>
+                </div>
+                
+                <!-- Moment 5 -->
+                <div class="moment-card bg-blue-900 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://i.pinimg.com/736x/b7/8c/4b/b78c4bbd965544f53b6807a31cb44d1c.jpg">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 gold-text">CSK Legacy</h3>
+                        <p class="text-gray-300">Building Chennai Super Kings into one of the most successful and beloved franchises in IPL history.</p>
+                    </div>
+                </div>
+                
+                <!-- Moment 6 -->
+                <div class="moment-card bg-blue-900 rounded-lg overflow-hidden shadow-lg">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://dt.andaman.gov.in/newsimages/180208043.gif" alt="Stumping" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 gold-text">Lightning Quick Stumpings</h3>
+                        <p class="text-gray-300">Dhoni's wicketkeeping genius, with stumpings so fast they became his trademark and a nightmare for batsmen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Quotes Section -->
+<section class="py-20 px-4 bg-black">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="playfair text-3xl md:text-5xl font-bold text-center mb-16 gold-text">WORDS THAT ECHO</h2>
+        
+        <div class="quote-carousel space-y-12">
+            <!-- Quote 1 -->
+            <div class="quote-card p-8 rounded-lg bg-gray-900 text-white shadow-lg fade-in">
+                <p class="text-xl italic mb-4">"He was my captain.He will be my captain.Forever."</p>
+                <p class="text-right text-lg font-semibold text-gold">– Virat Kohli</p>
+            </div>
+
+            <!-- Quote 2 -->
+            <div class="quote-card p-8 rounded-lg bg-gray-900 text-white shadow-lg fade-in">
+                <p class="text-xl italic mb-4">"Dhoni is the greatest captain of our country. His record is proof of that."</p>
+                <p class="text-right text-lg font-semibold text-gold">– Sachin Tendulkar</p>
+            </div>
+
+            <!-- Quote 3 -->
+            <div class="quote-card p-8 rounded-lg bg-gray-900 text-white shadow-lg fade-in">
+                <p class="text-xl italic mb-4">"If Dhoni tells you to do something, you don’t question it. You do it."</p>
+                <p class="text-right text-lg font-semibold text-gold">– Hardik Pandya</p>
+            </div>
+
+            <!-- Quote 4 -->
+            <div class="quote-card p-8 rounded-lg bg-gray-900 text-white shadow-lg fade-in">
+                <p class="text-xl italic mb-4">"Dhoni finishes off in style! A magnificent strike into the crowd… India win the World Cup!"</p>
+                <p class="text-right text-lg font-semibold text-gold">– Ravi Shastri (2011)</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MSD Batting Highlights</title>
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .gold-text { color: #FFD700; }
+    .gold-border { border-color: #FFD700; }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+    .explore-btn {
+      transition: all 0.4s ease;
+    }
+    .animate-pop {
+      animation: popScale 0.4s ease-in-out;
+    }
+    @keyframes popScale {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
+
+<!-- Batting Highlights Section -->
+<section class="relative py-24 px-6 bg-fixed bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1587557982343-05b33b89d71f');">
+  <div class="absolute inset-0 bg-black bg-opacity-80"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto text-center">
+    <h2 class="text-4xl md:text-5xl font-bold mb-16 gold-text" data-aos="fade-down">MS DHONI'S BATTING BRILLIANCE</h2>
+
+    <!-- Achievements Grid -->
+    <div class="grid md:grid-cols-3 gap-10 mb-16">
+      <!-- Card 1 -->
+      <div class="glass-card p-6 rounded-xl" data-aos="zoom-in" data-aos-delay="100">
+        <h3 class="text-xl font-semibold gold-text mb-3">183* vs Sri Lanka</h3>
+        <p class="text-sm text-gray-200">A fearless masterclass — the highest ever score by a wicketkeeper in ODIs.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="glass-card p-6 rounded-xl" data-aos="zoom-in" data-aos-delay="200">
+        <h3 class="text-xl font-semibold gold-text mb-3">91* in World Cup Final</h3>
+        <p class="text-sm text-gray-200">A captain’s knock that finished off the 2011 World Cup in style.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="glass-card p-6 rounded-xl" data-aos="zoom-in" data-aos-delay="300">
+        <h3 class="text-xl font-semibold gold-text mb-3">10,773 ODI Runs</h3>
+        <p class="text-sm text-gray-200">Over a decade of dominance with an average above 50 — pure consistency.</p>
+      </div>
+    </div>
+
+    <!-- Explore Button -->
+ <a id="exploreBtn"
+   href="dhoni-batting.html"
+   onclick="animateExplore()"
+   class="explore-btn inline-block px-8 py-4 rounded-full border border-gold text-gold text-lg font-semibold hover:bg-yellow-400 hover:text-black">
+   🚀 Explore MSD’s Batting Legacy
+</a>
+
+  </div>
+</section>
+
+
+
+<!-- Scripts -->
+<script>
+  AOS.init({ once: true });
+
+  function animateExplore() {
+    const btn = document.getElementById('exploreBtn');
+    btn.classList.add('animate-pop');
+    setTimeout(() => {
+      btn.classList.remove('animate-pop');
+    }, 500);
+  }
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MSD Lightning Stumpings</title>
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS for animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .gold-text { color: #FFD700; }
+    .gold-border { border-color: #FFD700; }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+    .explore-btn {
+      transition: all 0.4s ease;
+    }
+    .animate-pop {
+      animation: popScale 0.4s ease-in-out;
+    }
+    @keyframes popScale {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
+
+<!-- Lightning Stumpings Section -->
+<section class="relative py-24 px-6 bg-fixed bg-cover bg-center" style="background-image: url('https://timesofindia.indiatimes.com/photo/msid-77571496/77571496.jpg?resizemode=4');">
+  <div class="absolute inset-0 bg-black bg-opacity-80"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto text-center">
+    <h2 class="text-4xl md:text-5xl font-bold mb-16 gold-text" data-aos="fade-down">MS DHONI’S LIGHTNING STUMPINGS</h2>
+
+    <!-- Stumpings Grid -->
+    <div class="grid md:grid-cols-3 gap-10 mb-16">
+      <!-- Card 1 -->
+      <div class="glass-card p-6 rounded-xl" data-aos="zoom-in" data-aos-delay="100">
+        <h3 class="text-xl font-semibold gold-text mb-3">0.08 Seconds vs Bangladesh</h3>
+        <p class="text-sm text-gray-200">Faster than a blink — the fastest recorded stumping in cricket history.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="glass-card p-6 rounded-xl" data-aos="zoom-in" data-aos-delay="200">
+        <h3 class="text-xl font-semibold gold-text mb-3">Jadeja + Dhoni Combo</h3>
+        <p class="text-sm text-gray-200">The deadliest spin-stump duo — anticipation and precision personified.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="glass-card p-6 rounded-xl" data-aos="zoom-in" data-aos-delay="300">
+        <h3 class="text-xl font-semibold gold-text mb-3">Stumping Smith in 2017</h3>
+        <p class="text-sm text-gray-200">Smith looked safe, but Dhoni's magic had other plans. Stunned the world.</p>
+      </div>
+    </div>
+
+    <!-- Explore Button -->
+    <a id="exploreStumpBtn"
+       href="#more-stumpings"
+       onclick="animateStumpExplore()"
+       class="explore-btn inline-block px-8 py-4 rounded-full border border-gold text-gold text-lg font-semibold hover:bg-yellow-400 hover:text-black">
+       ⚡ Explore More Stumpings
+    </a>
+  </div>
+</section>
+
+
+
+<!-- Scripts -->
+<script>
+  AOS.init({ once: true });
+
+  function animateStumpExplore() {
+    const btn = document.getElementById('exploreStumpBtn');
+    btn.classList.add('animate-pop');
+    setTimeout(() => {
+      btn.classList.remove('animate-pop');
+    }, 500);
+  }
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MSD Captaincy Masterclass</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS (Animate On Scroll) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .gold-text { color: #FFD700; }
+    .gold-border { border-color: #FFD700; }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+    .explore-btn {
+      transition: all 0.4s ease;
+    }
+    .animate-pop {
+      animation: popScale 0.4s ease-in-out;
+    }
+    @keyframes popScale {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
+
+<!-- Captaincy Masterclass Section -->
+<section class="relative py-24 px-6 bg-fixed bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1609951445375-9c3cd1ae316d');">
+  <div class="absolute inset-0 bg-black bg-opacity-80"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto text-center">
+    <h2 class="text-4xl md:text-5xl font-bold mb-16 gold-text" data-aos="fade-down">CAPTAINCY MASTERCLASS</h2>
+
+    <!-- Cards -->
+    <div class="grid md:grid-cols-3 gap-10 mb-16">
+      <!-- Card 1 -->
+      <div class="glass-card p-6 rounded-xl" data-aos="zoom-in" data-aos-delay="100">
+        <h3 class="text-xl font-semibold gold-text mb-3">2007 T20 World Cup Win</h3>
+        <p class="text-sm text-gray-200">Young team, new format, no expectations — Dhoni brought India its first T20 World Cup in style.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="glass-card p-6 rounded-xl" data-aos="zoom-in" data-aos-delay="200">
+        <h3 class="text-xl font-semibold gold-text mb-3">2011 World Cup Glory</h3>
+        <p class="text-sm text-gray-200">Under intense pressure, Dhoni led from the front to deliver India's biggest ODI triumph since 1983.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="glass-card p-6 rounded-xl" data-aos="zoom-in" data-aos-delay="300">
+        <h3 class="text-xl font-semibold gold-text mb-3">Champions Trophy 2013</h3>
+        <p class="text-sm text-gray-200">The only captain to win all ICC white-ball trophies — a legacy sealed in England.</p>
+      </div>
+    </div>
+
+    <!-- Explore Button -->
+    <a id="exploreCaptainBtn"
+       href="#more-captaincy"
+       onclick="animateCaptainExplore()"
+       class="explore-btn inline-block px-8 py-4 rounded-full border border-gold text-gold text-lg font-semibold hover:bg-yellow-400 hover:text-black">
+       🧠 Explore MSD’s Captaincy Genius
+    </a>
+  </div>
+</section>
+
+<!-- Detailed Section -->
+<section id="more-captaincy" class="py-24 px-6 bg-black text-white">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl gold-text mb-8">More Moments of Tactical Brilliance</h2>
+    <p class="text-lg text-gray-300">Coming soon: Detailed analysis of Dhoni’s field placements, bowling changes, and decisions that defied logic — and won matches.</p>
+  </div>
+</section>
+
+<!-- Scripts -->
+<script>
+  AOS.init({ once: true });
+
+  function animateCaptainExplore() {
+    const btn = document.getElementById('exploreCaptainBtn');
+    btn.classList.add('animate-pop');
+    setTimeout(() => {
+      btn.classList.remove('animate-pop');
+    }, 500);
+  }
+</script>
+
+</body>
+</html>
+
+</body>
+</html>
+ 
+
+</body>
+</html>
+
+
+</body>
+</html>
+
+
+</body>
+</html>
+
+</html>

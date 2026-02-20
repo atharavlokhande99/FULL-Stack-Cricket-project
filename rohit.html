@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rohit Sharma - The Hitman Legacy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- New Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000;
+            color: #eafaff;
+        }
+
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* NEW Color Scheme */
+        :root {
+            --ice: #00eaff;
+            --ice-light: #7af8ff;
+            --ice-soft: rgba(0, 234, 255, 0.2);
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Glow Text */
+        .glow {
+            color: var(--ice);
+            text-shadow: 0 0 10px rgba(0, 234, 255, 0.7),
+                         0 0 20px rgba(0, 234, 255, 0.4);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+                url("https://wallpaperaccess.com/full/4748387.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--ice-soft);
+            backdrop-filter: blur(8px);
+            transition: 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--ice);
+            box-shadow: 0 0 25px rgba(0, 234, 255, 0.2);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: 1px solid var(--ice);
+            color: var(--ice);
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--ice);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 234, 255, 0.4);
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 2.7rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+        }
+
+        /* Moment Cards */
+        .moment-card img {
+            transition: 0.3s ease;
+        }
+
+        .moment-card:hover img {
+            transform: scale(1.07);
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero-section min-h-screen flex justify-center items-center px-6 text-center">
+    <div>
+        <h1 class="playfair glow text-5xl md:text-7xl font-bold mb-6">ROHIT SHARMA</h1>
+        <p class="italic text-xl md:text-2xl opacity-90">
+            “Elegance with power. Calm under fire. Hitman forever.”
+        </p>
+
+        <div class="mt-8 flex justify-center gap-6">
+            <a href="#legend" class="btn">Explore Legacy</a>
+            <a href="#tributes" class="btn">Leave Tribute</a>
+        </div>
+    </div>
+</section>
+
+<!-- LEGEND -->
+<section id="legend" class="py-20 px-6">
+    <h2 class="section-title playfair glow text-center">THE HITMAN LEGACY</h2>
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+
+        <img src="https://pbs.twimg.com/media/G6_dZHdbUAA5jhP?format=jpg&name=large"
+             class="rounded-lg shadow-lg">
+
+        <div>
+            <p class="mb-5 text-lg opacity-90">
+                Rohit Sharma is one of cricket’s greatest stroke-makers. His calmness, timing,
+                and effortless ability to clear the boundary have earned him the title “Hitman”.
+            </p>
+
+            <p class="mb-5 text-lg opacity-90">
+                From scoring record-breaking double hundreds to leading India with maturity and fearlessness,
+                Rohit has redefined modern batting and leadership.
+            </p>
+
+            <p class="text-lg opacity-90">
+                His poise, intelligence, and natural elegance make him a once-in-a-generation cricketer.
+            </p>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+                <span class="px-4 py-2 rounded-full bg-ice-soft text-ice glow">Hitman</span>
+                <span class="px-4 py-2 rounded-full bg-ice-soft text-ice glow">Captain</span>
+                <span class="px-4 py-2 rounded-full bg-ice-soft text-ice glow">Record Breaker</span>
+                <span class="px-4 py-2 rounded-full bg-ice-soft text-ice glow">Pull Shot King</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ICONIC MOMENTS -->
+<section class="py-20 px-6 bg-[#030b0e]">
+    <h2 class="section-title playfair glow text-center">ICONIC MOMENTS</h2>
+
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+        <div class="glass-card moment-card rounded-lg overflow-hidden">
+            <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/201911/rohitsharma264_0.jpeg">
+            <div class="p-6">
+                <h3 class="glow text-xl font-bold mb-2">264 – ODI Record</h3>
+                <p class="opacity-80">The highest ODI score ever. A display of pure destruction.</p>
+            </div>
+        </div>
+
+        <div class="glass-card moment-card rounded-lg overflow-hidden">
+            <img src="https://img1.hscicdn.com/image/upload/f_auto,t_ds_w_1200,q_60/lsci/db/PICTURES/CMS/291800/291843.jpg">
+            <div class="p-6">
+                <h3 class="glow text-xl font-bold mb-2">5 Tons – 2019 World Cup</h3>
+                <p class="opacity-80">The first player in history to smash 5 centuries in a single World Cup.</p>
+            </div>
+        </div>
+
+
+        <div class="glass-card moment-card rounded-lg overflow-hidden">
+            <img src="https://images.news18.com/ibnlive/uploads/2022/11/collage-maker-07-nov-2022-02.52-pm.jpg">
+            <div class="p-6">
+                <h3 class="glow text-xl font-bold mb-2">Pull Shot King</h3>
+                <p class="opacity-80">His signature shot—effortless domination.</p>
+            </div>
+        </div>
+
+        <div class="glass-card moment-card rounded-lg overflow-hidden">
+            <img src="https://www.royalchallengers.com/PRRCB01/public/styles/1061x767_landscape/public/2023-11/7xm.xyz100736.jpg?itok=PnO__-ba">
+            <div class="p-6">
+                <h3 class="glow text-xl font-bold mb-2">Fearless 2023 WC Leadership</h3>
+                <p class="opacity-80">Set the tone with explosive starts and bold captaincy.</p>
+            </div>
+        </div>
+    
+        <div class="glass-card moment-card rounded-lg overflow-hidden">
+            <img src="https://static.toiimg.com/thumb/msid-111400558,width-400,resizemode-4/111400558.jpg"> 
+            <div class="p-6">
+                <h3 class="glow text-xl font-bold mb-2">T20 World Cup 2024 Champion</h3>
+                <p class="opacity-80">Ended India’s 17-year wait—lifting the T20 World Cup as captain.</p>
+            </div>
+        </div>
+
+        <!-- NEW CARD: Champions Trophy 2025 Winner -->
+        <div class="glass-card moment-card rounded-lg overflow-hidden">
+            <img src="https://static.toiimg.com/thumb/msid-118833660,width-400,resizemode-4/118833660.jpg">
+            <div class="p-6">
+                <h3 class="glow text-xl font-bold mb-2">Champions Trophy 2025 Winner</h3>
+                <p class="opacity-80">Led India to glory once again—securing the Champions Trophy as captain.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- QUOTES -->
+<section class="py-20 px-6">
+    <h2 class="section-title playfair glow text-center">WORDS THAT ECHO</h2>
+
+    <div class="max-w-3xl mx-auto space-y-10">
+
+        <div class="glass-card p-6 rounded-lg">
+            <p class="italic text-lg mb-3">“Rohit makes batting look ridiculously easy.”</p>
+            <p class="text-right glow font-semibold">— Virat Kohli</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-lg">
+            <p class="italic text-lg mb-3">“If Rohit doesn't get out he will certainly get 250”</p>
+            <p class="text-right glow font-semibold">— MS DHONI</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-lg">
+            <p class="italic text-lg mb-3">“When Rohit goes big, it’s a privilege to watch.”</p>
+            <p class="text-right glow font-semibold">— Harsha Bhogle</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- BATTING BRILLIANCE -->
+<section class="relative py-24 px-6 bg-fixed bg-cover bg-center"
+         style="background-image: url('https://wallpaperaccess.com/full/4748387.jpg')">
+    <div class="absolute inset-0 bg-black bg-opacity-80"></div>
+
+    <div class="relative max-w-5xl mx-auto text-center">
+        <h2 class="section-title playfair glow">BATTING BRILLIANCE</h2>
+
+        <div class="grid md:grid-cols-3 gap-10 mb-10">
+
+            <div class="glass-card p-6 rounded-xl">
+                <h3 class="glow text-xl font-bold mb-3">264 in ODIs</h3>
+                <p class="opacity-80">A record untouched for years.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl">
+                <h3 class="glow text-xl font-bold mb-3">3 Double Tons</h3>
+                <p class="opacity-80">No one else has more than one.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-xl">
+                <h3 class="glow text-xl font-bold mb-3">17,000+ Runs</h3>
+                <p class="opacity-80">Grace + Power + Consistency.</p>
+            </div>
+
+        </div>
+
+       <a class="btn" href="rohit batting.html">Explore More</a>
+
+    </div>
+</section>
+
+<!-- CAPTAINCY -->
+<section class="py-24 px-6">
+    <h2 class="section-title playfair glow text-center">CAPTAINCY MASTERCLASS</h2>
+
+    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-10">
+
+        <div class="glass-card p-6 rounded-xl">
+            <h3 class="glow text-xl font-bold mb-3">IPL Empire</h3>
+            <p class="opacity-80">Built MI’s golden era: 5 IPL titles.</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-xl">
+            <h3 class="glow text-xl font-bold mb-3">Fearless Approach</h3>
+            <p class="opacity-80">Aggressive starts. Brave tactics.</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-xl">
+            <h3 class="glow text-xl font-bold mb-3">WC 2023 Dominance</h3>
+            <p class="opacity-80">One of India's most dominant WC runs ever.</p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
