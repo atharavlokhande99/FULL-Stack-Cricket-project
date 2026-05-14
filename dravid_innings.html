@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahul Dravid - More Iconic Innings</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap');
+    body { font-family: 'Roboto', sans-serif; scroll-behavior: smooth; }
+    .title-font { font-family: 'Merriweather', serif; }
+    .hero {
+      background: linear-gradient(rgba(0,33,71,.82), rgba(15,23,42,.9)),
+      url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOcqJO9qvdIrrWv3bcZ8CBnIhzjUmS6SgxIw&s');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .inning-card {
+      background: rgba(30,41,59,.72);
+      border: 1px solid rgba(250,204,21,.22);
+      backdrop-filter: blur(6px);
+      transition: all .3s ease;
+    }
+    .inning-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(250,204,21,.68);
+      box-shadow: 0 16px 24px rgba(15,23,42,.45);
+    }
+    .filter-btn.active { background: #facc15; color: #0f172a; }
+  </style>
+</head>
+<body class="bg-slate-950 text-white">
+
+  <section class="hero min-h-[70vh] flex items-center justify-center text-center px-4">
+    <div class="max-w-4xl">
+      <h1 class="title-font text-4xl md:text-6xl font-bold text-yellow-300 mb-4">Dravid - More Iconic Innings</h1>
+      <p class="text-lg md:text-2xl text-slate-100 mb-8">Long-format class, pressure resistance, and match-defining patience.</p>
+      <a href="#innings" class="inline-block bg-yellow-400 text-slate-900 font-semibold px-8 py-3 rounded-full hover:bg-yellow-300 transition">View Innings</a>
+    </div>
+  </section>
+
+  <section id="innings" class="py-20 px-4 bg-gradient-to-b from-slate-900 to-slate-950">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="title-font text-3xl md:text-5xl text-center text-yellow-300 font-bold mb-8">Extended Innings Collection</h2>
+
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <button class="filter-btn active px-5 py-2 rounded-full border border-yellow-500 text-yellow-200" data-filter="all">All</button>
+        <button class="filter-btn px-5 py-2 rounded-full border border-yellow-500 text-yellow-200" data-filter="home">Home</button>
+        <button class="filter-btn px-5 py-2 rounded-full border border-yellow-500 text-yellow-200" data-filter="away">Away</button>
+      </div>
+
+      <div id="inningsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <article class="inning-card rounded-xl overflow-hidden" data-type="away">
+          <img src="https://static.toiimg.com/thumb/msid-72965120,width-400,resizemode-4/72965120.jpg" alt="Adelaide 2003" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">233, Adelaide (2003)</h3>
+            <p class="text-slate-200">One of India's finest overseas Test knocks in a famous win in Australia.</p>
+          </div>
+        </article>
+
+        <article class="inning-card rounded-xl overflow-hidden" data-type="away">
+          <img src="https://images.news18.com/ibnlive/uploads/2021/11/rahul-dravid-16363828583x2.jpg" alt="Leeds 2002" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">148, Leeds (2002)</h3>
+            <p class="text-slate-200">Textbook control in swinging conditions that set up a dominant overseas result.</p>
+          </div>
+        </article>
+
+        <article class="inning-card rounded-xl overflow-hidden" data-type="home">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOcqJO9qvdIrrWv3bcZ8CBnIhzjUmS6SgxIw&s" alt="Kolkata 2001" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">180, Kolkata (2001)</h3>
+            <p class="text-slate-200">Part of the epic turnaround against Australia after following-on.</p>
+          </div>
+        </article>
+
+        <article class="inning-card rounded-xl overflow-hidden" data-type="home">
+          <img src="https://images.news18.com/ibnlive/uploads/2021/01/rahul-dravid.jpg" alt="Rawalpindi 2004" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">270, Rawalpindi (2004)</h3>
+            <p class="text-slate-200">An innings of supreme concentration that helped India seal a historic series.</p>
+          </div>
+        </article>
+
+        <article class="inning-card rounded-xl overflow-hidden" data-type="away">
+          <img src="https://images.indianexpress.com/2024/06/rahul-dravid-india.jpg" alt="Nottingham 2011" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">117, Nottingham (2011)</h3>
+            <p class="text-slate-200">A fighting hundred in a difficult tour, showing trademark resilience.</p>
+          </div>
+        </article>
+
+        <article class="inning-card rounded-xl overflow-hidden" data-type="home">
+          <img src="https://images.news18.com/ibnlive/uploads/2021/11/rahul-dravid-16363828583x2.jpg" alt="Bangalore classic" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">Captain's Calm Innings</h3>
+            <p class="text-slate-200">Many match-saving efforts at No. 3 that absorbed pressure and protected the middle order.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-12 text-center flex flex-wrap justify-center gap-4">
+        <a href="dravid_coaching.html" class="px-7 py-3 bg-yellow-400 text-slate-900 font-semibold rounded hover:bg-yellow-300 transition">Explore Coaching Era</a>
+        <a href="dravid.html" class="px-7 py-3 border border-yellow-500 text-yellow-300 rounded hover:bg-yellow-400 hover:text-slate-900 transition">Back to Dravid Tribute</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('#inningsGrid [data-type]');
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.getAttribute('data-filter');
+        cards.forEach((card) => {
+          card.style.display = (f === 'all' || card.getAttribute('data-type') === f) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

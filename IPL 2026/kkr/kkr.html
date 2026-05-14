@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kolkata Knight Riders | IPL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --kkrPurple:#3b0764;
+      --kkrGold:#c4a000;
+      --text:#eaf0ff;
+      --glass: rgba(10,18,32,0.65);
+      --shadow: 0 18px 40px rgba(0,0,0,0.55);
+      --border: rgba(255,255,255,0.20);
+    }
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 500px at 50% 0%, rgba(59,7,100,0.35), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.85)),
+        url("assets/bg/stadium.jpg");
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;
+    }
+
+    .wrap{
+      max-width:1200px;
+      margin:auto;
+      padding:20px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+
+    .btn-top{
+      padding:10px 14px;
+      border-radius:10px;
+      background: rgba(2,6,23,0.55);
+      border:1px solid var(--border);
+      color: var(--text);
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin-bottom:15px;
+    }
+
+    .logo{
+      width:100px;
+      height:100px;
+      border-radius:15px;
+      overflow:hidden;
+      background: rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .titlebox{
+      text-align:center;
+    }
+
+    .teamname{
+      font-size:40px;
+      font-weight:1000;
+      margin:0;
+    }
+
+    .teamname span{
+      color: var(--kkrGold);
+    }
+
+    .meta{
+      font-weight:800;
+      opacity:0.8;
+      margin-top:6px;
+    }
+
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin:15px 0;
+    }
+
+    .tab{
+      padding:10px 16px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:900;
+      border:1px solid var(--border);
+      background: rgba(2,6,23,0.55);
+      color:white;
+    }
+
+    .tab.active{
+      background: linear-gradient(180deg, var(--kkrPurple), #1e1b4b);
+    }
+
+    /* Trophy Row (Normal style, not gold glow) */
+    .trophies{
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      margin:15px 0 25px;
+    }
+
+    .trophy{
+      width:60px;
+      height:60px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:15px;
+      background: rgba(255,255,255,0.1);
+      border:1px solid rgba(255,255,255,0.3);
+      color:white;
+      font-size:24px;
+      position:relative;
+      text-decoration:none;
+    }
+
+    .trophy span{
+      position:absolute;
+      bottom:-18px;
+      font-size:13px;
+      font-weight:bold;
+      color:white;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    @media(max-width:900px){
+      .grid{ grid-template-columns:1fr; }
+      .header{ flex-direction:column; }
+    }
+
+    .card{
+      background: var(--glass);
+      border:1px solid rgba(196,160,0,0.4);
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+
+    .card h2{
+      margin-top:0;
+      border-bottom:1px solid rgba(255,255,255,0.2);
+      padding-bottom:10px;
+    }
+
+    .kv{
+      display:flex;
+      justify-content:space-between;
+      padding:8px 0;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      font-weight:900;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-weight:800;
+    }
+
+    th, td{
+      padding:8px;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+
+    th{ opacity:0.7; }
+
+    .recent{
+      margin-top:20px;
+    }
+
+    .match{
+      padding:10px 0;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      font-weight:900;
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+  <a class="btn-top" href="../iplhome.html">← Back to IPL</a>
+    <a class="btn-top" href="kkr.html">Refresh</a>
+  </div>
+
+  <div class="header">
+    <a class="logo" href="kkr.html">
+      <img src="kkr_logo.jpg" alt="KKR Logo">
+    </a>
+
+    <div class="titlebox">
+      <h1 class="teamname">Kolkata <span>Knight Riders</span></h1>
+      <div class="meta">
+        Home: Eden Gardens Captain: Ajinkya Raahane
+      </div>
+
+      <div class="tabs">
+        <a class="tab" href="schedule.html">Schedule</a>
+        <a class="tab" href="#">Results</a>
+        <a class="tab" href="#">Squad</a>
+        <a class="tab" href="stats.html">Stats</a>
+      </div>
+
+      <!-- 3 Trophies -->
+      <div class="trophies">
+        <a class="trophy" href="highlights/kkr-2012.html">
+          <i class="fa-solid fa-trophy"></i>
+          <span>2012</span>
+        </a>
+
+        <a class="trophy" href="highlights/kkr-2014.html">
+          <i class="fa-solid fa-trophy"></i>
+          <span>2014</span>
+        </a>
+
+        <a class="trophy" href="highlights/kkr-2024.html">
+          <i class="fa-solid fa-trophy"></i>
+          <span>2024</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h2>Team Overview</h2>
+      <div class="kv"><div>Matches</div><div>8</div></div>
+      <div class="kv"><div>Wins</div><div>6</div></div>
+      <div class="kv"><div>Losses</div><div>2</div></div>
+      <div class="kv"><div>Net Run Rate</div><div>+1.12</div></div>
+      <div class="kv"><div>Points</div><div>12</div></div>
+
+      <p style="margin-top:10px;">
+        Kolkata Knight Riders lifted IPL trophies in 
+        <b style="color:var(--kkrGold)">2012, 2014 under Gautam Gambhir and 2024 under Shreyash Iyer</b>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Key Players</h2>
+      <table>
+        <tr><th>Player</th><th>Role</th></tr>
+        <tr><td>Ajinkya Rahane</td><td>Batsman</td></tr>
+        <tr><td>Andre Russell</td><td>All-Rounder</td></tr>
+        <tr><td>Sunil Narine</td><td>All-Rounder</td></tr>
+        <tr><td>Varun Chakravarthy</td><td>Bowler</td></tr>
+        <tr><td>Rinku Singh</td><td>Batsman</td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="card recent">
+    <h2>Recent Matches</h2>
+    <div class="match">KKR vs MI – KKR won by 10 runs</div>
+    <div class="match">KKR vs CSK – CSK won by 4 wickets</div>
+    <div class="match">KKR vs RR – KKR won by 8 wickets</div>
+  </div>
+
+</div>
+</body>
+</html>
+

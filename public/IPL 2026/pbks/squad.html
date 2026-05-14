@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Punjab Kings | Squad</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --text:#eaf0ff;
+      --muted: rgba(234,240,255,0.8);
+      --glass: rgba(10, 18, 32, 0.62);
+      --border: rgba(255,255,255,0.20);
+      --shadow: 0 18px 40px rgba(0,0,0,0.55);
+      --pbksRed:#d40000;
+      --pbksRedDark:#7f0000;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 500px at 50% 0%, rgba(212,0,0,0.35), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.85)),
+        url("assets/bg/stadium.jpg");
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;
+    }
+
+    .wrap{ max-width:1200px; margin:0 auto; padding:20px; }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:18px;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn-top{
+      padding:10px 14px;
+      border-radius:10px;
+      background: rgba(2,6,23,0.55);
+      border:1px solid var(--border);
+      color: var(--text);
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin-bottom:15px;
+    }
+
+    .logo{
+      width:100px;
+      height:100px;
+      border-radius:15px;
+      overflow:hidden;
+      background: rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .logo img{ width:100%; height:100%; object-fit:cover; }
+    .titlebox{text-align:center;}
+
+    .teamname{
+      font-size:40px;
+      font-weight:1000;
+      margin:0;
+    }
+
+    .teamname span{ color: var(--pbksRed); }
+    .meta{ font-weight:800; opacity:0.85; margin-top:6px; }
+
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin:15px 0;
+      flex-wrap:wrap;
+    }
+
+    .tab{
+      padding:10px 16px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:900;
+      border:1px solid var(--border);
+      background: rgba(2,6,23,0.55);
+      color:white;
+    }
+
+    .tab.active{
+      background: linear-gradient(180deg, var(--pbksRed), var(--pbksRedDark));
+    }
+
+    .role-section{
+      margin-top:18px;
+      background: var(--glass);
+      border:1px solid rgba(212,0,0,0.4);
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+
+    .role-title{
+      margin:2px 0 14px;
+      font-size:22px;
+      font-weight:900;
+      color:#fee2e2;
+      border-bottom:1px solid rgba(255,255,255,0.18);
+      padding-bottom:10px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    @media(max-width:1100px){ .cards{ grid-template-columns: repeat(4, 1fr); } }
+    @media(max-width:860px){
+      .cards{ grid-template-columns: repeat(2, 1fr); }
+      .header{ flex-direction:column; }
+    }
+    @media(max-width:480px){ .cards{ grid-template-columns: 1fr; } }
+
+    .player-card{
+      border:1px solid rgba(255,255,255,0.20);
+      border-radius:14px;
+      padding:12px;
+      background: rgba(6,12,24,0.72);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      cursor:pointer;
+      outline:none;
+    }
+
+    .player-card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(248,113,113,0.75);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    }
+
+    .player-card.active{
+      background: linear-gradient(180deg, rgba(212,0,0,0.45), rgba(127,0,0,0.65));
+      border-color: rgba(252,165,165,0.95);
+      box-shadow: 0 14px 28px rgba(127,0,0,0.45);
+      transform: translateY(-3px);
+    }
+
+    .player-photo{
+      width:100%;
+      aspect-ratio: 1 / 1;
+      border-radius:10px;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,0.28);
+      background: #0f172a;
+      display:block;
+    }
+
+    .player-name{
+      margin:10px 0 4px;
+      font-size:16px;
+      font-weight:900;
+      line-height:1.2;
+    }
+
+    .player-role{
+      margin:0;
+      font-size:12px;
+      color: var(--muted);
+      font-weight:700;
+    }
+
+    .footer-note{
+      margin:20px 0 6px;
+      text-align:center;
+      color: var(--muted);
+      font-weight:700;
+      font-size:14px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="btn-top" href="pbks.html">Back to Punjab Kings</a>
+    <a class="btn-top" href="squad.html">Refresh</a>
+  </div>
+
+  <div class="header">
+    <div class="logo">
+      <img src="assets/logos/pbks.png" alt="PBKS Logo">
+    </div>
+
+    <div class="titlebox">
+      <h1 class="teamname">Punjab <span>Kings</span></h1>
+      <div class="meta">PBKS IPL 2025 Squad</div>
+
+      <div class="tabs">
+        <a class="tab" href="schedule.html">Schedule</a>
+        <a class="tab" href="#">Results</a>
+        <a class="tab active" href="squad.html">Squad</a>
+        <a class="tab" href="stats.html">Stats</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="role-section">
+    <h2 class="role-title">Batters</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Prabhsimran+Singh&size=512&background=d40000&color=ffffff&bold=true" alt="Prabhsimran Singh">
+        <h3 class="player-name">Prabhsimran Singh</h3>
+        <p class="player-role">Wicketkeeper-batter (IND)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Shreyas+Iyer&size=512&background=d40000&color=ffffff&bold=true" alt="Shreyas Iyer">
+        <h3 class="player-name">Shreyas Iyer</h3>
+        <p class="player-role">Batter (IND) - Captain</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Nehal+Wadhera&size=512&background=d40000&color=ffffff&bold=true" alt="Nehal Wadhera">
+        <h3 class="player-name">Nehal Wadhera</h3>
+        <p class="player-role">Batter (IND)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Harnoor+Pannu&size=512&background=d40000&color=ffffff&bold=true" alt="Harnoor Pannu">
+        <h3 class="player-name">Harnoor Pannu</h3>
+        <p class="player-role">Batter (IND)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Pyla+Avinash&size=512&background=d40000&color=ffffff&bold=true" alt="Pyla Avinash">
+        <h3 class="player-name">Pyla Avinash</h3>
+        <p class="player-role">Batter (IND)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Musheer+Khan&size=512&background=d40000&color=ffffff&bold=true" alt="Musheer Khan">
+        <h3 class="player-name">Musheer Khan</h3>
+        <p class="player-role">Batter (IND)</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Wicketkeepers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Prabhsimran+Singh&size=512&background=d40000&color=ffffff&bold=true" alt="Prabhsimran Singh">
+        <h3 class="player-name">Prabhsimran Singh</h3>
+        <p class="player-role">WK-Batter (IND)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Josh+Inglis&size=512&background=d40000&color=ffffff&bold=true" alt="Josh Inglis">
+        <h3 class="player-name">Josh Inglis</h3>
+        <p class="player-role">WK-Batter (AUS)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Vishnu+Vinod&size=512&background=d40000&color=ffffff&bold=true" alt="Vishnu Vinod">
+        <h3 class="player-name">Vishnu Vinod</h3>
+        <p class="player-role">WK-Batter (IND)</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">All-Rounders</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Shashank+Singh&size=512&background=d40000&color=ffffff&bold=true" alt="Shashank Singh">
+        <h3 class="player-name">Shashank Singh</h3>
+        <p class="player-role">All-Rounder (IND)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Marcus+Stoinis&size=512&background=d40000&color=ffffff&bold=true" alt="Marcus Stoinis">
+        <h3 class="player-name">Marcus Stoinis</h3>
+        <p class="player-role">All-Rounder (AUS)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Glenn+Maxwell&size=512&background=d40000&color=ffffff&bold=true" alt="Glenn Maxwell">
+        <h3 class="player-name">Glenn Maxwell</h3>
+        <p class="player-role">All-Rounder (AUS)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Marco+Jansen&size=512&background=d40000&color=ffffff&bold=true" alt="Marco Jansen">
+        <h3 class="player-name">Marco Jansen</h3>
+        <p class="player-role">All-Rounder (SA)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Azmatullah+Omarzai&size=512&background=d40000&color=ffffff&bold=true" alt="Azmatullah Omarzai">
+        <h3 class="player-name">Azmatullah Omarzai</h3>
+        <p class="player-role">All-Rounder (AFG)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Priyansh+Arya&size=512&background=d40000&color=ffffff&bold=true" alt="Priyansh Arya">
+        <h3 class="player-name">Priyansh Arya</h3>
+        <p class="player-role">All-Rounder (IND)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Aaron+Hardie&size=512&background=d40000&color=ffffff&bold=true" alt="Aaron Hardie">
+        <h3 class="player-name">Aaron Hardie</h3>
+        <p class="player-role">All-Rounder (AUS)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Suryansh+Shedge&size=512&background=d40000&color=ffffff&bold=true" alt="Suryansh Shedge">
+        <h3 class="player-name">Suryansh Shedge</h3>
+        <p class="player-role">All-Rounder (IND)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Pravin+Dubey&size=512&background=d40000&color=ffffff&bold=true" alt="Pravin Dubey">
+        <h3 class="player-name">Pravin Dubey</h3>
+        <p class="player-role">All-Rounder (IND)</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Bowlers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Arshdeep+Singh&size=512&background=d40000&color=ffffff&bold=true" alt="Arshdeep Singh">
+        <h3 class="player-name">Arshdeep Singh</h3>
+        <p class="player-role">Fast Bowler (IND)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Yuzvendra+Chahal&size=512&background=d40000&color=ffffff&bold=true" alt="Yuzvendra Chahal">
+        <h3 class="player-name">Yuzvendra Chahal</h3>
+        <p class="player-role">Spinner (IND)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Yash+Thakur&size=512&background=d40000&color=ffffff&bold=true" alt="Yash Thakur">
+        <h3 class="player-name">Yash Thakur</h3>
+        <p class="player-role">Fast Bowler (IND)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Vijaykumar+Vyshak&size=512&background=d40000&color=ffffff&bold=true" alt="Vijaykumar Vyshak">
+        <h3 class="player-name">Vijaykumar Vyshak</h3>
+        <p class="player-role">Fast Bowler (IND)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Lockie+Ferguson&size=512&background=d40000&color=ffffff&bold=true" alt="Lockie Ferguson">
+        <h3 class="player-name">Lockie Ferguson</h3>
+        <p class="player-role">Fast Bowler (NZ)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Kuldeep+Sen&size=512&background=d40000&color=ffffff&bold=true" alt="Kuldeep Sen">
+        <h3 class="player-name">Kuldeep Sen</h3>
+        <p class="player-role">Fast Bowler (IND)</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Xavier+Bartlett&size=512&background=d40000&color=ffffff&bold=true" alt="Xavier Bartlett">
+        <h3 class="player-name">Xavier Bartlett</h3>
+        <p class="player-role">Fast Bowler (AUS)</p>
+      </article>
+    </div>
+  </section>
+
+  <p class="footer-note">Tap or click a player card to highlight it in PBKS red.</p>
+</div>
+
+<script>
+  const cards = document.querySelectorAll(".player-card");
+
+  function setActive(card){
+    cards.forEach((item) => item.classList.remove("active"));
+    card.classList.add("active");
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => setActive(card));
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setActive(card);
+      }
+    });
+  });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rahul Dravid - Life, Debates and Defining Moments</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap');
+    body { font-family: 'Roboto', sans-serif; scroll-behavior: smooth; }
+    .title-font { font-family: 'Merriweather', serif; }
+    .hero {
+      background: linear-gradient(rgba(0,33,71,.82), rgba(15,23,42,.92)),
+      url('https://images.news18.com/ibnlive/uploads/2021/11/rahul-dravid-16363828583x2.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .panel {
+      background: rgba(30,41,59,.72);
+      border: 1px solid rgba(250,204,21,.22);
+      backdrop-filter: blur(6px);
+      transition: all .3s ease;
+    }
+    .panel:hover {
+      transform: translateY(-6px);
+      border-color: rgba(250,204,21,.7);
+      box-shadow: 0 14px 22px rgba(15,23,42,.45);
+    }
+    .tab.active { background: #facc15; color: #0f172a; }
+  </style>
+</head>
+<body class="bg-slate-950 text-white">
+
+  <section class="hero min-h-[75vh] flex items-center justify-center text-center px-4">
+    <div class="max-w-4xl">
+      <h1 class="title-font text-4xl md:text-6xl font-bold text-yellow-300 mb-4">Rahul Dravid: Life and Defining Debates</h1>
+      <p class="text-lg md:text-2xl text-slate-100 mb-8">A balanced look at his journey, debated moments, and the legacy built through character.</p>
+      <a href="#moments" class="inline-block bg-yellow-400 text-slate-900 font-semibold px-8 py-3 rounded-full hover:bg-yellow-300 transition">Explore Moments</a>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 bg-gradient-to-b from-slate-900 to-slate-950">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="title-font text-3xl md:text-5xl text-center text-yellow-300 font-bold mb-10">Life Journey Snapshot</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="panel rounded-xl p-6">
+          <h3 class="text-xl font-bold text-yellow-300 mb-2">The Student of the Game</h3>
+          <p class="text-slate-200">From Bengaluru school cricket to India cap, Dravid built his career on discipline, routine, and technique.</p>
+        </div>
+        <div class="panel rounded-xl p-6">
+          <h3 class="text-xl font-bold text-yellow-300 mb-2">The Wall Era</h3>
+          <p class="text-slate-200">His Test batting became the symbol of patience and reliability in difficult overseas conditions.</p>
+        </div>
+        <div class="panel rounded-xl p-6">
+          <h3 class="text-xl font-bold text-yellow-300 mb-2">Mentor and Builder</h3>
+          <p class="text-slate-200">As mentor and coach, he focused on developing systems and people, not just short-term results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="moments" class="py-20 px-4 bg-slate-950">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="title-font text-3xl md:text-5xl text-center text-yellow-300 font-bold mb-8">Debated Moments and Context</h2>
+
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <button class="tab active px-5 py-2 rounded-full border border-yellow-500 text-yellow-200" data-tab="all">All</button>
+        <button class="tab px-5 py-2 rounded-full border border-yellow-500 text-yellow-200" data-tab="debate">Debates</button>
+        <button class="tab px-5 py-2 rounded-full border border-yellow-500 text-yellow-200" data-tab="response">How He Responded</button>
+      </div>
+
+      <div id="cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <article class="panel rounded-xl overflow-hidden" data-type="debate">
+          <img src="https://images.indianexpress.com/2021/01/rahul-dravid-1200.jpg" alt="Multan declaration" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">2004 Multan Declaration Debate</h3>
+            <p class="text-slate-200">His timing of declaration before a double hundred milestone drew public debate, but it highlighted his team-first philosophy.</p>
+          </div>
+        </article>
+
+        <article class="panel rounded-xl overflow-hidden" data-type="debate">
+          <img src="https://images.news18.com/ibnlive/uploads/2022/10/rahul-dravid-india-coach.jpg" alt="Selection criticism" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">Team Selection Criticism</h3>
+            <p class="text-slate-200">Like every high-level coach, Dravid faced criticism around combinations, especially during multi-format transitions.</p>
+          </div>
+        </article>
+
+        <article class="panel rounded-xl overflow-hidden" data-type="debate">
+          <img src="https://images.hindustantimes.com/img/2023/11/15/1600x900/CRICKET-WORLD-CUP-IND-NZL-95_1700069687442_1700069699036.jpg" alt="Big final pressure" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">Pressure of ICC Finals</h3>
+            <p class="text-slate-200">World tournament finals brought intense scrutiny, with focus on tactical calls and handling key moments.</p>
+          </div>
+        </article>
+        <article class="panel rounded-xl overflow-hidden" data-type="debate">
+          <img src="https://images.news18.com/ibnlive/uploads/2022/10/indian-team-2007-world-cup.jpg" alt="2007 World Cup exit" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">2007 World Cup Exit</h3>
+            <p class="text-slate-200">India's early exit in the 2007 ODI World Cup brought heavy criticism and became one of the toughest phases for the team leadership group.</p>
+          </div>
+        </article>
+
+        <article class="panel rounded-xl overflow-hidden" data-type="debate">
+          <img src="https://images.indianexpress.com/2021/07/greg-chappell-india.jpg" alt="Greg Chappell era backlash" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">Greg Chappell Era Backlash</h3>
+            <p class="text-slate-200">The period saw public backlash around team culture, communication, and dressing-room tension, with Dravid often at the center of difficult leadership decisions.</p>
+          </div>
+        </article>
+
+        <article class="panel rounded-xl overflow-hidden" data-type="response">
+          <img src="https://images.news18.com/ibnlive/uploads/2024/06/rahul-dravid-t20-wc.jpg" alt="T20 title" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">Response Through Results</h3>
+            <p class="text-slate-200">He answered criticism by guiding India to the T20 World Cup 2024 title with a clear, stable process.</p>
+          </div>
+        </article>
+
+        <article class="panel rounded-xl overflow-hidden" data-type="response">
+          <img src="https://images.news18.com/ibnlive/uploads/2022/08/rahul-dravid-u19.jpg" alt="Youth system" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">Backed Young Talent</h3>
+            <p class="text-slate-200">Instead of reacting emotionally, he trusted players and built a deep bench through long-term planning.</p>
+          </div>
+        </article>
+
+        <article class="panel rounded-xl overflow-hidden" data-type="response">
+          <img src="https://images.news18.com/ibnlive/uploads/2023/01/rahul-dravid-training.jpg" alt="Calm leadership" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">Calm Public Leadership</h3>
+            <p class="text-slate-200">He remained measured in public communication, keeping attention on cricket standards and team culture.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-4 bg-black">
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a href="dravid.html" class="px-7 py-3 bg-yellow-400 text-slate-900 font-semibold rounded hover:bg-yellow-300 transition">Back to Dravid Tribute</a>
+        <a href="dravid_innings.html" class="px-7 py-3 border border-yellow-500 text-yellow-300 rounded hover:bg-yellow-400 hover:text-slate-900 transition">Back to Innings</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const cards = document.querySelectorAll('#cards [data-type]');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        const type = tab.getAttribute('data-tab');
+
+        cards.forEach((card) => {
+          card.style.display = (type === 'all' || card.getAttribute('data-type') === type) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+

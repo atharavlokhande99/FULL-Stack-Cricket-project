@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chennai Super Kings | Results</title>
+  <style>
+    :root{
+      --text:#eaf0ff;
+      --muted:rgba(234,240,255,0.78);
+      --glass:rgba(10, 18, 32, 0.68);
+      --border:rgba(255,255,255,0.18);
+      --gold:#f7c948;
+      --shadow:0 18px 40px rgba(0,0,0,0.55);
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: Georgia, "Trebuchet MS", Verdana, sans-serif;
+      color:var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 500px at 50% 0%, rgba(247,201,72,0.22), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.78)),
+        url("assets/bg/stadium.jpg");
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+    }
+
+    .wrap{ max-width:1100px; margin:0 auto; padding:20px; }
+
+    .topbar, .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .topbar{ justify-content:space-between; margin-bottom:18px; }
+
+    .btn-top, .tab{
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      border:1px solid var(--border);
+      background:rgba(2,6,23,0.55);
+      color:var(--text);
+      font-weight:800;
+    }
+
+    .tab.active{
+      background:linear-gradient(180deg, rgba(247,201,72,0.95), rgba(214,161,30,0.92));
+      color:#101826;
+      border-color:rgba(0,0,0,0.15);
+    }
+
+    .header, .results-card{
+      background:var(--glass);
+      border:1px solid rgba(247,201,72,0.35);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+    }
+
+    .header{
+      padding:24px 20px;
+      text-align:center;
+    }
+
+    .header h1{
+      margin:0;
+      font-size:42px;
+    }
+
+    .header h1 span{ color:var(--gold); }
+    .meta{ margin-top:8px; font-weight:800; color:var(--muted); }
+    .tabs{ margin-top:16px; }
+
+    .results-card{
+      margin-top:18px;
+      padding:22px 20px;
+    }
+
+    .results-card h2{
+      margin:0 0 16px;
+      color:#fde68a;
+      text-align:center;
+      font-size:28px;
+    }
+
+    .result-row{
+      display:grid;
+      grid-template-columns:120px 1fr 230px;
+      gap:14px;
+      align-items:center;
+      padding:14px 0;
+      border-bottom:1px solid rgba(255,255,255,0.10);
+      font-weight:800;
+    }
+
+    .result-row:last-child{ border-bottom:none; }
+    .date{ color:var(--gold); }
+    .outcome{ color:#fde68a; }
+
+    @media (max-width: 760px){
+      .header h1{ font-size:32px; }
+      .result-row{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="btn-top" href="home.html">Back to Home</a>
+      <a class="btn-top" href="results.html">Refresh</a>
+    </div>
+
+    <section class="header">
+      <h1>Chennai <span>Super Kings</span></h1>
+      <div class="meta">Results | IPL 2026</div>
+      <div class="tabs">
+        <a class="tab" href="schedule.html">Schedule</a>
+        <a class="tab active" href="results.html">Results</a>
+        <a class="tab" href="squad.html">Squad</a>
+        <a class="tab" href="stats.html">Stats</a>
+      </div>
+    </section>
+
+    <section class="results-card">
+      <h2>Recent Results</h2>
+      <div class="result-row">
+        <div class="date">18 Mar 2026</div>
+        <div>Chennai Super Kings vs Mumbai Indians</div>
+        <div class="outcome">CSK won by 5 wickets</div>
+      </div>
+      <div class="result-row">
+        <div class="date">14 Mar 2026</div>
+        <div>Royal Challengers Bengaluru vs Chennai Super Kings</div>
+        <div class="outcome">RCB won by 7 runs</div>
+      </div>
+      <div class="result-row">
+        <div class="date">10 Mar 2026</div>
+        <div>Chennai Super Kings vs Kolkata Knight Riders</div>
+        <div class="outcome">CSK won by 23 runs</div>
+      </div>
+      <div class="result-row">
+        <div class="date">6 Mar 2026</div>
+        <div>Sunrisers Hyderabad vs Chennai Super Kings</div>
+        <div class="outcome">CSK won by 4 wickets</div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

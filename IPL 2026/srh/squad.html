@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sunrisers Hyderabad | Squad</title>
+
+  <style>
+    :root{
+      --text:#eaf0ff;
+      --muted: rgba(234,240,255,0.8);
+      --glass: rgba(10, 18, 32, 0.62);
+      --border: rgba(255,255,255,0.20);
+      --shadow: 0 18px 40px rgba(0,0,0,0.55);
+      --srhOrange:#ff6a00;
+      --srhOrangeDark:#c2410c;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 500px at 50% 0%, rgba(255,106,0,0.25), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.85)),
+        url("assets/bg/stadium.jpg");
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;
+    }
+
+    .wrap{ max-width:1200px; margin:0 auto; padding:20px; }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:18px;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn-top{
+      padding:10px 14px;
+      border-radius:10px;
+      background: rgba(2,6,23,0.55);
+      border:1px solid var(--border);
+      color: var(--text);
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin-bottom:15px;
+    }
+
+    .logo{
+      width:100px;
+      height:100px;
+      border-radius:15px;
+      overflow:hidden;
+      background: rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .logo img{ width:100%; height:100%; object-fit:cover; }
+    .titlebox{text-align:center;}
+
+    .teamname{
+      font-size:40px;
+      font-weight:1000;
+      margin:0;
+    }
+
+    .teamname span{ color: var(--srhOrange); }
+    .meta{ font-weight:800; opacity:0.85; margin-top:6px; }
+
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin:15px 0;
+      flex-wrap:wrap;
+    }
+
+    .tab{
+      padding:10px 16px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:900;
+      border:1px solid var(--border);
+      background: rgba(2,6,23,0.55);
+      color:white;
+    }
+
+    .tab.active{
+      background: linear-gradient(180deg, var(--srhOrange), var(--srhOrangeDark));
+    }
+
+    .role-section{
+      margin-top:18px;
+      background: var(--glass);
+      border:1px solid rgba(255,106,0,0.38);
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+
+    .role-title{
+      margin:2px 0 14px;
+      font-size:22px;
+      font-weight:900;
+      color:#fed7aa;
+      border-bottom:1px solid rgba(255,255,255,0.18);
+      padding-bottom:10px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    @media(max-width:1100px){ .cards{ grid-template-columns: repeat(4, 1fr); } }
+    @media(max-width:860px){
+      .cards{ grid-template-columns: repeat(2, 1fr); }
+      .header{ flex-direction:column; }
+    }
+    @media(max-width:480px){ .cards{ grid-template-columns: 1fr; } }
+
+    .player-card{
+      border:1px solid rgba(255,255,255,0.20);
+      border-radius:14px;
+      padding:12px;
+      background: rgba(6,12,24,0.72);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      cursor:pointer;
+      outline:none;
+    }
+
+    .player-card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(253,186,116,0.9);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    }
+
+    .player-card.active{
+      background: linear-gradient(180deg, rgba(255,106,0,0.5), rgba(194,65,12,0.65));
+      border-color: rgba(255,237,213,0.95);
+      box-shadow: 0 14px 28px rgba(194,65,12,0.5);
+      transform: translateY(-3px);
+    }
+
+    .player-photo{
+      width:100%;
+      aspect-ratio: 1 / 1;
+      border-radius:10px;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,0.28);
+      background: #0f172a;
+      display:block;
+    }
+
+    .player-name{
+      margin:10px 0 4px;
+      font-size:16px;
+      font-weight:900;
+      line-height:1.2;
+    }
+
+    .player-role{
+      margin:0;
+      font-size:12px;
+      color: var(--muted);
+      font-weight:700;
+    }
+
+    .footer-note{
+      margin:20px 0 6px;
+      text-align:center;
+      color: var(--muted);
+      font-weight:700;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="btn-top" href="srh.html">Back to Sunrisers Hyderabad</a>
+    <a class="btn-top" href="squad.html">Refresh</a>
+  </div>
+
+  <div class="header">
+    <a class="logo" href="srh.html">
+      <img src="srh_logo.jpg" alt="SRH Logo">
+    </a>
+
+    <div class="titlebox">
+      <h1 class="teamname">Sunrisers <span>Hyderabad</span></h1>
+      <div class="meta">SRH IPL Squad</div>
+
+      <div class="tabs">
+        <a class="tab" href="schedule.html">Schedule</a>
+        <a class="tab" href="#">Results</a>
+        <a class="tab active" href="squad.html">Squad</a>
+        <a class="tab" href="stats.html">Stats</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="role-section">
+    <h2 class="role-title">Batters</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/37.png" alt="Travis Head">
+        <h3 class="player-name">Travis Head</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/3576.png" alt="Aniket Verma">
+        <h3 class="player-name">Aniket Verma</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/3752.png" alt="Smaran Ravichandran">
+        <h3 class="player-name">Smaran Ravichandran</h3>
+        <p class="player-role">Batter</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Wicket-keepers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/202.png" alt="Heinrich Klaasen">
+        <h3 class="player-name">Heinrich Klaasen</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/164.png" alt="Ishan Kishan">
+        <h3 class="player-name">Ishan Kishan</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="salil arora.jpg" alt="Salil Arora">
+        <h3 class="player-name">Salil Arora</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">All-rounders</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/212.png" alt="Abhishek Sharma">
+        <h3 class="player-name">Abhishek Sharma</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/1944.png" alt="Nitish Kumar Reddy">
+        <h3 class="player-name">Nitish Kumar Reddy</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="livingstone.jpg" alt="Liam Livingstone">
+        <h3 class="player-name">Liam Livingstone</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/627.png" alt="Kamindu Mendis">
+        <h3 class="player-name">Kamindu Mendis</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/1494.png" alt="Harsh Dubey">
+        <h3 class="player-name">Harsh Dubey</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="brydon carse.png" alt="Brydon Carse">
+        <h3 class="player-name">Brydon Carse</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="jacck edwards.png" alt="Jack Edwards">
+        <h3 class="player-name">Jack Edwards</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/114.png" alt="Harshal Patel">
+        <h3 class="player-name">Harshal Patel</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/3576.png" alt="Shivang Kumar">
+        <h3 class="player-name">Shivang Kumar</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="krains fuletra.png" alt="Krains Fuletra">
+        <h3 class="player-name">Krains Fuletra</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Bowlers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/33.png" alt="Pat Cummins (Captain)">
+        <h3 class="player-name">Pat Cummins (Captain)</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/3575.png" alt="Zeeshan Ansari">
+        <h3 class="player-name">Zeeshan Ansari</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/180.png" alt="Jaydev Unadkat">
+        <h3 class="player-name">Jaydev Unadkat</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://documents.iplt20.com/ipl/IPLHeadshot2025/3339.png" alt="Eshan Malinga">
+        <h3 class="player-name">Eshan Malinga</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="shivam mavi.png" alt="Shivam Mavi">
+        <h3 class="player-name">Shivam Mavi</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="sakib hussain.png" alt="Sakib Hussain">
+        <h3 class="player-name">Sakib Hussain</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="omkar tarmale.jpg" alt="Onkar Tarmale">
+        <h3 class="player-name">Omkar Tarmale</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="amit kumar.avif" alt="Amit Kumar">
+        <h3 class="player-name">Amit Kumar</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="praful hinge.png" alt="Praful Hinge">
+        <h3 class="player-name">Praful Hinge</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+    </div>
+  </section>
+
+  <p class="footer-note">Tap or click a player card to highlight it in SRH orange.</p>
+</div>
+
+<script>
+  const cards = document.querySelectorAll(".player-card");
+
+  function setActive(card){
+    cards.forEach((item) => item.classList.remove("active"));
+    card.classList.add("active");
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => setActive(card));
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setActive(card);
+      }
+    });
+  });
+</script>
+</body>
+</html>

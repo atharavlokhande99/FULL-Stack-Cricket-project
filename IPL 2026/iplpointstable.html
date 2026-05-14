@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IPL 2026 | Points Table</title>
+
+  <style>
+    :root{
+      --card-bg: rgba(15, 23, 42, 0.76);
+      --card-border: rgba(255,255,255,0.18);
+      --text: #e5e7eb;
+      --muted: rgba(229,231,235,0.78);
+      --gold: #fbbf24;
+      --blue: #2563eb;
+      --shadow: 0 18px 40px rgba(0,0,0,0.45);
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 600px at 50% 0%, rgba(255, 200, 80, 0.20), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.78)),
+        url("https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=2000&q=80");
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;
+    }
+
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:34px 16px 40px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.16);
+      font-weight:900;
+      text-decoration:none;
+      color:#eaf2ff;
+      background: linear-gradient(180deg, rgba(37,99,235,0.95), rgba(29,78,216,0.9));
+      box-shadow: 0 12px 22px rgba(0,0,0,0.35);
+    }
+
+    .title{
+      text-align:center;
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight:900;
+      letter-spacing:2px;
+      margin:0 0 10px;
+      line-height:1;
+      text-transform:uppercase;
+      text-shadow: 0 12px 24px rgba(0,0,0,0.55);
+    }
+
+    .title .gold{ color: var(--gold); }
+
+    .subtitle{
+      text-align:center;
+      color: var(--muted);
+      font-weight:700;
+      margin-bottom:24px;
+    }
+
+    .card{
+      background: var(--card-bg);
+      border:1px solid var(--card-border);
+      border-radius:12px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+
+    .head{
+      padding:14px 16px;
+      font-weight:900;
+      letter-spacing:0.7px;
+      text-transform:uppercase;
+      background: linear-gradient(90deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
+      border-bottom:1px solid rgba(255,255,255,0.12);
+    }
+
+    .body{
+      padding:14px 16px 16px;
+      overflow-x:auto;
+    }
+
+    table{
+      width:100%;
+      min-width:760px;
+      border-collapse:collapse;
+      font-weight:700;
+    }
+
+    th, td{
+      padding:12px 10px;
+      border-bottom:1px solid rgba(255,255,255,0.10);
+      text-align:left;
+      color: rgba(255,255,255,0.92);
+    }
+
+    th{
+      color: rgba(255,255,255,0.76);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:0.6px;
+      font-weight:900;
+    }
+
+    tbody tr:last-child td{
+      border-bottom:none;
+    }
+
+    td.num{
+      text-align:center;
+      font-weight:1000;
+    }
+
+    td.team{
+      font-weight:900;
+    }
+
+    td.pts{
+      font-weight:1000;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="btn" href="iplhome.html">Back to Home</a>
+      <a class="btn" href="iplpointstable.html">Refresh</a>
+    </div>
+
+    <h1 class="title">IPL <span class="gold">2026</span></h1>
+    <div class="subtitle">Points Table</div>
+
+    <section class="card">
+      <div class="head">Points Table <span style="opacity:.8;font-weight:900;">All Teams</span></div>
+      <div class="body">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:50%;">Team</th>
+              <th class="num">P</th>
+              <th class="num">W</th>
+              <th class="num">L</th>
+              <th class="num">NRR</th>
+              <th class="num">PTS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="team">1. CSK</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0.00</td>
+              <td class="num pts">0</td>
+            </tr>
+            <tr>
+              <td class="team">2. MI</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0.00</td>
+              <td class="num pts">0</td>
+            </tr>
+            <tr>
+              <td class="team">3. RR</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0.00</td>
+              <td class="num pts">0</td>
+            </tr>
+            <tr>
+              <td class="team">4. SRH</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0.00</td>
+              <td class="num pts">0</td>
+            </tr>
+            <tr>
+              <td class="team">5. LSG</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0.00</td>
+              <td class="num pts">0</td>
+            </tr>
+            <tr>
+              <td class="team">6. DC</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0.00</td>
+              <td class="num pts">0</td>
+            </tr>
+            <tr>
+              <td class="team">7. PBKS</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0.00</td>
+              <td class="num pts">0</td>
+            </tr>
+            <tr>
+              <td class="team">8. KKR</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0.00</td>
+              <td class="num pts">0</td>
+            </tr>
+            <tr>
+              <td class="team">9. GT</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0.00</td>
+              <td class="num pts">0</td>
+            </tr>
+            <tr>
+              <td class="team">10. RCB</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">0.00</td>
+              <td class="num pts">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

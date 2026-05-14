@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Royal Challengers Bengaluru | Squad</title>
+
+  <style>
+    :root{
+      --text:#eaf0ff;
+      --muted: rgba(234,240,255,0.8);
+      --glass: rgba(10, 18, 32, 0.62);
+      --border: rgba(255,255,255,0.20);
+      --shadow: 0 18px 40px rgba(0,0,0,0.55);
+      --rcbRed:#ef4444;
+      --rcbRedDark:#b91c1c;
+      --rcbGold:#f7c948;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 500px at 50% 0%, rgba(239,68,68,0.22), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.78)),
+        url("assets/bg/stadium.jpg");
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;
+    }
+
+    .wrap{ max-width:1200px; margin:0 auto; padding:20px; }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:18px;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn-top{
+      padding:10px 14px;
+      border-radius:10px;
+      background: rgba(2,6,23,0.55);
+      border:1px solid var(--border);
+      color: var(--text);
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin-bottom:15px;
+    }
+
+    .logo{
+      width:100px;
+      height:100px;
+      border-radius:15px;
+      overflow:hidden;
+      background: rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .logo img{ width:100%; height:100%; object-fit:cover; }
+    .titlebox{text-align:center;}
+
+    .teamname{
+      font-size:40px;
+      font-weight:1000;
+      margin:0;
+    }
+
+    .teamname span{ color: var(--rcbRed); }
+    .meta{ font-weight:800; opacity:0.85; margin-top:6px; }
+
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin:15px 0;
+      flex-wrap:wrap;
+    }
+
+    .tab{
+      padding:10px 16px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:900;
+      border:1px solid var(--border);
+      background: rgba(2,6,23,0.55);
+      color:white;
+    }
+
+    .tab.active{
+      background: linear-gradient(180deg, var(--rcbRed), var(--rcbRedDark));
+      color:#fff;
+      border-color: rgba(0,0,0,0.15);
+    }
+
+    .role-section{
+      margin-top:18px;
+      background: var(--glass);
+      border:1px solid rgba(239,68,68,0.35);
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+
+    .role-title{
+      margin:2px 0 14px;
+      font-size:22px;
+      font-weight:900;
+      color:#fecaca;
+      border-bottom:1px solid rgba(255,255,255,0.18);
+      padding-bottom:10px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    @media(max-width:1100px){ .cards{ grid-template-columns: repeat(4, 1fr); } }
+    @media(max-width:860px){
+      .cards{ grid-template-columns: repeat(2, 1fr); }
+      .header{ flex-direction:column; }
+    }
+    @media(max-width:480px){ .cards{ grid-template-columns: 1fr; } }
+
+    .player-card{
+      border:1px solid rgba(255,255,255,0.20);
+      border-radius:14px;
+      padding:12px;
+      background: rgba(6,12,24,0.72);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      cursor:pointer;
+      outline:none;
+    }
+
+    .player-card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(248,113,113,0.9);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    }
+
+    .player-card.active{
+      background: linear-gradient(180deg, rgba(239,68,68,0.48), rgba(185,28,28,0.65));
+      border-color: rgba(254,202,202,0.95);
+      box-shadow: 0 14px 28px rgba(185,28,28,0.5);
+      transform: translateY(-3px);
+    }
+
+    .player-photo{
+      width:100%;
+      aspect-ratio: 1 / 1;
+      border-radius:10px;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,0.28);
+      background: #0f172a;
+      display:block;
+    }
+
+    .player-name{
+      margin:10px 0 4px;
+      font-size:16px;
+      font-weight:900;
+      line-height:1.2;
+    }
+
+    .player-role{
+      margin:0;
+      font-size:12px;
+      color: var(--muted);
+      font-weight:700;
+    }
+
+    .footer-note{
+      margin:20px 0 6px;
+      text-align:center;
+      color: var(--muted);
+      font-weight:700;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="btn-top" href="rcb.html">Back to Royal Challengers Bengaluru</a>
+    <a class="btn-top" href="squad.html">Refresh</a>
+  </div>
+
+  <div class="header">
+    <a class="logo" href="rcb.html">
+      <img src="rcb_logo.jpg" alt="RCB Logo">
+    </a>
+
+    <div class="titlebox">
+      <h1 class="teamname">Royal Challengers <span>Bengaluru</span></h1>
+      <div class="meta">RCB IPL Squad</div>
+
+      <div class="tabs">
+        <a class="tab" href="schedule.html">Schedule</a>
+        <a class="tab" href="#">Results</a>
+        <a class="tab active" href="squad.html">Squad</a>
+        <a class="tab" href="stats.html">Stats</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="role-section">
+    <h2 class="role-title">Batters</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/vk%20%282%29_0.png?itok=Is3MWocj" alt="Virat Kohli">
+        <h3 class="player-name">Virat Kohli</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/Rajat%20%281%29_0.png?itok=T3zbHJxN" alt="Rajat Patidar">
+        <h3 class="player-name">Rajat Patidar</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/padikkal%20%281%29.png?itok=3lQ43T7x" alt="Devdutt Padikkal">
+        <h3 class="player-name">Devdutt Padikkal</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/salt%20%282%29_0.png?itok=ZEsoqmrP" alt="Phil Salt">
+        <h3 class="player-name">Phil Salt</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/david_0.png?itok=8nRMvk9p" alt="Tim David">
+        <h3 class="player-name">Tim David</h3>
+        <p class="player-role">Batter</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Wicket-keepers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/jitesh%20%281%29.png?itok=vzEgLMOu" alt="Jitesh Sharma">
+        <h3 class="player-name">Jitesh Sharma</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-12/Cox.png?itok=Rms_b0T_" alt="Jordan Cox">
+        <h3 class="player-name">Jordan Cox</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">All-rounders</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/krunal_0.png?itok=kfuF_oaj" alt="Krunal Pandya">
+        <h3 class="player-name">Krunal Pandya</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-12/Venky.png?itok=e-Iyfd5k" alt="Venkatesh Iyer">
+        <h3 class="player-name">Venkatesh Iyer</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-12/Satvik.png?itok=-TdTTYbm" alt="Satvik Deswal">
+        <h3 class="player-name">Satvik Deswal</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-12/Mangesh_.png?itok=BIPjVM3U" alt="Mangesh Yadav">
+        <h3 class="player-name">Mangesh Yadav</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-12/Vicky.png?itok=ld3PMIcL" alt="Vicky Ostwal">
+        <h3 class="player-name">Vicky Ostwal</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-12/Vihaan.png?itok=ld9_bl9y" alt="Vihaan Malhotra">
+        <h3 class="player-name">Vihaan Malhotra</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-12/Kanishk.png?itok=o5lC7zXF" alt="Kanishk Chouhan">
+        <h3 class="player-name">Kanishk Chouhan</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Bowlers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/hazelwood%20%281%29_0.png?itok=CUVbTBcO" alt="Josh Hazlewood">
+        <h3 class="player-name">Josh Hazlewood</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/bhuvi%20%282%29.png?itok=_f7OHbIw" alt="Bhuvneshwar Kumar">
+        <h3 class="player-name">Bhuvneshwar Kumar</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/dayal.png?itok=q5MQrKXB" alt="Yash Dayal">
+        <h3 class="player-name">Yash Dayal</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/nuwan.png?itok=bY1cyFxY" alt="Nuwan Thushara">
+        <h3 class="player-name">Nuwan Thushara</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/rasik.png?itok=M4lf95iR" alt="Rasikh Salam">
+        <h3 class="player-name">Rasikh Salam</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/abhi.png?itok=-hhzyLFg" alt="Abhinandan Singh">
+        <h3 class="player-name">Abhinandan Singh</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.royalchallengers.com/PRRCB01/public/styles/s/public/2025-03/suyash%20%281%29.png?itok=QkPUrpgu" alt="Suyash Sharma">
+        <h3 class="player-name">Suyash Sharma</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+    </div>
+  </section>
+
+  
+</div>
+
+<script>
+  const cards = document.querySelectorAll(".player-card");
+
+  function setActive(card){
+    cards.forEach((item) => item.classList.remove("active"));
+    card.classList.add("active");
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => setActive(card));
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setActive(card);
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IPL 2026 | Teams</title>
+
+  <style>
+    :root{
+      --card-bg: rgba(15, 23, 42, 0.76);
+      --card-border: rgba(255,255,255,0.18);
+      --text: #e5e7eb;
+      --muted: rgba(229,231,235,0.78);
+      --gold: #fbbf24;
+      --blue: #2563eb;
+      --shadow: 0 18px 40px rgba(0,0,0,0.45);
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 600px at 50% 0%, rgba(255, 200, 80, 0.20), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.78)),
+        url("https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=2000&q=80");
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;
+    }
+
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:34px 16px 40px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.16);
+      font-weight:900;
+      text-decoration:none;
+      color:#eaf2ff;
+      background: linear-gradient(180deg, rgba(37,99,235,0.95), rgba(29,78,216,0.9));
+      box-shadow: 0 12px 22px rgba(0,0,0,0.35);
+    }
+
+    .title{
+      text-align:center;
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight:900;
+      letter-spacing:2px;
+      margin:0 0 10px;
+      line-height:1;
+      text-transform:uppercase;
+      text-shadow: 0 12px 24px rgba(0,0,0,0.55);
+    }
+
+    .title .gold{ color: var(--gold); }
+
+    .subtitle{
+      text-align:center;
+      color: var(--muted);
+      font-weight:700;
+      margin-bottom:24px;
+    }
+
+    .teams-grid{
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .team-card{
+      display:block;
+      text-decoration:none;
+      color: var(--text);
+      background: var(--card-bg);
+      border:1px solid var(--card-border);
+      border-radius:16px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      padding:22px 16px;
+      text-align:center;
+      transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+
+    .team-card:hover{
+      transform: translateY(-4px);
+      border-color: rgba(251,191,36,0.45);
+      background: rgba(20, 30, 50, 0.86);
+    }
+
+    .team-badge{
+      width:64px;
+      height:64px;
+      margin:0 auto 14px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      font-weight:1000;
+      letter-spacing:0.5px;
+      border:1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.10);
+      overflow:hidden;
+    }
+
+    .team-badge img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .team-name{
+      font-size:18px;
+      font-weight:900;
+      margin-bottom:6px;
+    }
+
+    .team-link{
+      color: var(--muted);
+      font-size:13px;
+      font-weight:700;
+    }
+
+    @media (max-width: 1024px){
+      .teams-grid{
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 640px){
+      .teams-grid{
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="btn" href="iplhome.html">Back to Home</a>
+      <a class="btn" href="iplteams.html">Refresh</a>
+    </div>
+
+    <h1 class="title">IPL <span class="gold">2026</span></h1>
+    <div class="subtitle">Teams</div>
+
+    <section class="teams-grid">
+      <a class="team-card" href="csk/csk.html">
+        <div class="team-badge">
+          <img src="csk/csk_logo.jpg" alt="CSK Logo">
+        </div>
+        <div class="team-name">Chennai Super Kings</div>
+        <div class="team-link">Open team page</div>
+      </a>
+      <a class="team-card" href="mi/mi.html">
+        <div class="team-badge">
+          <img src="mi/mi_logo.jpg" alt="MI Logo">
+        </div>
+        <div class="team-name">Mumbai Indians</div>
+        <div class="team-link">Open team page</div>
+      </a>
+      <a class="team-card" href="rr/rr.html">
+        <div class="team-badge">
+          <img src="rr/rr_logo.png" alt="RR Logo">
+        </div>
+        <div class="team-name">Rajasthan Royals</div>
+        <div class="team-link">Open team page</div>
+      </a>
+      <a class="team-card" href="srh/srh.html">
+        <div class="team-badge">
+          <img src="srh/srh_logo.jpg" alt="SRH Logo">
+        </div>
+        <div class="team-name">Sunrisers Hyderabad</div>
+        <div class="team-link">Open team page</div>
+      </a>
+      <a class="team-card" href="lsg/lsg.html">
+        <div class="team-badge">
+          <img src="lsg/lsg_logo.jpg" alt="LSG Logo">
+        </div>
+        <div class="team-name">Lucknow Super Giants</div>
+        <div class="team-link">Open team page</div>
+      </a>
+      <a class="team-card" href="dc/dc.html">
+        <div class="team-badge">
+          <img src="dc/dc_logo.png" alt="DC Logo">
+        </div>
+        <div class="team-name">Delhi Capitals</div>
+        <div class="team-link">Open team page</div>
+      </a>
+      <a class="team-card" href="pbks/pbks.html">
+        <div class="team-badge">
+          <img src="pbks/pbks_logo.webp" alt="PBKS Logo">
+        </div>
+        <div class="team-name">Punjab Kings</div>
+        <div class="team-link">Open team page</div>
+      </a>
+      <a class="team-card" href="kkr/kkr.html">
+        <div class="team-badge">
+          <img src="kkr/kkr_logo.jpg" alt="KKR Logo">
+        </div>
+        <div class="team-name">Kolkata Knight Riders</div>
+        <div class="team-link">Open team page</div>
+      </a>
+      <a class="team-card" href="gt/gt.html">
+        <div class="team-badge">
+          <img src="gt/gt_logo.png" alt="GT Logo">
+        </div>
+        <div class="team-name">Gujarat Titans</div>
+        <div class="team-link">Open team page</div>
+      </a>
+      <a class="team-card" href="rcb/rcb.html">
+        <div class="team-badge">
+          <img src="rcb/rcb_logo.jpg" alt="RCB Logo">
+        </div>
+        <div class="team-name">Royal Challengers Bengaluru</div>
+        <div class="team-link">Open team page</div>
+      </a>
+    </section>
+  </div>
+</body>
+</html>

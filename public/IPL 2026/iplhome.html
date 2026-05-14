@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IPL 2026 | Dashboard</title>
+
+  <style>
+    :root{
+      --card-bg: rgba(15, 23, 42, 0.72);
+      --card-border: rgba(255,255,255,0.18);
+      --text: #e5e7eb;
+      --muted: rgba(229,231,235,0.78);
+      --gold: #fbbf24;
+      --blue: #2563eb;
+      --red: #ef4444;
+      --shadow: 0 18px 40px rgba(0,0,0,0.45);
+    }
+
+    *{ box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      background:
+        radial-gradient(1200px 600px at 50% 0%, rgba(255, 200, 80, 0.20), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.75)),
+        url("https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=2000&q=80");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .wrap{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 34px 16px 40px;
+    }
+
+    /* Title */
+    .title{
+      text-align:center;
+      font-size: clamp(44px, 7vw, 82px);
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin: 0 0 12px;
+      line-height: 1;
+      text-transform: uppercase;
+      text-shadow: 0 12px 24px rgba(0,0,0,0.55);
+    }
+    .title .gold{ color: var(--gold); }
+
+    /* Nav Tabs */
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap: 0;
+      margin: 14px auto 26px;
+      max-width: 920px;
+      background: rgba(2,6,23,0.60);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      overflow:hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
+    }
+    .tab{
+      padding: 12px 18px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.82);
+      text-decoration:none;
+      border-right: 1px solid rgba(255,255,255,0.10);
+      transition: 0.25s;
+      flex: 1;
+      text-align:center;
+      white-space: nowrap;
+    }
+    .tab:last-child{ border-right: none; }
+    .tab.active{
+      background: linear-gradient(90deg, rgba(37,99,235,0.65), rgba(2,6,23,0.15));
+      color: #fff;
+    }
+    .tab:hover{ background: rgba(255,255,255,0.06); }
+
+    /* Grid */
+    .grid-top{
+      display:grid;
+      grid-template-columns: 1.05fr 1.2fr 1.05fr;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+    .grid-bottom{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1.05fr;
+      gap: 18px;
+    }
+    @media (max-width: 980px){
+      .grid-top{ grid-template-columns: 1fr; }
+      .grid-bottom{ grid-template-columns: 1fr; }
+    }
+
+    /* Card base */
+    .card{
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+      position: relative;
+    }
+    .card .head{
+      padding: 14px 16px;
+      font-weight: 900;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .badge-live{
+      font-weight: 900;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: rgba(239,68,68,0.92);
+      color: white;
+      box-shadow: 0 10px 18px rgba(0,0,0,0.35);
+    }
+    .body{ padding: 14px 16px 16px; }
+
+    .btn{
+      display:inline-flex;
+      gap: 10px;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.16);
+      font-weight: 900;
+      cursor: pointer;
+      text-decoration:none;
+      color: #0b1220;
+      background: linear-gradient(180deg, #ffcf4a, #f59e0b);
+      box-shadow: 0 12px 22px rgba(0,0,0,0.35);
+      transition: transform .12s ease;
+    }
+    .btn:hover{ transform: translateY(-2px); }
+
+    .btn.blue{
+      color: #eaf2ff;
+      background: linear-gradient(180deg, rgba(37,99,235,0.95), rgba(29,78,216,0.9));
+    }
+    .btn.red{
+      color: #fff;
+      background: linear-gradient(180deg, rgba(239,68,68,0.95), rgba(185,28,28,0.92));
+    }
+
+    /* Upcoming Matches */
+    .match{
+      display:grid;
+      grid-template-columns: 46px 1fr 46px;
+      gap: 12px;
+      align-items:center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .match:last-child{ border-bottom:none; }
+
+    .logo{
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      color: rgba(255,255,255,0.9);
+      overflow:hidden;
+    }
+    .logo img{ width:100%; height:100%; object-fit: cover; }
+
+    .match .line1{
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 0.3px;
+    }
+    .match .line1 span{
+      color: rgba(255,255,255,0.78);
+      font-weight: 800;
+      font-size: 15px;
+      margin: 0 8px;
+    }
+    .match .line2{
+      margin-top: 6px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .center-actions{
+      padding-top: 14px;
+      display:flex;
+      justify-content:center;
+    }
+
+    /* Live Now */
+    .livebox{
+      background:
+        linear-gradient(180deg, rgba(239,68,68,0.25), rgba(2,6,23,0.05)),
+        url("https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=1400&q=80");
+      background-size: cover;
+      background-position:center;
+    }
+    .live-inner{
+      padding: 16px;
+      text-align:center;
+    }
+    .versus{
+      font-weight: 900;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+    .score{
+      font-weight: 1000;
+      font-size: 34px;
+      letter-spacing: 0.6px;
+      text-shadow: 0 10px 20px rgba(0,0,0,0.45);
+      margin: 6px 0 8px;
+    }
+    .overs{
+      color: rgba(255,255,255,0.84);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .score2{
+      margin-top: 14px;
+      font-weight: 900;
+      font-size: 24px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+    }
+    .play{
+      width: 0;
+      height: 0;
+      border-left: 14px solid #ef4444;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.45));
+    }
+
+    /* Points table */
+    table{
+      width:100%;
+      border-collapse: collapse;
+      font-weight: 700;
+    }
+    th, td{
+      padding: 10px 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      text-align:left;
+      color: rgba(255,255,255,0.90);
+    }
+    th{
+      color: rgba(255,255,255,0.72);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      font-weight: 900;
+    }
+    td.num{ text-align:center; }
+    td.team{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 900;
+    }
+    .tiny{
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.10);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 12px;
+    }
+    .pts{ font-weight: 1000; }
+
+    /* Caps (Orange/Purple) */
+    .caphead{
+      background: linear-gradient(90deg, rgba(251,191,36,0.25), rgba(255,255,255,0.02));
+    }
+    .caphead.purple{
+      background: linear-gradient(90deg, rgba(168,85,247,0.22), rgba(255,255,255,0.02));
+    }
+    .listrow{
+      display:grid;
+      grid-template-columns: 38px 1fr auto;
+      gap: 10px;
+      align-items:center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+    .listrow:last-child{ border-bottom:none; }
+    .rank{
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight: 1000;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+    .name{ font-weight: 900; }
+    .val{ font-weight: 1000; color: rgba(255,255,255,0.92); }
+
+    /* Highlights */
+    .highlights{
+      padding: 0;
+    }
+    .hl-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .hl{
+      position: relative;
+      height: 180px;
+      overflow:hidden;
+      border-right: 1px solid rgba(255,255,255,0.10);
+    }
+    .hl:last-child{ border-right:none; }
+    .hl img{
+      width:100%; height:100%;
+      object-fit: cover;
+      filter: saturate(1.05) contrast(1.05);
+      transform: scale(1.02);
+    }
+    .hl::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.20), rgba(0,0,0,0.72));
+    }
+    .hl-text{
+      position:absolute;
+      left: 10px; right: 10px; bottom: 10px;
+      z-index: 2;
+    }
+    .hl-title{
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .hl-sub{
+      color: rgba(255,255,255,0.82);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .hl-footer{
+      padding: 14px 16px 16px;
+      display:flex;
+      justify-content:center;
+    }
+    @media(max-width:980px){
+      .hl-grid{ grid-template-columns: 1fr; }
+      .hl{ border-right:none; border-bottom: 1px solid rgba(255,255,255,0.10); }
+      .hl:last-child{ border-bottom:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <h1 class="title">IPL <span class="gold">2026</span></h1>
+
+    <nav class="tabs">
+      <a class="tab active" href="#">Schedule</a>
+      <a class="tab" href="#">Points Table</a>
+      <a class="tab" href="#">Results</a>
+      <a class="tab" href="#">Stats</a>
+      <a class="tab" href="#">Teams</a>
+    </nav>
+
+    <!-- TOP ROW -->
+    <section class="grid-top">
+
+      <!-- Upcoming Matches -->
+      <div class="card">
+        <div class="head">Upcoming Matches</div>
+        <div class="body">
+
+          <div class="match">
+            <div class="logo">MI</div>
+            <div>
+              <div class="line1">MI <span>vs</span> CSK</div>
+              <div class="line2">Tomorrow, 7:30 PM &nbsp;|&nbsp; Mumbai</div>
+            </div>
+            <div class="logo">CSK</div>
+          </div>
+
+          <div class="match">
+            <div class="logo">RCB</div>
+            <div>
+              <div class="line1">RCB <span>vs</span> KKR</div>
+              <div class="line2">Friday, 7:30 PM &nbsp;|&nbsp; Bengaluru</div>
+            </div>
+            <div class="logo">KKR</div>
+          </div>
+
+          <div class="match">
+            <div class="logo">SRH</div>
+            <div>
+              <div class="line1">SRH <span>vs</span> DC</div>
+              <div class="line2">Saturday, 3:30 PM &nbsp;|&nbsp; Hyderabad</div>
+            </div>
+            <div class="logo">DC</div>
+          </div>
+
+          <div class="center-actions">
+            <a class="btn blue" href="#">View Full Schedule</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Live Now -->
+      <div class="card livebox">
+        <div class="head">
+          <span>Live Now</span>
+          <span class="badge-live">LIVE</span>
+        </div>
+
+        <div class="live-inner">
+          <div class="versus">Rajasthan Royals <span style="color:rgba(255,255,255,0.65)">vs</span> Mumbai Indians</div>
+
+          <div class="score">RR 152/3</div>
+          <div class="overs">(16.2 Overs)</div>
+
+          <div class="score2">
+            <span>MI 138/4</span>
+            <span class="play"></span>
+          </div>
+
+          <div style="margin-top:16px;">
+            <a class="btn red" href="#">Watch Live</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Points Table -->
+      <div class="card">
+        <div class="head">Points Table <span style="opacity:.8;font-weight:900;">(Top 4)</span></div>
+        <div class="body">
+
+          <table>
+            <thead>
+              <tr>
+                <th style="width:50%;">Team</th>
+                <th class="num">P</th>
+                <th class="num">W</th>
+                <th class="num">L</th>
+                <th class="num">NRR</th>
+                <th class="num">PTS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="team"><span class="tiny">1</span> CSK</td>
+                <td class="num">8</td><td class="num">6</td><td class="num">2</td>
+                <td class="num">+1.12</td><td class="num pts">12</td>
+              </tr>
+              <tr>
+                <td class="team"><span class="tiny">2</span> MI</td>
+                <td class="num">8</td><td class="num">5</td><td class="num">3</td>
+                <td class="num">+0.85</td><td class="num pts">10</td>
+              </tr>
+              <tr>
+                <td class="team"><span class="tiny">3</span> RCB</td>
+                <td class="num">8</td><td class="num">5</td><td class="num">3</td>
+                <td class="num">+0.42</td><td class="num pts">10</td>
+              </tr>
+              <tr>
+                <td class="team"><span class="tiny">4</span> RR</td>
+                <td class="num">8</td><td class="num">4</td><td class="num">4</td>
+                <td class="num">+0.18</td><td class="num pts">8</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="center-actions">
+            <a class="btn blue" href="#">View Full Table</a>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- BOTTOM ROW -->
+    <section class="grid-bottom">
+
+      <!-- Orange cap -->
+      <div class="card">
+        <div class="head caphead">Orange Cap <span style="opacity:.85;">– Top Run Scorers</span></div>
+        <div class="body">
+          <div class="listrow">
+            <div class="rank">1</div>
+            <div class="name">V. Kohli</div>
+            <div class="val">421 Runs</div>
+          </div>
+          <div class="listrow">
+            <div class="rank">2</div>
+            <div class="name">R. Sharma</div>
+            <div class="val">385 Runs</div>
+          </div>
+          <div class="listrow">
+            <div class="rank">3</div>
+            <div class="name">S. Gill</div>
+            <div class="val">369 Runs</div>
+          </div>
+          <div class="listrow">
+            <div class="rank">4</div>
+            <div class="name">K. Williamson</div>
+            <div class="val">345 Runs</div>
+          </div>
+          <div class="listrow">
+            <div class="rank">5</div>
+            <div class="name">L. Livingstone</div>
+            <div class="val">332 Runs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Purple cap -->
+      <div class="card">
+        <div class="head caphead purple">Purple Cap <span style="opacity:.85;">– Top Wicket Takers</span></div>
+        <div class="body">
+          <div class="listrow">
+            <div class="rank">1</div>
+            <div class="name">J. Bumrah</div>
+            <div class="val">17 Wickets</div>
+          </div>
+          <div class="listrow">
+            <div class="rank">2</div>
+            <div class="name">Y. Chahal</div>
+            <div class="val">15 Wickets</div>
+          </div>
+          <div class="listrow">
+            <div class="rank">3</div>
+            <div class="name">M. Shami</div>
+            <div class="val">14 Wickets</div>
+          </div>
+          <div class="listrow">
+            <div class="rank">4</div>
+            <div class="name">A. Rashid</div>
+            <div class="val">13 Wickets</div>
+          </div>
+          <div class="listrow">
+            <div class="rank">5</div>
+            <div class="name">R. Bishnoi</div>
+            <div class="val">12 Wickets</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Match highlights -->
+      <div class="card highlights">
+        <div class="head">Match Highlights</div>
+
+        <div class="hl-grid">
+          <div class="hl">
+            <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=900&q=80" alt="">
+            <div class="hl-text">
+              <div class="hl-title">Stunning Knock</div>
+              <div class="hl-sub">Rohit Sharma’s 92 (45)</div>
+            </div>
+          </div>
+          <div class="hl">
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=900&q=80" alt="">
+            <div class="hl-text">
+              <div class="hl-title">Brilliant Spell</div>
+              <div class="hl-sub">Jasprit Bumrah 4/14</div>
+            </div>
+          </div>
+          <div class="hl">
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=900&q=80" alt="">
+            <div class="hl-text">
+              <div class="hl-title">Superb Catch</div>
+              <div class="hl-sub">Spectacular grab!</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hl-footer">
+          <a class="btn" href="#">Watch Now <span style="font-size:18px;">›</span></a>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</body>
+</html>

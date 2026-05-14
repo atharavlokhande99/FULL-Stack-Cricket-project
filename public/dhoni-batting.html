@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS Dhoni - The Bat That Finished It All</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
+                        url('https://pbs.twimg.com/media/G1hTmmEXkAA0A7c?format=jpg&name=large');
+            background-size: cover;
+            background-position: center;
+            animation: wave 20s ease-in-out infinite alternate;
+        }
+        
+        @keyframes wave {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 2s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(234, 179, 8, 0.1), 0 10px 10px -5px rgba(234, 179, 8, 0.04);
+        }
+        
+        .highlight-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(transparent, rgba(234, 179, 8, 0.1), transparent);
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+        
+        .counter {
+            font-weight: 700;
+            color: #f59e0b;
+        }
+        
+        .bat-animation {
+            position: absolute;
+            opacity: 0.05;
+            animation: swing 8s infinite ease-in-out;
+            transform-origin: bottom center;
+        }
+        
+        @keyframes swing {
+            0%, 100% { transform: rotate(-15deg); }
+            50% { transform: rotate(15deg); }
+        }
+        
+        .ball-animation {
+            position: absolute;
+            opacity: 0.05;
+            animation: spin 10s infinite linear;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute top-20 right-20 w-40 h-40 bat-animation">
+            <img src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png" alt="Bat" class="w-full h-full">
+        </div>
+        <div class="absolute bottom-20 left-20 w-32 h-32 ball-animation">
+            <img src="https://cdn-icons-png.flaticon.com/512/3122/3122088.png" alt="Cricket Ball" class="w-full h-full">
+        </div>
+        
+        <div class="container mx-auto px-6 text-center fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-amber-500">MS Dhoni</h1>
+            <h2 class="text-2xl md:text-4xl font-semibold mb-8">The Bat That Finished It All</h2>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto">A celebration of his iconic innings and unmatched finishing</p>
+            
+            <div class="mt-12 animate-bounce">
+                <a href="#innings" class="inline-block px-6 py-3 bg-amber-500 text-gray-900 font-semibold rounded-full hover:bg-amber-600 transition duration-300">
+                    Explore Legendary Innings
+                </a>
+            </div>
+        </div>
+    </section>
+
+<!-- Iconic Innings Gallery -->
+<section id="innings" class="py-20 px-6 relative overflow-hidden">
+  <div class="container mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-amber-500">Iconic Innings</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Example card format -->
+      <!-- Replace image URLs with more appropriate ones if needed -->
+
+      <!-- 148 vs Pakistan – 2005 -->
+      <div class="bg-slate-800 rounded-xl p-6 card-hover"
+        onclick="window.open('https://youtu.be/4JXp_uch_Tw?si=VVZtUKkLxPoQkwmn','_blank')"
+     style="cursor:pointer;">
+        <div class="mb-4 overflow-hidden rounded-lg">
+          <img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202004/dhoni05042020_1_0.jpeg?size=690:388" 
+               alt="Visakhapatnam Stadium" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+        </div>
+        <div class="flex justify-between items-start mb-2">
+          <h3 class="text-xl font-bold text-amber-400">148</h3>
+          <span class="bg-green-600 text-white text-xs px-2 py-1 rounded">ODI</span>
+        </div>
+        <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2005</p>
+        <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs Pakistan</p>
+        <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Visakhapatnam</p>
+        <p class="text-sm text-gray-400">A glimpse of brilliance in his maiden ODI century partnership with Dhoni, showcasing early promise.</p>
+      </div>
+
+      <!-- 224 vs Australia – 2013 -->
+      <div class="bg-slate-800 rounded-xl p-6 card-hover"
+        onclick="window.open('https://youtu.be/99ObmgwDqys?si=nabk51fqUUsbkz2Y','_blank')"
+     style="cursor:pointer;">
+        <div class="mb-4 overflow-hidden rounded-lg">
+          <img src="https://images.indianexpress.com/2014/12/ms-dhoni-224-against-austra.jpg" 
+               alt="Chennai Stadium" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+        </div>
+        <div class="flex justify-between items-start mb-2">
+          <h3 class="text-xl font-bold text-amber-400">224 (265)</h3>
+          <span class="bg-red-600 text-white text-xs px-2 py-1 rounded">Test</span>
+        </div>
+        <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2013</p>
+        <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs Australia</p>
+        <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Chennai</p>
+        <p class="text-sm text-gray-400">Kohli's first double hundred in Tests, a masterclass in heat and spin against a quality Aussie attack.</p>
+      </div>
+
+      <!-- 113 vs Pakistan – 2012 -->
+      <div class="bg-slate-800 rounded-xl p-6 card-hover"
+        onclick="window.open('https://youtu.be/x2B0uLARkMg?si=k_ZIYAh6ykuOTGfD','_blank')"
+     style="cursor:pointer;">
+        <div class="mb-4 overflow-hidden rounded-lg">
+          <img src="https://pbs.twimg.com/media/D-3CHLLVUAATsCe?format=jpg&name=small" 
+               alt="Chennai Stadium" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+        </div>
+        <div class="flex justify-between items-start mb-2">
+          <h3 class="text-xl font-bold text-amber-400">113</h3>
+          <span class="bg-green-600 text-white text-xs px-2 py-1 rounded">ODI</span>
+        </div>
+        <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2012</p>
+        <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs Pakistan</p>
+        <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Chennai</p>
+        <p class="text-sm text-gray-400">A fluent and fighting century in a losing cause, full of elegant strokeplay against arch-rivals.</p>
+      </div>
+
+      <!-- 124 vs Australia – 2009 -->
+      <div class="bg-slate-800 rounded-xl p-6 card-hover"
+        onclick="window.open('https://youtu.be/fbJW7tETVaE?si=CZlKXLPYutScslhM','_blank')"
+     style="cursor:pointer;">
+        <div class="mb-4 overflow-hidden rounded-lg">
+          <img src="https://i.guim.co.uk/img/static/sys-images/Guardian/About/General/2009/10/28/1256755607012/MS-Dhoni-001.jpg?width=465&dpr=1&s=none&crop=none" 
+               alt="Nagpur Stadium" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+        </div>
+        <div class="flex justify-between items-start mb-2">
+          <h3 class="text-xl font-bold text-amber-400">124</h3>
+          <span class="bg-green-600 text-white text-xs px-2 py-1 rounded">ODI</span>
+        </div>
+        <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2009</p>
+        <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs Australia</p>
+        <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Nagpur</p>
+        <p class="text-sm text-gray-400">A modest contribution early in his career; played during India’s 350+ run chase win.</p>
+      </div>
+
+      <!-- 72 vs England – 2013 -->
+      <div class="bg-slate-800 rounded-xl p-6 card-hover"
+      onclick="window.open('https://youtu.be/IkVuHrUnDxQ?si=CRINb1SV3pvl86W2','_blank')"
+     style="cursor:pointer;">
+        <div class="mb-4 overflow-hidden rounded-lg">
+          <img src="https://i.pinimg.com/474x/a5/24/a5/a524a5dd4a9747aedca44cfc4ef6157e.jpg" 
+               alt="Kochi Stadium" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+        </div>
+        <div class="flex justify-between items-start mb-2">
+          <h3 class="text-xl font-bold text-amber-400">72</h3>
+          <span class="bg-green-600 text-white text-xs px-2 py-1 rounded">ODI</span>
+        </div>
+        <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2013</p>
+        <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs England</p>
+        <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Kochi</p>
+        <p class="text-sm text-gray-400">A controlled knock to anchor the chase in humid conditions, setting up a series-levelling win.</p>
+      </div>
+
+      <!-- 49 vs South Africa – 2007 -->
+      <div class="bg-slate-800 rounded-xl p-6 card-hover"
+      onclick="window.open('https://youtu.be/4g8PR7U3oBE?si=N3Q6dYPIT0QhUDl0','_blank')"
+     style="cursor:pointer;">
+        <div class="mb-4 overflow-hidden rounded-lg">
+          <img src="https://media.crictracker.com/media/featureimage/2019/01/MS-Dhoni-of-India-91-not-out-against-Bangladesh-in-first-ODI-in-Dhaka.jpg" 
+               alt="Durban Stadium" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+        </div>
+        <div class="flex justify-between items-start mb-2">
+          <h3 class="text-xl font-bold text-amber-400">45</h3>
+          <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded">T20I</span>
+        </div>
+        <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2007</p>
+        <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs South Africa</p>
+        <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Durban</p>
+        <p class="text-sm text-gray-400">A handy middle-order knock in a must-win Super 8 clash that propelled India into the semis.</p>
+      </div>
+
+     <!-- 44 vs Australia – 2012 -->
+<div class="bg-slate-800 rounded-xl p-6 card-hover"
+onclick="window.open('https://youtu.be/IU1yx9e9QJs?si=1JLYYPgo-nZGM9s2','_blank')"
+     style="cursor:pointer;">
+  <div class="mb-4 overflow-hidden rounded-lg">
+    <img src="https://images.moneycontrol.com/static-mcnews/2019/01/ms-dhoni-vs-australia-2012.jpg" 
+         alt="Adelaide Oval" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+  </div>
+  <div class="flex justify-between items-start mb-2">
+    <h3 class="text-xl font-bold text-amber-400">44</h3>
+   <span class="bg-green-600 text-white text-xs px-2 py-1 rounded">ODI</span>
+  </div>
+  <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2012</p>
+  <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs Australia</p>
+  <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Adelaide</p>
+  <p class="text-sm text-gray-400">Showed grit and class in the first innings of the Adelaide Test, building his Test credentials.</p>
+</div>
+
+<!-- 72 vs Pakistan – 2006 -->
+<div class="bg-slate-800 rounded-xl p-6 card-hover"
+onclick="window.open('https://youtu.be/gwo01Tzv4Mw?si=a42zhlrP204MDqlM','_blank')"
+     style="cursor:pointer;">
+  <div class="mb-4 overflow-hidden rounded-lg">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-w8ufdM-nSFvoeGL4c1S0fMYaZCWcIsqQZA&s" 
+         alt="Lahore Stadium" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+  </div>
+  <div class="flex justify-between items-start mb-2">
+    <h3 class="text-xl font-bold text-amber-400">72</h3>
+    <span class="bg-green-600 text-white text-xs px-2 py-1 rounded">ODI</span>
+  </div>
+  <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2006</p>
+  <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs Pakistan</p>
+  <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Lahore</p>
+  <p class="text-sm text-gray-400">A composed innings in a youth-level encounter, hinting at his future rivalry against Pakistan.</p>
+</div>
+
+<!-- 134 vs England – 2016 -->
+<div class="bg-slate-800 rounded-xl p-6 card-hover"
+onclick="window.open('https://youtu.be/0ZtBBsjugW0?si=osbMXu5D2yMXa7_v','_blank')"
+     style="cursor:pointer;">
+  <div class="mb-4 overflow-hidden rounded-lg">
+    <img src="https://www.cricketcountry.com/wp-content/uploads/2017/01/Dhoni2.jpg" 
+         alt="Cuttack Stadium" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+  </div>
+  <div class="flex justify-between items-start mb-2">
+    <h3 class="text-xl font-bold text-amber-400">134</h3>
+    <span class="bg-green-600 text-white text-xs px-2 py-1 rounded">ODI</span>
+  </div>
+  <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2017</p>
+  <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs England</p>
+  <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Cuttack</p>
+  <p class="text-sm text-gray-400">A scintillating counterattack with Yuvraj, turning the game after early wickets and thrilling the home crowd.</p>
+</div>
+
+<!-- 45 vs Sri Lanka – 2013 -->
+<div class="bg-slate-800 rounded-xl p-6 card-hover"
+onclick="window.open('https://youtu.be/f2Enn6CuPyQ?si=_30XaDtadTCShkAM','_blank')"
+     style="cursor:pointer;">
+  <div class="mb-4 overflow-hidden rounded-lg">
+    <img src="https://st3.cricketcountry.com/wp-content/uploads/cricket/image_20130712040151.jpeg" 
+         alt="Port of Spain Stadium" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+  </div>
+  <div class="flex justify-between items-start mb-2">
+    <h3 class="text-xl font-bold text-amber-400">45</h3>
+    <span class="bg-green-600 text-white text-xs px-2 py-1 rounded">ODI</span>
+  </div>
+  <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2013</p>
+  <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs Sri Lanka</p>
+  <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Port of Spain</p>
+  <p class="text-sm text-gray-400">A captain’s knock under pressure, guiding India to a thrilling win in the tri-series final.</p>
+</div>
+
+<!-- 139 vs Australia – 2013 -->
+<div class="bg-slate-800 rounded-xl p-6 card-hover"
+onclick="window.open('https://youtu.be/bafotoGrnqQ?si=cc7frAwnh2-AnBth','_blank')"
+     style="cursor:pointer;">
+  <div class="mb-4 overflow-hidden rounded-lg">
+    <img src="https://cf-images.eu-west-1.prod.boltdns.net/v1/static/3588749423001/caec3f6a-a75d-4759-9026-753d7585d348/0f81499b-cd7e-47b1-8cf2-286e18f6972c/1280x720/match/image.jpg" 
+         alt="Mohali Stadium" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+  </div>
+  <div class="flex justify-between items-start mb-2">
+    <h3 class="text-xl font-bold text-amber-400">139</h3>
+    <span class="bg-green-600 text-white text-xs px-2 py-1 rounded">ODI</span>
+  </div>
+  <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2013</p>
+  <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs Australia</p>
+  <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Mohali</p>
+  <p class="text-sm text-gray-400">A stunning chase effort that nearly pulled off the impossible in a high-scoring thriller.</p>
+</div>
+
+<!-- 76 vs England – 2007 -->
+<div class="bg-slate-800 rounded-xl p-6 card-hover"
+onclick="window.open('https://youtu.be/BuVTrzi3nRE?si=A2TlTCgPxQJ3hcDp','_blank')"
+     style="cursor:pointer;">
+  <div class="mb-4 overflow-hidden rounded-lg">
+    <img src="https://sport360.com/wp-content/uploads/2016/05/Dhoni_2007-e1462307385134.jpg" 
+         alt="Lord's Cricket Ground" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+  </div>
+  <div class="flex justify-between items-start mb-2">
+    <h3 class="text-xl font-bold text-amber-400">76</h3>
+    <span class="bg-red-600 text-white text-xs px-2 py-1 rounded">Test</span>
+  </div>
+  <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2007</p>
+  <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs England</p>
+  <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Lord's</p>
+  <p class="text-sm text-gray-400">A resilient innings under pressure at the ‘Home of Cricket’, sealing a memorable draw with Dhoni.</p>
+</div>
+
+<!-- 68 vs New Zealand – 2010 -->
+<div class="bg-slate-800 rounded-xl p-6 card-hover"
+onclick="window.open('https://youtu.be/82ifU_ThCsU?si=rqq0O4itIOdyOi29','_blank')"
+     style="cursor:pointer;">
+  <div class="mb-4 overflow-hidden rounded-lg">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgS4SFFo1tJAjCtSFy7qv9ZilETtyD-BkI6UxfnILekpYaDMzpNJx894AgXOjQxaIpAzE" 
+         alt="Gwalior Stadium" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+  </div>
+  <div class="flex justify-between items-start mb-2">
+    <h3 class="text-xl font-bold text-amber-400">68</h3>
+    <span class="bg-green-600 text-white text-xs px-2 py-1 rounded">ODI</span>
+  </div>
+  <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2010</p>
+  <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs South Africa</p>
+  <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Gwalior</p>
+  <p class="text-sm text-gray-400">A smooth innings in a run-fest where Tendulkar scored the first ODI double ton.</p>
+</div>
+
+<!-- 62 vs Australia – 2013 -->
+<div class="bg-slate-800 rounded-xl p-6 card-hover"
+onclick="window.open('https://youtu.be/SNou0ZfTH-I?si=8f-3ZsKX2gRnQh_D','_blank')"
+     style="cursor:pointer;">
+  <div class="mb-4 overflow-hidden rounded-lg">
+    <img src="https://i.guim.co.uk/img/static/sys-images/Cricket/Day/match_text_blocks/2013/10/19/1382205245999/Indian-cricket-captain-Ma-011.jpg?width=465&dpr=1&s=none&crop=none" 
+         alt="Bengaluru Stadium" class="w-full h-48 object-cover transition-transform duration-500 hover:scale-110">
+  </div>
+  <div class="flex justify-between items-start mb-2">
+    <h3 class="text-xl font-bold text-amber-400">62</h3>
+    <span class="bg-green-600 text-white text-xs px-2 py-1 rounded">ODI</span>
+  </div>
+  <p class="text-gray-300 mb-1"><i class="fas fa-calendar text-amber-400 mr-2"></i>2013</p>
+  <p class="text-gray-300 mb-1"><i class="fas fa-flag text-amber-400 mr-2"></i>vs Australia</p>
+  <p class="text-gray-300 mb-4"><i class="fas fa-map-marker-alt text-amber-400 mr-2"></i>Bengaluru</p>
+  <p class="text-sm text-gray-400">A brisk knock during the highest ODI run-chase by India in history, contributing vital momentum.</p>
+</div>
+
+    </div>
+  </div>
+</section>

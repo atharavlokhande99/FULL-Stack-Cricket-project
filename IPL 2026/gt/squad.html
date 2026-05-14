@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gujarat Titans | Squad</title>
+
+  <style>
+    :root{
+      --text:#eaf0ff;
+      --muted: rgba(234,240,255,0.8);
+      --glass: rgba(15, 23, 42, 0.72);
+      --border: rgba(255,255,255,0.20);
+      --shadow: 0 18px 40px rgba(0,0,0,0.55);
+      --gtBlue:#0f172a;
+      --gtBlueLight:#1e293b;
+      --gtGold:#d4af37;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 500px at 50% 0%, rgba(30,41,59,0.45), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.85)),
+        url("assets/bg/stadium.jpg");
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;
+    }
+
+    .wrap{ max-width:1200px; margin:0 auto; padding:20px; }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:18px;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn-top{
+      padding:10px 14px;
+      border-radius:10px;
+      background: rgba(2,6,23,0.55);
+      border:1px solid var(--border);
+      color: var(--text);
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin-bottom:15px;
+    }
+
+    .logo{
+      width:100px;
+      height:100px;
+      border-radius:15px;
+      overflow:hidden;
+      background: rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .logo img{ width:100%; height:100%; object-fit:cover; }
+    .titlebox{text-align:center;}
+
+    .teamname{
+      font-size:40px;
+      font-weight:1000;
+      margin:0;
+    }
+
+    .teamname span{ color: var(--gtGold); }
+    .meta{ font-weight:800; opacity:0.85; margin-top:6px; }
+
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin:15px 0;
+      flex-wrap:wrap;
+    }
+
+    .tab{
+      padding:10px 16px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:900;
+      border:1px solid var(--border);
+      background: rgba(2,6,23,0.55);
+      color:white;
+    }
+
+    .tab.active{
+      background: linear-gradient(180deg, var(--gtBlueLight), var(--gtBlue));
+    }
+
+    .role-section{
+      margin-top:18px;
+      background: var(--glass);
+      border:1px solid rgba(212,175,55,0.35);
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+
+    .role-title{
+      margin:2px 0 14px;
+      font-size:22px;
+      font-weight:900;
+      color:#fde68a;
+      border-bottom:1px solid rgba(255,255,255,0.18);
+      padding-bottom:10px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    @media(max-width:1100px){ .cards{ grid-template-columns: repeat(4, 1fr); } }
+    @media(max-width:860px){
+      .cards{ grid-template-columns: repeat(2, 1fr); }
+      .header{ flex-direction:column; }
+    }
+    @media(max-width:480px){ .cards{ grid-template-columns: 1fr; } }
+
+    .player-card{
+      border:1px solid rgba(255,255,255,0.20);
+      border-radius:14px;
+      padding:12px;
+      background: rgba(6,12,24,0.72);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      cursor:pointer;
+      outline:none;
+    }
+
+    .player-card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(252,211,77,0.9);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    }
+
+    .player-card.active{
+      background: linear-gradient(180deg, rgba(30,41,59,0.75), rgba(15,23,42,0.85));
+      border-color: rgba(253,230,138,0.95);
+      box-shadow: 0 14px 28px rgba(15,23,42,0.5);
+      transform: translateY(-3px);
+    }
+
+    .player-photo{
+      width:100%;
+      aspect-ratio: 1 / 1;
+      border-radius:10px;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,0.28);
+      background: #0f172a;
+      display:block;
+    }
+
+    .player-name{
+      margin:10px 0 4px;
+      font-size:16px;
+      font-weight:900;
+      line-height:1.2;
+    }
+
+    .player-role{
+      margin:0;
+      font-size:12px;
+      color: var(--muted);
+      font-weight:700;
+    }
+
+    .footer-note{
+      margin:20px 0 6px;
+      text-align:center;
+      color: var(--muted);
+      font-weight:700;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="btn-top" href="gt.html">Back to Gujarat Titans</a>
+    <a class="btn-top" href="squad.html">Refresh</a>
+  </div>
+
+  <div class="header">
+    <a class="logo" href="gt.html">
+      <img src="gt_logo.png" alt="GT Logo">
+    </a>
+
+    <div class="titlebox">
+      <h1 class="teamname">Gujarat <span>Titans</span></h1>
+      <div class="meta">GT IPL Squad</div>
+
+      <div class="tabs">
+        <a class="tab" href="schedule.html">Schedule</a>
+        <a class="tab" href="#">Results</a>
+        <a class="tab active" href="squad.html">Squad</a>
+        <a class="tab" href="stats.html">Stats</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="role-section">
+    <h2 class="role-title">Batters</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/66818.png?v=5.93" alt="Shubman Gill">
+        <h3 class="player-name">Shubman Gill</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/69500.png?v=5.93" alt="Sai Sudharsan">
+        <h3 class="player-name">Sai Sudharsan</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/64721.png?v=5.93" alt="Shahrukh Khan">
+        <h3 class="player-name">Shahrukh Khan</h3>
+        <p class="player-role">Batter</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Wicket Keepers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/74097.png?v=5.93" alt="Kumar Kushagra">
+        <h3 class="player-name">Kumar Kushagra</h3>
+        <p class="player-role">Wicket Keeper</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/9782.png?v=5.93" alt="Jos Buttler">
+        <h3 class="player-name">Jos Buttler</h3>
+        <p class="player-role">Wicket Keeper</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/67752.png?v=5.93" alt="Anuj Rawat">
+        <h3 class="player-name">Anuj Rawat</h3>
+        <p class="player-role">Wicket Keeper</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/66923.png?v=5.93" alt="Tom Banton">
+        <h3 class="player-name">Tom Banton</h3>
+        <p class="player-role">Wicket Keeper</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">All Rounders</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/82839.png?v=5.93" alt="Arshad Khan">
+        <h3 class="player-name">Arshad Khan</h3>
+        <p class="player-role">All Rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/65295.png?v=5.93" alt="Glenn Phillips">
+        <h3 class="player-name">Glenn Phillips</h3>
+        <p class="player-role">All Rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/10232.png?v=5.93" alt="Jason Holder">
+        <h3 class="player-name">Jason Holder</h3>
+        <p class="player-role">All Rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/88873.png?v=5.93" alt="Nishant Sindhu">
+        <h3 class="player-name">Nishant Sindhu</h3>
+        <p class="player-role">All Rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/64440.png?v=5.93" alt="Rahul Tewatia">
+        <h3 class="player-name">Rahul Tewatia</h3>
+        <p class="player-role">All Rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/65748.png?v=5.93" alt="Rashid Khan">
+        <h3 class="player-name">Rashid Khan</h3>
+        <p class="player-role">All Rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/65859.png?v=5.93" alt="Washington Sundar">
+        <h3 class="player-name">Washington Sundar</h3>
+        <p class="player-role">All Rounder</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Bowlers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/90572.png?v=5.93" alt="Gurnoor Brar">
+        <h3 class="player-name">Gurnoor Brar</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/3899.png?v=5.93https://www.gujarattitansipl.com/static-assets/images/players/59611.png?v=5.93" alt="Ishant Sharma">
+        <h3 class="player-name">Ishant Sharma</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/59611.png?v=5.93" alt="Jayant Yadav">
+        <h3 class="player-name">Jayant Yadav</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/63611.png?v=5.93" alt="Kagiso Rabada">
+        <h3 class="player-name">Kagiso Rabada</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/71149.png?v=5.93" alt="Manav Suthar">
+        <h3 class="player-name">Manav Suthar</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/65799.png?v=5.93" alt="Mohammed Siraj">
+        <h3 class="player-name">Mohammed Siraj</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/65702.png?v=5.93" alt="Prasidh Krishna">
+        <h3 class="player-name">Prasidh Krishna</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/91316.png?v=5.93" alt="Ashok Sharma">
+        <h3 class="player-name">Ashok Sharma</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/66438.png?v=5.93" alt="Sai Kishore">
+        <h3 class="player-name">Sai Kishore</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/67706.png?v=5.93" alt="Prithvi Raj">
+        <h3 class="player-name">Prithvi Raj</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.gujarattitansipl.com/static-assets/images/players/64498.png?v=5.93" alt="Luke Wood">
+        <h3 class="player-name">Luke Wood</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+    </div>
+  </section>
+
+  <p class="footer-note">Tap or click a player card to highlight it in GT colors.</p>
+</div>
+
+<script>
+  const cards = document.querySelectorAll(".player-card");
+
+  function setActive(card){
+    cards.forEach((item) => item.classList.remove("active"));
+    card.classList.add("active");
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => setActive(card));
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setActive(card);
+      }
+    });
+  });
+</script>
+</body>
+</html>

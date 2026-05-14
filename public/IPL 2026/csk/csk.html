@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chennai Super Kings | IPL</title>
+
+  <!-- Font Awesome for trophy icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root{
+      --gold:#f7c948;
+      --gold2:#d6a11e;
+      --dark:#0b1220;
+      --glass: rgba(10, 18, 32, 0.62);
+      --border: rgba(255,255,255,0.20);
+      --text: #eaf0ff;
+      --muted: rgba(234,240,255,0.75);
+      --shadow: 0 18px 40px rgba(0,0,0,0.55);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 500px at 50% 0%, rgba(247,201,72,0.22), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.78)),
+        url("assets/bg/stadium.jpg");
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;
+    }
+
+    .wrap{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 18px 36px;
+    }
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .btn-top{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:10px;
+      background: rgba(2,6,23,0.55);
+      border:1px solid var(--border);
+      color: var(--text);
+      text-decoration:none;
+      font-weight: 800;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+    }
+    .btn-top:hover{ background: rgba(255,255,255,0.07); }
+
+    /* Header */
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 16px;
+      padding: 14px 10px;
+      margin-bottom: 12px;
+    }
+    .logo{
+      width: 110px;
+      height: 110px;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+    }
+    .titlebox{
+      text-align:center;
+      flex: 1;
+      max-width: 820px;
+    }
+    .teamname{
+      font-size: clamp(32px, 4vw, 54px);
+      margin: 0;
+      font-weight: 1000;
+      letter-spacing: 0.4px;
+      text-shadow: 0 12px 24px rgba(0,0,0,0.55);
+    }
+    .teamname .gold{ color: var(--gold); }
+    .meta{
+      margin-top: 6px;
+      font-weight: 800;
+      color: var(--muted);
+    }
+    .meta .dot{ opacity:0.65; margin: 0 8px; }
+
+    /* Tabs */
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin: 12px auto 10px;
+      flex-wrap: wrap;
+    }
+    .tab{
+      padding: 10px 16px;
+      border-radius: 10px;
+      text-decoration:none;
+      font-weight: 900;
+      border: 1px solid var(--border);
+      background: rgba(2,6,23,0.55);
+      color: rgba(255,255,255,0.88);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.35);
+      min-width: 120px;
+      text-align:center;
+    }
+    .tab.active{
+      background: linear-gradient(180deg, rgba(247,201,72,0.95), rgba(214,161,30,0.92));
+      color: #101826;
+      border-color: rgba(0,0,0,0.15);
+    }
+    .tab:hover{ transform: translateY(-1px); }
+
+    /* NEW: Trophy row */
+    .trophies{
+      display:flex;
+      justify-content:center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 10px auto 16px;
+    }
+    .trophy{
+      width: 58px;
+      height: 58px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius: 14px;
+      background: rgba(2,6,23,0.55);
+      border: 1px solid rgba(247,201,72,0.35);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+      text-decoration:none;
+      color: var(--gold);
+      position: relative;
+      backdrop-filter: blur(10px);
+      transition: .18s ease;
+    }
+    .trophy i{ font-size: 24px; }
+    .trophy:hover{
+      transform: translateY(-2px);
+      border-color: rgba(247,201,72,0.75);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.45);
+    }
+    .trophy span{
+      position:absolute;
+      bottom: -18px;
+      font-size: 12px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.78);
+    }
+
+    /* Cards grid */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 6px;
+    }
+    @media(max-width: 950px){
+      .header{ flex-direction: column; }
+      .grid{ grid-template-columns: 1fr; }
+      .logo{ width: 96px; height: 96px; }
+    }
+
+    .card{
+      background: var(--glass);
+      border: 1px solid rgba(247,201,72,0.25);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .cardhead{
+      padding: 14px 16px;
+      font-weight: 1000;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      background: linear-gradient(90deg, rgba(247,201,72,0.22), rgba(255,255,255,0.04));
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      font-size: 18px;
+    }
+    .cardbody{ padding: 14px 16px 16px; }
+
+    .kv{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      font-weight: 900;
+    }
+    .kv:last-child{ border-bottom:none; }
+    .k{ color: rgba(255,255,255,0.82); }
+    .v{ color: #fff; }
+
+    .desc{
+      margin-top: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.55;
+    }
+    .desc .hl{ color: var(--gold); font-weight: 1000; }
+
+    /* Key players table */
+    table{
+      width:100%;
+      border-collapse: collapse;
+      font-weight: 800;
+    }
+    th, td{
+      padding: 10px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      text-align:left;
+    }
+    th{
+      color: rgba(255,255,255,0.70);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      font-size: 12px;
+      font-weight: 1000;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-weight: 1000;
+      border: 1px solid rgba(247,201,72,0.35);
+      background: rgba(247,201,72,0.12);
+      color: var(--gold);
+      min-width: 70px;
+      text-align:center;
+    }
+    .tag.good{ border-color: rgba(34,197,94,0.35); background: rgba(34,197,94,0.12); color: #7CFFB1; }
+    .tag.fair{ border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.12); color: #FFD08A; }
+    .tag.na{ border-color: rgba(148,163,184,0.35); background: rgba(148,163,184,0.10); color: rgba(255,255,255,0.75); }
+
+    /* Recent matches */
+    .recent{
+      margin-top: 18px;
+    }
+    .recent .cardhead{
+      text-align:center;
+      background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(247,201,72,0.18), rgba(255,255,255,0.06));
+    }
+    .matchrow{
+      display:grid;
+      grid-template-columns: 220px 1fr;
+      gap: 14px;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      font-weight: 900;
+      align-items:center;
+    }
+    .matchrow:last-child{ border-bottom:none; }
+    .fixture{
+      color: var(--gold);
+      font-weight: 1000;
+      letter-spacing: 0.2px;
+    }
+    .result{
+      color: rgba(255,255,255,0.88);
+    }
+    @media(max-width:700px){
+      .matchrow{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- Top buttons -->
+    <div class="topbar">
+    <a class="btn-top" href="../iplhome.html"><span style="color:var(--gold)">←</span> Back to IPL</a>
+      <a class="btn-top" href="csk.html">Refresh</a>
+    </div>
+
+    <!-- Header with logo + title -->
+    <div class="header">
+      <div class="logo">
+        <img src="assets/logos/csk.png" alt="CSK Logo">
+      </div>
+
+      <div class="titlebox">
+        <h1 class="teamname">Chennai <span class="gold">Super Kings</span></h1>
+        <div class="meta">
+          Home: MA Chidambaram Stadium <span class="dot">•</span>
+          Captain: MS Dhoni <span class="dot">•</span>
+          @chennaiipl
+        </div>
+
+        <div class="tabs">
+          <a class="tab" href="schedule.html">Schedule</a>
+          <a class="tab" href="#">Results</a>
+          <a class="tab" href="squad.html">Squad</a>
+          <a class="tab" href="stats.html">Stats</a>
+        </div>
+
+        <!-- ✅ NEW: 5 trophies row -->
+        <div class="trophies">
+          <a class="trophy" href="highlights/csk-2010.html" title="CSK 2010 Highlights">
+            <i class="fa-solid fa-trophy"></i><span>2010</span>
+          </a>
+          <a class="trophy" href="highlights/csk-2011.html" title="CSK 2011 Highlights">
+            <i class="fa-solid fa-trophy"></i><span>2011</span>
+          </a>
+          <a class="trophy" href="highlights/csk-2018.html" title="CSK 2018 Highlights">
+            <i class="fa-solid fa-trophy"></i><span>2018</span>
+          </a>
+          <a class="trophy" href="highlights/csk-2021.html" title="CSK 2021 Highlights">
+            <i class="fa-solid fa-trophy"></i><span>2021</span>
+          </a>
+          <a class="trophy" href="highlights/csk-2023.html" title="CSK 2023 Highlights">
+            <i class="fa-solid fa-trophy"></i><span>2023</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two cards -->
+    <div class="grid">
+      <!-- Team Overview -->
+      <div class="card">
+        <div class="cardhead">Team Overview</div>
+        <div class="cardbody">
+          <div class="kv"><div class="k">Matches:</div><div class="v">8</div></div>
+          <div class="kv"><div class="k">Wins:</div><div class="v">6</div></div>
+          <div class="kv"><div class="k">Losses:</div><div class="v">2</div></div>
+          <div class="kv"><div class="k">Net Run Rate:</div><div class="v">+1.12</div></div>
+          <div class="kv"><div class="k">Points:</div><div class="v">12</div></div>
+
+          <div class="desc">
+            The Chennai Super Kings, five-time IPL champions, are known for their winning mentality and experienced squad led by the
+            <span class="hl">legendary MS Dhoni and now Ruturaj Gaikwad </span>.
+          </div>
+        </div>
+      </div>
+
+      <!-- Key Players -->
+      <div class="card">
+        <div class="cardhead">Key Players</div>
+        <div class="cardbody">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:50%;">Player</th>
+                <th style="width:30%;">Role</th>
+                <th style="width:20%;">Form</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ruturaj Gaikwad</td>
+                <td>Batsman</td>
+                <td><span class="tag">Captain</span></td>
+              </tr>
+              <tr>
+                <td>Shivam Dube</td>
+                <td>All-Rounder</td>
+                <td><span class="tag good">Good</span></td>
+              </tr>
+              <tr>
+                <td>Khaleel Ahmed</td>
+                <td>Bowler</td>
+                <td><span class="tag fair">Fair</span></td>
+              </tr>
+              <tr>
+                <td>Ayush Mahatre</td>
+                <td>Batsmen</td>
+                <td><span class="tag fair">Fair</span></td>
+              </tr>
+              <tr>
+                <td>MS Dhoni</td>
+                <td>Wicket-Keeper</td>
+                <td><span class="tag na">Excellent</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent matches -->
+    <div class="card recent">
+      <div class="cardhead">Recent Matches</div>
+      <div class="matchrow">
+        <div class="fixture">CSK vs MI</div>
+        <div class="result">CSK won by 5 wickets</div>
+      </div>
+      <div class="matchrow">
+        <div class="fixture">CSK vs RCB</div>
+        <div class="result">RCB won by 7 runs</div>
+      </div>
+      <div class="matchrow">
+        <div class="fixture">CSK vs KKR</div>
+        <div class="result">CSK won by 23 runs</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
+

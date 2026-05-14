@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mumbai Indians | Squad</title>
+
+  <style>
+    :root{
+      --text:#eaf0ff;
+      --muted: rgba(234,240,255,0.8);
+      --glass: rgba(10, 18, 32, 0.62);
+      --border: rgba(255,255,255,0.20);
+      --shadow: 0 18px 40px rgba(0,0,0,0.55);
+      --miBlue:#2e6bff;
+      --miBlueDark:#1d4ed8;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 500px at 50% 0%, rgba(46,107,255,0.22), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.78)),
+        url("assets/bg/stadium.jpg");
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;
+    }
+
+    .wrap{ max-width:1200px; margin:0 auto; padding:20px; }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:18px;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn-top{
+      padding:10px 14px;
+      border-radius:10px;
+      background: rgba(2,6,23,0.55);
+      border:1px solid var(--border);
+      color: var(--text);
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin-bottom:15px;
+    }
+
+    .logo{
+      width:100px;
+      height:100px;
+      border-radius:15px;
+      overflow:hidden;
+      background: rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .logo img{ width:100%; height:100%; object-fit:cover; }
+    .titlebox{text-align:center;}
+
+    .teamname{
+      font-size:40px;
+      font-weight:1000;
+      margin:0;
+    }
+
+    .teamname span{ color: var(--miBlue); }
+    .meta{ font-weight:800; opacity:0.85; margin-top:6px; }
+
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin:15px 0;
+      flex-wrap:wrap;
+    }
+
+    .tab{
+      padding:10px 16px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:900;
+      border:1px solid var(--border);
+      background: rgba(2,6,23,0.55);
+      color:white;
+    }
+
+    .tab.active{
+      background: linear-gradient(180deg, rgba(46,107,255,0.95), rgba(29,78,216,0.92));
+      color:#eaf2ff;
+      border-color: rgba(0,0,0,0.15);
+    }
+
+    .role-section{
+      margin-top:18px;
+      background: var(--glass);
+      border:1px solid rgba(46,107,255,0.35);
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+
+    .role-title{
+      margin:2px 0 14px;
+      font-size:22px;
+      font-weight:900;
+      color:#bfdbfe;
+      border-bottom:1px solid rgba(255,255,255,0.18);
+      padding-bottom:10px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    @media(max-width:1100px){ .cards{ grid-template-columns: repeat(4, 1fr); } }
+    @media(max-width:860px){
+      .cards{ grid-template-columns: repeat(2, 1fr); }
+      .header{ flex-direction:column; }
+    }
+    @media(max-width:480px){ .cards{ grid-template-columns: 1fr; } }
+
+    .player-card{
+      border:1px solid rgba(255,255,255,0.20);
+      border-radius:14px;
+      padding:12px;
+      background: rgba(6,12,24,0.72);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      cursor:pointer;
+      outline:none;
+    }
+
+    .player-card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(147,197,253,0.9);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    }
+
+    .player-card.active{
+      background: linear-gradient(180deg, rgba(46,107,255,0.5), rgba(29,78,216,0.65));
+      border-color: rgba(219,234,254,0.95);
+      box-shadow: 0 14px 28px rgba(29,78,216,0.5);
+      transform: translateY(-3px);
+    }
+
+    .player-photo{
+      width:100%;
+      aspect-ratio: 1 / 1;
+      border-radius:10px;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,0.28);
+      background: #0f172a;
+      display:block;
+    }
+
+    .player-name{
+      margin:10px 0 4px;
+      font-size:16px;
+      font-weight:900;
+      line-height:1.2;
+    }
+
+    .player-role{
+      margin:0;
+      font-size:12px;
+      color: var(--muted);
+      font-weight:700;
+    }
+
+    .footer-note{
+      margin:20px 0 6px;
+      text-align:center;
+      color: var(--muted);
+      font-weight:700;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="btn-top" href="mi.html">Back to Mumbai Indians</a>
+    <a class="btn-top" href="squad.html">Refresh</a>
+  </div>
+
+  <div class="header">
+    <a class="logo" href="mi.html">
+      <img src="mi_logo.jpg" alt="MI Logo">
+    </a>
+
+    <div class="titlebox">
+      <h1 class="teamname">Mumbai <span>Indians</span></h1>
+      <div class="meta">MI IPL Squad</div>
+
+      <div class="tabs">
+        <a class="tab" href="schedule.html">Schedule</a>
+        <a class="tab" href="#">Results</a>
+        <a class="tab active" href="squad.html">Squad</a>
+        <a class="tab" href="stats.html">Stats</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="role-section">
+    <h2 class="role-title">Batters</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/3852.png?v=7.33&w=200" alt="Rohit Sharma">
+        <h3 class="player-name">Rohit Sharma</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/11803.png?v=7.33&w=200" alt="Suryakumar Yadav">
+        <h3 class="player-name">Suryakumar Yadav</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/70761.png?v=7.33&w=200" alt="Tilak Varma">
+        <h3 class="player-name">Tilak Varma</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/89179.png?v=7.33&w=200" alt="Danish Malewar">
+        <h3 class="player-name">Danish Malewar</h3>
+        <p class="player-role">Batter</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Wicket-keepers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/64941.png?v=7.33&w=200" alt="Ryan Rickelton">
+        <h3 class="player-name">Ryan Rickelton</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/95322.png?v=7.33&w=200" alt="Robin Minz">
+        <h3 class="player-name">Robin Minz</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/28035.png?v=7.33&w=200" alt="Quinton de Kock">
+        <h3 class="player-name">Quinton de Kock</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">All-rounders</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/57903.png?v=7.33&w=200" alt="Mitchell Santner">
+        <h3 class="player-name">Mitchell Santner</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/63751.png?v=7.33&w=200" alt="Hardik Pandya">
+        <h3 class="player-name">Hardik Pandya</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/63605.png?v=7.33&w=200" alt="Corbin Bosch">
+        <h3 class="player-name">Corbin Bosch</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/100353.png?v=7.33&w=200" alt="Naman Dhir">
+        <h3 class="player-name">Naman Dhir</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/89168.png?v=7.33&w=200" alt="Raj Angad Bawa">
+        <h3 class="player-name">Raj Angad Bawa</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/67285.png?v=7.33&w=200" alt="Sherfane Rutherford">
+        <h3 class="player-name">Sherfane Rutherford</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/67126.png?v=7.33&w=200" alt="Mayank Markande">
+        <h3 class="player-name">Mayank Markande</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Bowlers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/63755.png?v=7.33&w=200" alt="Jasprit Bumrah">
+        <h3 class="player-name">Jasprit Bumrah</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/59547.png?v=7.33&w=200" alt="Deepak Chahar">
+        <h3 class="player-name">Deepak Chahar</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/4338.png?v=7.33&w=200" alt="Trent Boult">
+        <h3 class="player-name">Trent Boult</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/74296.png?v=7.33&w=200" alt="Ashwani Kumar">
+        <h3 class="player-name">Ashwani Kumar</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/67726.png?v=7.33&w=200" alt="Raghu Sharma">
+        <h3 class="player-name">Raghu Sharma</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://www.mumbaiindians.com/static-assets/images/players/large/96648.png?v=7.33&w=200" alt="AM Ghazanfar">
+        <h3 class="player-name">AM Ghazanfar</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+    </div>
+  </section>
+
+  <p class="footer-note">Tap or click a player card to highlight it in MI blue.</p>
+</div>
+
+<script>
+  const cards = document.querySelectorAll(".player-card");
+
+  function setActive(card){
+    cards.forEach((item) => item.classList.remove("active"));
+    card.classList.add("active");
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => setActive(card));
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setActive(card);
+      }
+    });
+  });
+</script>
+</body>
+</html>

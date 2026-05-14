@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - Cricket Universe</title>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import {
+      getAuth,
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyABeNYsZrln1XxCJJ19ARigPtRSF34ytkA",
+      authDomain: "cricket-universe-cf847.firebaseapp.com",
+      projectId: "cricket-universe-cf847",
+      storageBucket: "cricket-universe-cf847.firebasestorage.app",
+      messagingSenderId: "504213987159",
+      appId: "1:504213987159:web:0c19179f369a41c8faa812",
+      measurementId: "G-5HEV37PQ6P"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "admin-login.html";
+      } else {
+        document.getElementById("welcome").textContent = user.email;
+      }
+    });
+
+    window.logoutAdmin = async function () {
+      const button = document.getElementById("logoutButton");
+      button.disabled = true;
+      button.textContent = "Signing out...";
+      await signOut(auth);
+      window.location.href = "admin-login.html";
+    };
+  </script>
+
+  <style>
+    :root {
+      --bg: #eef3f8;
+      --surface: #ffffff;
+      --surface-soft: #f7faff;
+      --surface-strong: #0f2747;
+      --sidebar: #0c1f38;
+      --sidebar-soft: #142a48;
+      --text: #14233b;
+      --muted: #6f8199;
+      --line: #dbe6f2;
+      --primary: #1d4ed8;
+      --primary-soft: #dbeafe;
+      --success: #16a34a;
+      --success-soft: #dcfce7;
+      --warning: #f59e0b;
+      --shadow: 0 18px 45px rgba(15, 39, 71, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(37, 99, 235, 0.08), transparent 24%),
+        linear-gradient(180deg, #f8fbff, var(--bg));
+    }
+
+    .app-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+    }
+
+    .sidebar {
+      background: linear-gradient(180deg, var(--sidebar), #09172a);
+      color: #e5eefb;
+      padding: 28px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      box-shadow: 12px 0 32px rgba(7, 18, 31, 0.12);
+    }
+
+    .brand {
+      padding: 18px 16px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #3b82f6, #22c55e);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: white;
+      box-shadow: 0 12px 24px rgba(59, 130, 246, 0.28);
+    }
+
+    .brand h1 {
+      margin: 14px 0 6px;
+      font-size: 1.15rem;
+      line-height: 1.3;
+    }
+
+    .brand p {
+      margin: 0;
+      color: #9db1cd;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .menu {
+      display: grid;
+      gap: 8px;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      color: #d9e7fb;
+      text-decoration: none;
+      background: transparent;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .menu-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateX(2px);
+    }
+
+    .menu-item.active {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.22), rgba(34, 197, 94, 0.14));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .menu-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .sidebar-footer span {
+      display: block;
+      color: #9db1cd;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .sidebar-footer strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .main {
+      padding: 28px;
+    }
+
+    .topbar {
+      background: linear-gradient(135deg, #123055, var(--surface-strong));
+      color: white;
+      border-radius: 28px;
+      padding: 24px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .topbar h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      letter-spacing: -0.03em;
+    }
+
+    .topbar p {
+      margin: 0;
+      color: #c5d6ee;
+      line-height: 1.6;
+      max-width: 640px;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .user-chip,
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    #welcome {
+      font-weight: 600;
+    }
+
+    .logout-btn {
+      border: none;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #ef4444, #f97316);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 14px 26px rgba(239, 68, 68, 0.24);
+    }
+
+    .logout-btn:disabled {
+      cursor: wait;
+      opacity: 0.82;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .stat-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .stat-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .stat-icon.primary {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+
+    .stat-icon.success {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .stat-icon.warning {
+      background: #fef3c7;
+      color: var(--warning);
+    }
+
+    .stat-value {
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: -0.04em;
+    }
+
+    .stat-meta {
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .content-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.75fr) minmax(300px, 0.9fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--surface);
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 22px 24px 18px;
+    }
+
+    .panel-head h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .panel-head p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--success-soft);
+      color: var(--success);
+      font-size: 0.84rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      padding: 0 12px 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+    }
+
+    th,
+    td {
+      padding: 16px 12px;
+      text-align: left;
+      vertical-align: top;
+      border-top: 1px solid #edf3f9;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .match-title {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .subline {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .status.live {
+      background: #fee2e2;
+      color: #dc2626;
+    }
+
+    .status.completed {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 12px;
+      border-radius: 12px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .ranking-list {
+      padding: 0 20px 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .rank-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      background: var(--surface-soft);
+      border: 1px solid #edf3f9;
+    }
+
+    .rank-no {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .rank-meta strong {
+      display: block;
+      font-size: 0.98rem;
+    }
+
+    .rank-meta span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .rank-score {
+      margin-left: auto;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .form-panel {
+      margin-top: 20px;
+      padding: 22px 24px 24px;
+    }
+
+    .form-panel h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .form-panel p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfdff;
+      color: var(--text);
+      outline: none;
+    }
+
+    .field input:focus,
+    .field select:focus {
+      border-color: #93c5fd;
+      box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+    }
+
+    .form-actions {
+      margin-top: 18px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .update-btn {
+      border: none;
+      padding: 14px 20px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--success), #22c55e);
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 14px 28px rgba(22, 163, 74, 0.22);
+    }
+
+    @media (max-width: 1180px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 920px) {
+      .app-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        gap: 16px;
+      }
+
+      .menu {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .topbar-actions {
+        justify-content: flex-start;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .main {
+        padding: 16px;
+      }
+
+      .sidebar {
+        padding: 18px 16px;
+      }
+
+      .menu {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-actions {
+        justify-content: stretch;
+      }
+
+      .update-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">CU</div>
+        <h1>Cricket Admin Dashboard</h1>
+        <p>Professional control center for match operations, teams, rankings, and reporting.</p>
+      </div>
+
+      <nav class="menu" aria-label="Sidebar menu">
+        <a class="menu-item active" href="#">
+          <span class="menu-icon">▣</span>
+          <span>Dashboard</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="menu-icon">◉</span>
+          <span>Live Scores</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="menu-icon">☰</span>
+          <span>Matches</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="menu-icon">★</span>
+          <span>Leaderboard</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="menu-icon">⚑</span>
+          <span>Teams</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="menu-icon">◎</span>
+          <span>Players</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="menu-icon">◌</span>
+          <span>Series</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="menu-icon">◫</span>
+          <span>Reports</span>
+        </a>
+        <a class="menu-item" href="#">
+          <span class="menu-icon">⚙</span>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <span>Operations Status</span>
+        <strong>Live analytics feed active and ready for score updates.</strong>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h2>Cricket Admin Dashboard</h2>
+          <p>Monitor live cricket data, recent scorecards, player rankings, and match updates from a single admin workspace.</p>
+        </div>
+
+        <div class="topbar-actions">
+          <div class="header-badge">Analytics Suite</div>
+          <div class="user-chip">Admin: <span id="welcome">Loading...</span></div>
+          <button class="logout-btn" id="logoutButton" onclick="logoutAdmin()">Logout</button>
+        </div>
+      </header>
+
+      <section class="stats-grid" aria-label="Summary statistics">
+        <article class="stat-card">
+          <div class="stat-head">
+            <span class="stat-label">Total Matches</span>
+            <span class="stat-icon primary">▦</span>
+          </div>
+          <p class="stat-value">248</p>
+          <div class="stat-meta">Across all tournaments and managed fixtures in the current system.</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-head">
+            <span class="stat-label">Ongoing Matches</span>
+            <span class="stat-icon warning">◉</span>
+          </div>
+          <p class="stat-value">12</p>
+          <div class="stat-meta">Currently active games requiring live scoreboard and innings updates.</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-head">
+            <span class="stat-label">Completed Matches</span>
+            <span class="stat-icon success">✓</span>
+          </div>
+          <p class="stat-value">236</p>
+          <div class="stat-meta">Finished matches with archived results, reports, and leaderboard impact.</div>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <div>
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <h3>Recent Match Scores</h3>
+                <p>Latest scoreboard snapshots from high-profile international fixtures.</p>
+              </div>
+              <span class="pill">2 Matches Updated</span>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Match</th>
+                    <th>Team</th>
+                    <th>Score</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="match-title">India vs Australia</div>
+                      <div class="subline">ODI Series</div>
+                    </td>
+                    <td>
+                      <div>India</div>
+                      <div class="subline">Australia</div>
+                    </td>
+                    <td>
+                      <div>300/5 (50 ov)</div>
+                      <div class="subline">295/10 (48.3 ov)</div>
+                    </td>
+                    <td><span class="status completed">Completed</span></td>
+                    <td><span class="action-btn">View</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="match-title">England vs New Zealand</div>
+                      <div class="subline">Championship Fixture</div>
+                    </td>
+                    <td>
+                      <div>England</div>
+                      <div class="subline">New Zealand</div>
+                    </td>
+                    <td>
+                      <div>250/9 (50 ov)</div>
+                      <div class="subline">252/4 (47.2 ov)</div>
+                    </td>
+                    <td><span class="status live">Live</span></td>
+                    <td><span class="action-btn">Update</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel form-panel">
+            <h3>Update Live Match</h3>
+            <p>Quickly update live innings data from the latest ball-by-ball information.</p>
+
+            <form>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="match">Select Match</label>
+                  <select id="match">
+                    <option>England vs New Zealand</option>
+                    <option>India vs Australia</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="innings">Select Innings</label>
+                  <select id="innings">
+                    <option>2nd Innings</option>
+                    <option>1st Innings</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="runs">Runs</label>
+                  <input id="runs" type="number" placeholder="252" />
+                </div>
+
+                <div class="field">
+                  <label for="wickets">Wickets</label>
+                  <input id="wickets" type="number" placeholder="4" />
+                </div>
+
+                <div class="field">
+                  <label for="overs">Overs</label>
+                  <input id="overs" type="text" placeholder="47.2" />
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="update-btn" type="button">Update Score</button>
+              </div>
+            </form>
+          </article>
+        </div>
+
+        <aside class="panel">
+          <div class="panel-head">
+            <div>
+              <h3>Player Rankings</h3>
+              <p>Top batting rankings from the current analytics snapshot.</p>
+            </div>
+            <span class="pill">Batting</span>
+          </div>
+
+          <div class="ranking-list">
+            <div class="rank-item">
+              <span class="rank-no">1</span>
+              <div class="rank-meta">
+                <strong>Babar Azam</strong>
+                <span>Pakistan</span>
+              </div>
+              <span class="rank-score">890</span>
+            </div>
+            <div class="rank-item">
+              <span class="rank-no">2</span>
+              <div class="rank-meta">
+                <strong>Virat Kohli</strong>
+                <span>India</span>
+              </div>
+              <span class="rank-score">874</span>
+            </div>
+            <div class="rank-item">
+              <span class="rank-no">3</span>
+              <div class="rank-meta">
+                <strong>Kane Williamson</strong>
+                <span>New Zealand</span>
+              </div>
+              <span class="rank-score">861</span>
+            </div>
+            <div class="rank-item">
+              <span class="rank-no">4</span>
+              <div class="rank-meta">
+                <strong>Steve Smith</strong>
+                <span>Australia</span>
+              </div>
+              <span class="rank-score">848</span>
+            </div>
+            <div class="rank-item">
+              <span class="rank-no">5</span>
+              <div class="rank-meta">
+                <strong>Joe Root</strong>
+                <span>England</span>
+              </div>
+              <span class="rank-score">833</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

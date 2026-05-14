@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chennai Super Kings | Squad</title>
+
+  <style>
+    :root{
+      --text:#eaf0ff;
+      --muted: rgba(234,240,255,0.8);
+      --glass: rgba(10, 18, 32, 0.62);
+      --border: rgba(255,255,255,0.20);
+      --shadow: 0 18px 40px rgba(0,0,0,0.55);
+      --gold:#f7c948;
+      --gold2:#d6a11e;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 500px at 50% 0%, rgba(247,201,72,0.22), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.78)),
+        url("assets/bg/stadium.jpg");
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;
+    }
+
+    .wrap{ max-width:1200px; margin:0 auto; padding:20px; }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:18px;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn-top{
+      padding:10px 14px;
+      border-radius:10px;
+      background: rgba(2,6,23,0.55);
+      border:1px solid var(--border);
+      color: var(--text);
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin-bottom:15px;
+    }
+
+    .logo{
+      width:100px;
+      height:100px;
+      border-radius:15px;
+      overflow:hidden;
+      background: rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .logo img{ width:100%; height:100%; object-fit:cover; }
+    .titlebox{text-align:center;}
+
+    .teamname{
+      font-size:40px;
+      font-weight:1000;
+      margin:0;
+    }
+
+    .teamname span{ color: var(--gold); }
+    .meta{ font-weight:800; opacity:0.85; margin-top:6px; }
+
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin:15px 0;
+      flex-wrap:wrap;
+    }
+
+    .tab{
+      padding:10px 16px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:900;
+      border:1px solid var(--border);
+      background: rgba(2,6,23,0.55);
+      color:white;
+    }
+
+    .tab.active{
+      background: linear-gradient(180deg, rgba(247,201,72,0.95), rgba(214,161,30,0.92));
+      color:#101826;
+      border-color: rgba(0,0,0,0.15);
+    }
+
+    .role-section{
+      margin-top:18px;
+      background: var(--glass);
+      border:1px solid rgba(247,201,72,0.35);
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+
+    .role-title{
+      margin:2px 0 14px;
+      font-size:22px;
+      font-weight:900;
+      color:#fde68a;
+      border-bottom:1px solid rgba(255,255,255,0.18);
+      padding-bottom:10px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    @media(max-width:1100px){ .cards{ grid-template-columns: repeat(4, 1fr); } }
+    @media(max-width:860px){
+      .cards{ grid-template-columns: repeat(2, 1fr); }
+      .header{ flex-direction:column; }
+    }
+    @media(max-width:480px){ .cards{ grid-template-columns: 1fr; } }
+
+    .player-card{
+      border:1px solid rgba(255,255,255,0.20);
+      border-radius:14px;
+      padding:12px;
+      background: rgba(6,12,24,0.72);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      cursor:pointer;
+      outline:none;
+    }
+
+    .player-card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(253,230,138,0.9);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    }
+
+    .player-card.active{
+      background: linear-gradient(180deg, rgba(247,201,72,0.45), rgba(214,161,30,0.65));
+      border-color: rgba(254,240,138,0.95);
+      box-shadow: 0 14px 28px rgba(214,161,30,0.5);
+      transform: translateY(-3px);
+    }
+
+    .player-photo{
+      width:100%;
+      aspect-ratio: 1 / 1;
+      border-radius:10px;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,0.28);
+      background: #0f172a;
+      display:block;
+    }
+
+    .player-name{
+      margin:10px 0 4px;
+      font-size:16px;
+      font-weight:900;
+      line-height:1.2;
+    }
+
+    .player-role{
+      margin:0;
+      font-size:12px;
+      color: var(--muted);
+      font-weight:700;
+    }
+
+    .footer-note{
+      margin:20px 0 6px;
+      text-align:center;
+      color: var(--muted);
+      font-weight:700;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="btn-top" href="csk.html">Back to Chennai Super Kings</a>
+    <a class="btn-top" href="squad.html">Refresh</a>
+  </div>
+
+  <div class="header">
+    <div class="logo">
+      <img src="assets/logos/csk.png" alt="CSK Logo">
+    </div>
+
+    <div class="titlebox">
+      <h1 class="teamname">Chennai <span>Super Kings</span></h1>
+      <div class="meta">CSK IPL Squad</div>
+
+      <div class="tabs">
+        <a class="tab" href="schedule.html">Schedule</a>
+        <a class="tab" href="#">Results</a>
+        <a class="tab active" href="squad.html">Squad</a>
+        <a class="tab" href="stats.html">Stats</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="role-section">
+    <h2 class="role-title">Batters</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Ruturaj+Gaikwad&size=512&background=f7c948&color=111111&bold=true" alt="Ruturaj Gaikwad">
+        <h3 class="player-name">Ruturaj Gaikwad (c)</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Dewald+Brevis&size=512&background=f7c948&color=111111&bold=true" alt="Dewald Brevis">
+        <h3 class="player-name">Dewald Brevis</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Ayush+Mhatre&size=512&background=f7c948&color=111111&bold=true" alt="Ayush Mhatre">
+        <h3 class="player-name">Ayush Mhatre</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Sarfaraz+Khan&size=512&background=f7c948&color=111111&bold=true" alt="Sarfaraz Khan">
+        <h3 class="player-name">Sarfaraz Khan</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Matthew+Short&size=512&background=f7c948&color=111111&bold=true" alt="Matthew Short">
+        <h3 class="player-name">Matthew Short</h3>
+        <p class="player-role">Batter</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Wicket-keepers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=MS+Dhoni&size=512&background=f7c948&color=111111&bold=true" alt="MS Dhoni">
+        <h3 class="player-name">MS Dhoni</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Sanju+Samson&size=512&background=f7c948&color=111111&bold=true" alt="Sanju Samson">
+        <h3 class="player-name">Sanju Samson</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Kartik+Sharma&size=512&background=f7c948&color=111111&bold=true" alt="Kartik Sharma">
+        <h3 class="player-name">Kartik Sharma</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Urvil+Patel&size=512&background=f7c948&color=111111&bold=true" alt="Urvil Patel">
+        <h3 class="player-name">Urvil Patel</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">All-rounders</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Shivam+Dube&size=512&background=f7c948&color=111111&bold=true" alt="Shivam Dube">
+        <h3 class="player-name">Shivam Dube</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Jamie+Overton&size=512&background=f7c948&color=111111&bold=true" alt="Jamie Overton">
+        <h3 class="player-name">Jamie Overton</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Prashant+Veer&size=512&background=f7c948&color=111111&bold=true" alt="Prashant Veer">
+        <h3 class="player-name">Prashant Veer</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Ramakrishna+Ghosh&size=512&background=f7c948&color=111111&bold=true" alt="Ramakrishna Ghosh">
+        <h3 class="player-name">Ramakrishna Ghosh</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Noor+Ahmad&size=512&background=f7c948&color=111111&bold=true" alt="Noor Ahmad">
+        <h3 class="player-name">Noor Ahmad</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Bowlers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Khaleel+Ahmed&size=512&background=f7c948&color=111111&bold=true" alt="Khaleel Ahmed">
+        <h3 class="player-name">Khaleel Ahmed</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Anshul+Kamboj&size=512&background=f7c948&color=111111&bold=true" alt="Anshul Kamboj">
+        <h3 class="player-name">Anshul Kamboj</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Mukesh+Choudhary&size=512&background=f7c948&color=111111&bold=true" alt="Mukesh Choudhary">
+        <h3 class="player-name">Mukesh Choudhary</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Shreyas+Gopal&size=512&background=f7c948&color=111111&bold=true" alt="Shreyas Gopal">
+        <h3 class="player-name">Shreyas Gopal</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Nathan+Ellis&size=512&background=f7c948&color=111111&bold=true" alt="Nathan Ellis">
+        <h3 class="player-name">Nathan Ellis</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Rahul+Chahar&size=512&background=f7c948&color=111111&bold=true" alt="Rahul Chahar">
+        <h3 class="player-name">Rahul Chahar</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Akeal+Hosein&size=512&background=f7c948&color=111111&bold=true" alt="Akeal Hosein">
+        <h3 class="player-name">Akeal Hosein</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Matt+Henry&size=512&background=f7c948&color=111111&bold=true" alt="Matt Henry">
+        <h3 class="player-name">Matt Henry</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Zak+Foulkes&size=512&background=f7c948&color=111111&bold=true" alt="Zak Foulkes">
+        <h3 class="player-name">Zak Foulkes</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Aman+Khan&size=512&background=f7c948&color=111111&bold=true" alt="Aman Khan">
+        <h3 class="player-name">Aman Khan</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+    </div>
+  </section>
+
+  <p class="footer-note">Tap or click a player card to highlight it in CSK gold.</p>
+</div>
+
+<script>
+  const cards = document.querySelectorAll(".player-card");
+
+  function setActive(card){
+    cards.forEach((item) => item.classList.remove("active"));
+    card.classList.add("active");
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => setActive(card));
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setActive(card);
+      }
+    });
+  });
+</script>
+</body>
+</html>
+

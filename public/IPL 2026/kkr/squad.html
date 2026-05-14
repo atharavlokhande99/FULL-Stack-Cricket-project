@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kolkata Knight Riders | Squad</title>
+
+  <style>
+    :root{
+      --text:#eaf0ff;
+      --muted: rgba(234,240,255,0.8);
+      --glass: rgba(10, 18, 32, 0.62);
+      --border: rgba(255,255,255,0.20);
+      --shadow: 0 18px 40px rgba(0,0,0,0.55);
+      --kkrPurple:#3b0764;
+      --kkrPurpleDark:#1e1b4b;
+      --kkrGold:#c4a000;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 500px at 50% 0%, rgba(59,7,100,0.35), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.85)),
+        url("assets/bg/stadium.jpg");
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;
+    }
+
+    .wrap{ max-width:1200px; margin:0 auto; padding:20px; }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:18px;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn-top{
+      padding:10px 14px;
+      border-radius:10px;
+      background: rgba(2,6,23,0.55);
+      border:1px solid var(--border);
+      color: var(--text);
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin-bottom:15px;
+    }
+
+    .logo{
+      width:100px;
+      height:100px;
+      border-radius:15px;
+      overflow:hidden;
+      background: rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .logo img{ width:100%; height:100%; object-fit:cover; }
+    .titlebox{text-align:center;}
+
+    .teamname{
+      font-size:40px;
+      font-weight:1000;
+      margin:0;
+    }
+
+    .teamname span{ color: var(--kkrGold); }
+    .meta{ font-weight:800; opacity:0.85; margin-top:6px; }
+
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin:15px 0;
+      flex-wrap:wrap;
+    }
+
+    .tab{
+      padding:10px 16px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:900;
+      border:1px solid var(--border);
+      background: rgba(2,6,23,0.55);
+      color:white;
+    }
+
+    .tab.active{
+      background: linear-gradient(180deg, var(--kkrPurple), var(--kkrPurpleDark));
+    }
+
+    .role-section{
+      margin-top:18px;
+      background: var(--glass);
+      border:1px solid rgba(196,160,0,0.35);
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+
+    .role-title{
+      margin:2px 0 14px;
+      font-size:22px;
+      font-weight:900;
+      color:#fef08a;
+      border-bottom:1px solid rgba(255,255,255,0.18);
+      padding-bottom:10px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    @media(max-width:1100px){ .cards{ grid-template-columns: repeat(4, 1fr); } }
+    @media(max-width:860px){
+      .cards{ grid-template-columns: repeat(2, 1fr); }
+      .header{ flex-direction:column; }
+    }
+    @media(max-width:480px){ .cards{ grid-template-columns: 1fr; } }
+
+    .player-card{
+      border:1px solid rgba(255,255,255,0.20);
+      border-radius:14px;
+      padding:12px;
+      background: rgba(6,12,24,0.72);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      cursor:pointer;
+      outline:none;
+    }
+
+    .player-card:hover{
+      transform: translateY(-3px);
+      border-color: rgba(196,160,0,0.9);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.45);
+    }
+
+    .player-card.active{
+      background: linear-gradient(180deg, rgba(59,7,100,0.5), rgba(30,27,75,0.68));
+      border-color: rgba(250,204,21,0.95);
+      box-shadow: 0 14px 28px rgba(30,27,75,0.5);
+      transform: translateY(-3px);
+    }
+
+    .player-photo{
+      width:100%;
+      aspect-ratio: 1 / 1;
+      border-radius:10px;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,0.28);
+      background: #0f172a;
+      display:block;
+    }
+
+    .player-name{
+      margin:10px 0 4px;
+      font-size:16px;
+      font-weight:900;
+      line-height:1.2;
+    }
+
+    .player-role{
+      margin:0;
+      font-size:12px;
+      color: var(--muted);
+      font-weight:700;
+    }
+
+    .footer-note{
+      margin:20px 0 6px;
+      text-align:center;
+      color: var(--muted);
+      font-weight:700;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="btn-top" href="kkr.html">Back to Kolkata Knight Riders</a>
+    <a class="btn-top" href="squad.html">Refresh</a>
+  </div>
+
+  <div class="header">
+    <div class="logo">
+      <img src="assets/logos/kkr.png" alt="KKR Logo">
+    </div>
+
+    <div class="titlebox">
+      <h1 class="teamname">Kolkata <span>Knight Riders</span></h1>
+      <div class="meta">KKR IPL Squad</div>
+
+      <div class="tabs">
+        <a class="tab" href="schedule.html">Schedule</a>
+        <a class="tab" href="#">Results</a>
+        <a class="tab active" href="squad.html">Squad</a>
+        <a class="tab" href="stats.html">Stats</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="role-section">
+    <h2 class="role-title">Batters</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Ajinkya+Rahane&size=512&background=3b0764&color=ffffff&bold=true" alt="Ajinkya Rahane">
+        <h3 class="player-name">Ajinkya Rahane</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Angkrish+Raghuvanshi&size=512&background=3b0764&color=ffffff&bold=true" alt="Angkrish Raghuvanshi">
+        <h3 class="player-name">Angkrish Raghuvanshi</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Rinku+Singh&size=512&background=3b0764&color=ffffff&bold=true" alt="Rinku Singh">
+        <h3 class="player-name">Rinku Singh</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Manish+Pandey&size=512&background=3b0764&color=ffffff&bold=true" alt="Manish Pandey">
+        <h3 class="player-name">Manish Pandey</h3>
+        <p class="player-role">Batter</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Rahul+Tripathi&size=512&background=3b0764&color=ffffff&bold=true" alt="Rahul Tripathi">
+        <h3 class="player-name">Rahul Tripathi</h3>
+        <p class="player-role">Batter</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Wicket-keepers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Finn+Allen&size=512&background=3b0764&color=ffffff&bold=true" alt="Finn Allen">
+        <h3 class="player-name">Finn Allen</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Tejasvi+Singh&size=512&background=3b0764&color=ffffff&bold=true" alt="Tejasvi Singh">
+        <h3 class="player-name">Tejasvi Singh</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Tim+Seifert&size=512&background=3b0764&color=ffffff&bold=true" alt="Tim Seifert">
+        <h3 class="player-name">Tim Seifert</h3>
+        <p class="player-role">Wicket-keeper</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">All-rounders</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Sunil+Narine&size=512&background=3b0764&color=ffffff&bold=true" alt="Sunil Narine">
+        <h3 class="player-name">Sunil Narine</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Anukul+Roy&size=512&background=3b0764&color=ffffff&bold=true" alt="Anukul Roy">
+        <h3 class="player-name">Anukul Roy</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Rovman+Powell&size=512&background=3b0764&color=ffffff&bold=true" alt="Rovman Powell">
+        <h3 class="player-name">Rovman Powell</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Cameron+Green&size=512&background=3b0764&color=ffffff&bold=true" alt="Cameron Green">
+        <h3 class="player-name">Cameron Green</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Daksh+Kamra&size=512&background=3b0764&color=ffffff&bold=true" alt="Daksh Kamra">
+        <h3 class="player-name">Daksh Kamra</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Sarthak+Ranjan&size=512&background=3b0764&color=ffffff&bold=true" alt="Sarthak Ranjan">
+        <h3 class="player-name">Sarthak Ranjan</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Rachin+Ravindra&size=512&background=3b0764&color=ffffff&bold=true" alt="Rachin Ravindra">
+        <h3 class="player-name">Rachin Ravindra</h3>
+        <p class="player-role">All-rounder</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="role-section">
+    <h2 class="role-title">Bowlers</h2>
+    <div class="cards">
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Varun+Chakravarthy&size=512&background=3b0764&color=ffffff&bold=true" alt="Varun Chakravarthy">
+        <h3 class="player-name">Varun Chakravarthy</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Harshit+Rana&size=512&background=3b0764&color=ffffff&bold=true" alt="Harshit Rana">
+        <h3 class="player-name">Harshit Rana</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Umran+Malik&size=512&background=3b0764&color=ffffff&bold=true" alt="Umran Malik">
+        <h3 class="player-name">Umran Malik</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Vaibhav+Arora&size=512&background=3b0764&color=ffffff&bold=true" alt="Vaibhav Arora">
+        <h3 class="player-name">Vaibhav Arora</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Matheesha+Pathirana&size=512&background=3b0764&color=ffffff&bold=true" alt="Matheesha Pathirana">
+        <h3 class="player-name">Matheesha Pathirana</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Kartik+Tyagi&size=512&background=3b0764&color=ffffff&bold=true" alt="Kartik Tyagi">
+        <h3 class="player-name">Kartik Tyagi</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Prashant+Solanki&size=512&background=3b0764&color=ffffff&bold=true" alt="Prashant Solanki">
+        <h3 class="player-name">Prashant Solanki</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+      <article class="player-card" tabindex="0">
+        <img class="player-photo" src="https://ui-avatars.com/api/?name=Akash+Deep&size=512&background=3b0764&color=ffffff&bold=true" alt="Akash Deep">
+        <h3 class="player-name">Akash Deep</h3>
+        <p class="player-role">Bowler</p>
+      </article>
+    </div>
+  </section>
+</div>
+
+<script>
+  const cards = document.querySelectorAll(".player-card");
+
+  function setActive(card){
+    cards.forEach((item) => item.classList.remove("active"));
+    card.classList.add("active");
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => setActive(card));
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setActive(card);
+      }
+    });
+  });
+</script>
+</body>
+</html>
+

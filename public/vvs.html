@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Dravid - The Wall of Indian Cricket</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 33, 71, 0.7), rgba(0, 33, 71, 0.7)), url('https://img1.hscicdn.com/image/upload/f_auto,t_ds_w_1200,q_50/lsci/db/PICTURES/CMS/349300/349386.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .title-font {
+            font-family: 'Merriweather', serif;
+        }
+        .card {
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+        .card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .scroll-down {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 15px rgba(29, 78, 216, 0.6);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2.5rem;
+        }
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #1d4ed8;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -0.5rem;
+            top: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: #1d4ed8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .quote-icon {
+            font-size: 3rem;
+            color: rgba(29, 78, 216, 0.2);
+            position: absolute;
+        }
+        .quote-icon.left {
+            top: -1rem;
+            left: -1rem;
+        }
+        .quote-icon.right {
+            bottom: -1rem;
+            right: -1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Hero Section -->
+    <section class="hero min-h-screen flex items-center justify-center text-center text-white relative overflow-hidden">
+        <div class="container px-4 mx-auto">
+            <h1 class="title-font text-4xl md:text-6xl font-bold mb-4">VVS LAXMAN</h1>
+            <h2 class="title-font text-2xl md:text-4xl mb-8">Saviour of Indian Cricket</h2>
+            <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto">A tribute to one of the greatest batsmen in cricket history</p>
+            <a href="#iconic-innings" class="scroll-down inline-block bg-blue-700 hover:bg-blue-800 text-white px-8 py-3 rounded-full transition duration-300 transform hover:scale-105">
+                Explore Legacy
+            </a>
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+                <a href="#iconic-innings" class="scroll-down text-white text-4xl">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Dravid Tribute - Iconic Innings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes slideInFromBottom {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(234, 179, 8, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(234, 179, 8, 0);
+            }
+        }
+        
+        .slide-in-bottom {
+            animation: slideInFromBottom 0.8s ease-out forwards;
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .fade-in-delay-1 {
+            animation: fadeIn 1s ease-out 0.3s forwards;
+        }
+        
+        .fade-in-delay-2 {
+            animation: fadeIn 1s ease-out 0.6s forwards;
+        }
+        
+        .inning-card {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .inning-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        
+        .pulse-button {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Iconic Innings Section -->
+    <section class="bg-cover bg-center relative py-16 md:py-24 bg-fixed" style="
+        background-image: linear-gradient(rgba(0, 33, 71, 0.85), rgba(0, 33, 71, 0.85)),
+        url('https://akm-img-a-in.tosshub.com/indiatoday/images/story/201208/laxman_660_081812092920.jpg?VersionId=fF9Y4x1_fFIojO4pa1IZC2VskZuNIlW9');
+    ">
+        <div class="container mx-auto px-4 text-white relative z-10">
+            <!-- Title -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-5xl font-bold text-yellow-400 mb-4 slide-in-bottom">
+                    <i class="fas fa-crown mr-2"></i>  Iconic Innings
+                </h2>
+                <h3 class="text-xl md:text-2xl font-semibold fade-in">
+                    Masterful Performances That Defined an Era
+                </h3>
+                <div class="flex justify-center mt-4">
+                    <div class="w-16 h-1 bg-yellow-400 fade-in-delay-1"></div>
+                </div>
+            </div>
+
+            <!-- Innings Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Inning 1 - Kolkata 2001 -->
+                <div class="inning-card border border-white border-opacity-10 p-6 rounded-lg shadow-lg slide-in-bottom">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-4xl font-bold text-yellow-400">
+                            281
+                        </h4>
+                        <div class="text-sm bg-blue-900 bg-opacity-50 px-3 py-1 rounded-full">
+                            <i class="fas fa-calendar-alt mr-1"></i> March 2001
+                        </div>
+                    </div>
+                    <h5 class="text-xl font-semibold mb-2 flex items-center">
+                        <i class="fas fa-map-marker-alt text-yellow-400 mr-2"></i> Eden Gardens, Kolkata
+                    </h5>
+                    <p class="text-white text-opacity-90 mb-3">
+                        Part of the historic 376-run partnership with Rahul Dravid that turned the match against Australia after following on.
+                    </p>
+                    <div class="text-sm text-yellow-300 flex items-center">
+                        <i class="fas fa-trophy mr-2"></i> India won by 171 runs
+                    </div>
+                </div>
+
+                <!-- Inning 2 - Adelaide 2003 -->
+                <div class="inning-card border border-white border-opacity-10 p-6 rounded-lg shadow-lg fade-in-delay-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-4xl font-bold text-yellow-400">
+                            167
+                        </h4>
+                        <div class="text-sm bg-blue-900 bg-opacity-50 px-3 py-1 rounded-full">
+                            <i class="fas fa-calendar-alt mr-1"></i> January 2000
+                        </div>
+                    </div>
+                    <h5 class="text-xl font-semibold mb-2 flex items-center">
+                        <i class="fas fa-map-marker-alt text-yellow-400 mr-2"></i> Sydney, Australia
+                    </h5>
+                    <p class="text-white text-opacity-90 mb-3">
+                       This innings was a shining moment in a tour where India struggled, showcasing Laxman's ability to perform under pressure in challenging conditions.
+                    </p>
+                    <div class="text-sm text-yellow-300 flex items-center">
+                        <i class="fas fa-trophy mr-2"></i> 
+                    </div>
+                </div>
+
+                <!-- Inning 3 - Leeds 2002 -->
+                <div class="inning-card border border-white border-opacity-10 p-6 rounded-lg shadow-lg fade-in-delay-2">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-4xl font-bold text-yellow-400">
+                            148
+                        </h4>
+                        <div class="text-sm bg-blue-900 bg-opacity-50 px-3 py-1 rounded-full">
+                            <i class="fas fa-calendar-alt mr-1"></i> December 2003
+                        </div>
+                    </div>
+                    <h5 class="text-xl font-semibold mb-2 flex items-center">
+                        <i class="fas fa-map-marker-alt text-yellow-400 mr-2"></i> Adeilade Oval
+                    </h5>
+                    <p class="text-white text-opacity-90 mb-3">
+                       India were in a dire situation, needing a substantial score to recover after losing wickets early, and Laxman delivered with a crucial century
+                    </p>
+                    <div class="text-sm text-yellow-300 flex items-center">
+                        <i class="fas fa-trophy mr-2"></i> India won by 4 wickets
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explore Button -->
+            <div class="mt-12 text-center fade-in-delay-2">
+                <a href="#"
+                   class="inline-block bg-yellow-400 text-blue-900 font-bold px-8 py-3 rounded-full shadow-lg pulse-button
+                          hover:bg-yellow-500 transition transform hover:scale-105 duration-300 ease-in-out">
+                    <i class="fas fa-arrow-right mr-2"></i> Explore More Innings
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+        
+            
+       
+                
+    </script>
+</body>
+</html>

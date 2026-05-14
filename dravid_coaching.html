@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahul Dravid - Coaching Era</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap');
+
+    body { font-family: 'Roboto', sans-serif; scroll-behavior: smooth; }
+    .title-font { font-family: 'Merriweather', serif; }
+
+    .hero {
+      background: linear-gradient(rgba(0, 33, 71, 0.8), rgba(15, 23, 42, 0.9)),
+      url('https://akm-img-a-in.tosshub.com/indiatoday/images/story/202406/indias-head-coach-rahul-dravid-303006646-16x9_0.jpg?VersionId=qnKMQ6pCf6TNba_pBzgtIQ3BFLyMxkv2&size=690:388');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .glass {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(250, 204, 21, 0.25);
+      backdrop-filter: blur(8px);
+    }
+
+    .moment-card {
+      transition: all 0.3s ease;
+      border: 1px solid rgba(250, 204, 21, 0.22);
+      background: rgba(30, 41, 59, 0.65);
+    }
+
+    .moment-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 24px rgba(15, 23, 42, 0.45);
+      border-color: rgba(250, 204, 21, 0.65);
+    }
+
+    .phase-btn.active {
+      background: #facc15;
+      color: #0f172a;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: all 0.5s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-white">
+
+  <section class="hero min-h-screen flex items-center justify-center text-center px-4">
+    <div class="max-w-4xl">
+      <h1 class="title-font text-4xl md:text-6xl font-bold text-yellow-300 mb-4">Rahul Dravid Coaching Era</h1>
+      <p class="text-lg md:text-2xl mb-8 text-slate-100">From mentoring U19 stars to guiding India to major ICC finals and titles.</p>
+      <a href="#impact" class="inline-block bg-yellow-400 text-slate-900 font-semibold px-8 py-3 rounded-full hover:bg-yellow-300 transition">
+        Explore Impact
+      </a>
+    </div>
+  </section>
+
+  <section id="impact" class="py-20 px-4 bg-gradient-to-b from-slate-900 to-slate-950">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="title-font text-3xl md:text-5xl font-bold text-yellow-300 text-center mb-12">Coaching Impact Dashboard</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="glass rounded-xl p-6 text-center fade-up">
+          <div class="text-3xl text-yellow-300 mb-3"><i class="fas fa-trophy"></i></div>
+          <p class="text-xl font-bold text-yellow-300">ICC Title Finish</p>
+          <p class="text-slate-300 mt-2 text-sm">Ended tenure by winning T20 World Cup 2024.</p>
+        </div>
+        <div class="glass rounded-xl p-6 text-center fade-up">
+          <div class="text-3xl text-yellow-300 mb-3"><i class="fas fa-medal"></i></div>
+          <p class="text-xl font-bold text-yellow-300">ODI WC 2023 Final</p>
+          <p class="text-slate-300 mt-2 text-sm">Built a dominant campaign with unbeaten momentum to the final.</p>
+        </div>
+        <div class="glass rounded-xl p-6 text-center fade-up">
+          <div class="text-3xl text-yellow-300 mb-3"><i class="fas fa-shield-alt"></i></div>
+          <p class="text-xl font-bold text-yellow-300">WTC Final Phase</p>
+          <p class="text-slate-300 mt-2 text-sm">Kept India in sustained red-ball contention at global level.</p>
+        </div>
+        <div class="glass rounded-xl p-6 text-center fade-up">
+          <div class="text-3xl text-yellow-300 mb-3"><i class="fas fa-users"></i></div>
+          <p class="text-xl font-bold text-yellow-300">Next-Gen Core</p>
+          <p class="text-slate-300 mt-2 text-sm">Strengthened bench and role-ready players across formats.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 bg-slate-950">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="title-font text-3xl md:text-5xl font-bold text-yellow-300 text-center mb-10">Coaching Timeline</h2>
+
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <button class="phase-btn active px-5 py-2 rounded-full border border-yellow-500 text-yellow-200 hover:bg-yellow-400 hover:text-slate-900 transition" data-phase="all">All</button>
+        <button class="phase-btn px-5 py-2 rounded-full border border-yellow-500 text-yellow-200 hover:bg-yellow-400 hover:text-slate-900 transition" data-phase="youth">U19 / A Team</button>
+        <button class="phase-btn px-5 py-2 rounded-full border border-yellow-500 text-yellow-200 hover:bg-yellow-400 hover:text-slate-900 transition" data-phase="senior">Senior Team Build</button>
+        <button class="phase-btn px-5 py-2 rounded-full border border-yellow-500 text-yellow-200 hover:bg-yellow-400 hover:text-slate-900 transition" data-phase="icc">ICC Peaks</button>
+      </div>
+
+      <div id="moments" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <article class="moment-card rounded-xl overflow-hidden fade-up" data-phase="youth">
+          <img src="https://images.news18.com/ibnlive/uploads/2022/08/rahul-dravid-u19.jpg" alt="U19 mentoring" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">U19 & India A Architect</h3>
+            <p class="text-slate-200">Built the development pipeline that produced match-ready international players.</p>
+          </div>
+        </article>
+
+        <article class="moment-card rounded-xl overflow-hidden fade-up" data-phase="senior">
+          <img src="https://images.indianexpress.com/2022/01/India-South-Africa-1.jpg" alt="India in South Africa" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">Series Draw in South Africa</h3>
+            <p class="text-slate-200">Under Dravid's tenure, India fought hard in challenging conditions and drew the Test series in South Africa.</p>
+          </div>
+        </article>
+
+        <article class="moment-card rounded-xl overflow-hidden fade-up" data-phase="icc">
+          <img src="https://images.hindustantimes.com/img/2023/11/15/1600x900/CRICKET-WORLD-CUP-IND-NZL-95_1700069687442_1700069699036.jpg" alt="World Cup 2023" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">ODI World Cup 2023 Final</h3>
+            <p class="text-slate-200">Guided India through an unbeaten run to the final with dominant tactical execution.</p>
+          </div>
+        </article>
+
+        <article class="moment-card rounded-xl overflow-hidden fade-up" data-phase="icc">
+          <img src="https://images.news18.com/ibnlive/uploads/2024/06/rahul-dravid-t20-wc.jpg" alt="T20 WC 2024" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">T20 World Cup 2024 Champion</h3>
+            <p class="text-slate-200">Capped the tenure with an ICC title, proving the long-term coaching blueprint.</p>
+          </div>
+        </article>
+
+        <article class="moment-card rounded-xl overflow-hidden fade-up" data-phase="senior">
+          <img src="https://images.news18.com/ibnlive/uploads/2023/01/rahul-dravid-training.jpg" alt="Training standards" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">Training Standards Reset</h3>
+            <p class="text-slate-200">Raised consistency in preparation, fitness rhythm, and game-scenario training.</p>
+          </div>
+        </article>
+
+        <article class="moment-card rounded-xl overflow-hidden fade-up" data-phase="youth">
+          <img src="https://images.indianexpress.com/2024/01/shubman-gill.jpg" alt="Young core" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-yellow-300 mb-2">Next-Gen Core</h3>
+            <p class="text-slate-200">Transitioned emerging players into pressure roles without destabilizing team balance.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-4 bg-black">
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a href="dravid.html" class="px-7 py-3 bg-yellow-400 text-slate-900 font-semibold rounded hover:bg-yellow-300 transition">Back to Dravid Tribute</a>
+        <a href="index.html" class="px-7 py-3 border border-yellow-500 text-yellow-300 rounded hover:bg-yellow-400 hover:text-slate-900 transition">Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const revealEls = document.querySelectorAll('.fade-up');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.18 });
+
+    revealEls.forEach((el) => observer.observe(el));
+
+    const buttons = document.querySelectorAll('.phase-btn');
+    const cards = document.querySelectorAll('#moments [data-phase]');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const phase = btn.getAttribute('data-phase');
+
+        cards.forEach((card) => {
+          const show = phase === 'all' || card.getAttribute('data-phase') === phase;
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+</script>
+</body>
+</html>
+
+

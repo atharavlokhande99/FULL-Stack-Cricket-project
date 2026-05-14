@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IPL 2026 | Full Schedule</title>
+
+  <style>
+    :root{
+      --card-bg: rgba(15, 23, 42, 0.76);
+      --card-border: rgba(255,255,255,0.18);
+      --text: #e5e7eb;
+      --muted: rgba(229,231,235,0.78);
+      --gold: #fbbf24;
+      --blue: #2563eb;
+      --shadow: 0 18px 40px rgba(0,0,0,0.45);
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 600px at 50% 0%, rgba(255, 200, 80, 0.20), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.78)),
+        url("https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=2000&q=80");
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;
+    }
+
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:34px 16px 40px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:18px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.16);
+      font-weight:900;
+      text-decoration:none;
+      color:#eaf2ff;
+      background: linear-gradient(180deg, rgba(37,99,235,0.95), rgba(29,78,216,0.9));
+      box-shadow: 0 12px 22px rgba(0,0,0,0.35);
+    }
+
+    .title{
+      text-align:center;
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight:900;
+      letter-spacing:2px;
+      margin:0 0 10px;
+      line-height:1;
+      text-transform:uppercase;
+      text-shadow: 0 12px 24px rgba(0,0,0,0.55);
+    }
+
+    .title .gold{ color: var(--gold); }
+
+    .subtitle{
+      text-align:center;
+      color: var(--muted);
+      font-weight:700;
+      margin-bottom:24px;
+    }
+
+    .card{
+      background: var(--card-bg);
+      border:1px solid var(--card-border);
+      border-radius:12px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+
+    .head{
+      padding:14px 16px;
+      font-weight:900;
+      letter-spacing:0.7px;
+      text-transform:uppercase;
+      background: linear-gradient(90deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02));
+      border-bottom:1px solid rgba(255,255,255,0.12);
+    }
+
+    .body{
+      padding:14px 16px 16px;
+      overflow-x:auto;
+    }
+
+    table{
+      width:100%;
+      min-width:780px;
+      border-collapse:collapse;
+      font-weight:700;
+    }
+
+    th, td{
+      padding:12px 10px;
+      border-bottom:1px solid rgba(255,255,255,0.10);
+      text-align:left;
+      color: rgba(255,255,255,0.92);
+    }
+
+    th{
+      color: rgba(255,255,255,0.76);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:0.6px;
+      font-weight:900;
+    }
+
+    tbody tr:last-child td{
+      border-bottom:none;
+    }
+
+    td.num{
+      width:78px;
+      text-align:center;
+      font-weight:1000;
+    }
+
+    td.time{
+      white-space:nowrap;
+      font-weight:900;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <a class="btn" href="iplhome.html">Back to Home</a>
+      <a class="btn" href="iplschedule.html">Refresh</a>
+    </div>
+
+    <h1 class="title">IPL <span class="gold">2026</span></h1>
+    <div class="subtitle">Full Schedule | Phase 1</div>
+
+    <section class="card">
+      <div class="head">Full Schedule</div>
+      <div class="body">
+        <table>
+          <thead>
+            <tr>
+              <th>Match No</th>
+              <th>Date</th>
+              <th>Match</th>
+              <th>Venue</th>
+              <th>Time (IST)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="num">1</td><td>28 Mar 2026</td><td>RCB vs SRH</td><td>Bengaluru</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">2</td><td>29 Mar 2026</td><td>MI vs KKR</td><td>Mumbai</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">3</td><td>30 Mar 2026</td><td>RR vs CSK</td><td>Guwahati</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">4</td><td>31 Mar 2026</td><td>PBKS vs GT</td><td>Mullanpur</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">5</td><td>1 Apr 2026</td><td>LSG vs DC</td><td>Lucknow</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">6</td><td>2 Apr 2026</td><td>KKR vs SRH</td><td>Kolkata</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">7</td><td>3 Apr 2026</td><td>CSK vs PBKS</td><td>Chennai</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">8</td><td>4 Apr 2026</td><td>DC vs MI</td><td>Delhi</td><td class="time">3:30 PM</td></tr>
+            <tr><td class="num">9</td><td>4 Apr 2026</td><td>GT vs RR</td><td>Ahmedabad</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">10</td><td>5 Apr 2026</td><td>SRH vs LSG</td><td>Hyderabad</td><td class="time">3:30 PM</td></tr>
+            <tr><td class="num">11</td><td>5 Apr 2026</td><td>RCB vs CSK</td><td>Bengaluru</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">12</td><td>6 Apr 2026</td><td>KKR vs PBKS</td><td>Kolkata</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">13</td><td>7 Apr 2026</td><td>RR vs MI</td><td>Guwahati</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">14</td><td>8 Apr 2026</td><td>DC vs GT</td><td>Delhi</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">15</td><td>9 Apr 2026</td><td>KKR vs LSG</td><td>Kolkata</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">16</td><td>10 Apr 2026</td><td>RR vs RCB</td><td>Guwahati</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">17</td><td>11 Apr 2026</td><td>PBKS vs SRH</td><td>Mullanpur</td><td class="time">3:30 PM</td></tr>
+            <tr><td class="num">18</td><td>11 Apr 2026</td><td>CSK vs DC</td><td>Chennai</td><td class="time">7:30 PM</td></tr>
+            <tr><td class="num">19</td><td>12 Apr 2026</td><td>LSG vs GT</td><td>Lucknow</td><td class="time">3:30 PM</td></tr>
+            <tr><td class="num">20</td><td>12 Apr 2026</td><td>MI vs RCB</td><td>Mumbai</td><td class="time">7:30 PM</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

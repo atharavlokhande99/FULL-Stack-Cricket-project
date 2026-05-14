@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gujarat Titans | Schedule</title>
+
+  <style>
+    :root{
+      --text:#eaf0ff;
+      --glass: rgba(15,23,42,0.72);
+      --border: rgba(255,255,255,0.20);
+      --shadow: 0 18px 40px rgba(0,0,0,0.55);
+      --gtBlue:#0f172a;
+      --gtBlueLight:#1e293b;
+      --gtGold:#d4af37;
+      --muted: rgba(234,240,255,0.8);
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(1200px 500px at 50% 0%, rgba(30,41,59,0.45), transparent 60%),
+        linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.85)),
+        url("assets/bg/stadium.jpg");
+      background-size: cover;
+      background-position:center;
+      background-attachment: fixed;
+    }
+
+    .wrap{ max-width:1200px; margin:0 auto; padding:20px; }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:18px;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .btn-top{
+      padding:10px 14px;
+      border-radius:10px;
+      background: rgba(2,6,23,0.55);
+      border:1px solid var(--border);
+      color: var(--text);
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .header{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin-bottom:15px;
+    }
+
+    .logo{
+      width:100px;
+      height:100px;
+      border-radius:15px;
+      overflow:hidden;
+      background: rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .logo img{ width:100%; height:100%; object-fit:cover; }
+    .titlebox{text-align:center;}
+
+    .teamname{
+      font-size:40px;
+      font-weight:1000;
+      margin:0;
+    }
+
+    .teamname span{ color: var(--gtGold); }
+    .meta{ font-weight:800; opacity:0.85; margin-top:6px; }
+
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin:15px 0;
+      flex-wrap:wrap;
+    }
+
+    .tab{
+      padding:10px 16px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:900;
+      border:1px solid var(--border);
+      background: rgba(2,6,23,0.55);
+      color:white;
+    }
+
+    .tab.active{
+      background: linear-gradient(180deg, var(--gtBlueLight), var(--gtBlue));
+    }
+
+    .announce{
+      margin-top:18px;
+      background: var(--glass);
+      border:1px solid rgba(212,175,55,0.45);
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      padding:30px 20px;
+      text-align:center;
+    }
+
+    .announce h2{
+      margin:0 0 12px;
+      font-size:30px;
+      color:#fde68a;
+    }
+
+    .announce p{
+      margin:0;
+      font-size:20px;
+      font-weight:800;
+      color: var(--muted);
+    }
+
+    .schedule-card{
+      margin-top:18px;
+      background: var(--glass);
+      border:1px solid rgba(212,175,55,0.45);
+      border-radius:14px;
+      box-shadow: var(--shadow);
+      padding:24px 20px;
+      overflow-x:auto;
+    }
+
+    .schedule-card h2{
+      margin:0 0 16px;
+      font-size:28px;
+      color:#fde68a;
+      text-align:center;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:720px;
+    }
+
+    th, td{
+      padding:14px 12px;
+      text-align:left;
+      border-bottom:1px solid rgba(255,255,255,0.12);
+    }
+
+    th{
+      color:#fcd34d;
+      font-size:15px;
+      letter-spacing:0.03em;
+      text-transform:uppercase;
+    }
+
+    td{
+      font-size:16px;
+      font-weight:700;
+      color:var(--text);
+    }
+
+    tbody tr:last-child td{
+      border-bottom:none;
+    }
+
+    .status-icon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      background:rgba(212,175,55,0.14);
+      border:1px solid rgba(212,175,55,0.32);
+      font-size:18px;
+    }
+
+    @media (max-width: 760px){
+      .teamname{ font-size:30px; }
+      .schedule-card{ padding:18px 14px; }
+      th, td{ padding:12px 10px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="btn-top" href="gt.html">Back to Gujarat Titans</a>
+    <a class="btn-top" href="schedule.html">Refresh</a>
+  </div>
+
+  <div class="header">
+    <a class="logo" href="gt.html">
+      <img src="gt_logo.png" alt="GT Logo">
+    </a>
+
+    <div class="titlebox">
+      <h1 class="teamname">Gujarat <span>Titans</span></h1>
+      <div class="meta">Schedule | IPL 2026</div>
+
+      <div class="tabs">
+        <a class="tab active" href="schedule.html">Schedule</a>
+        <a class="tab" href="#">Results</a>
+        <a class="tab" href="squad.html">Squad</a>
+        <a class="tab" href="stats.html">Stats</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="schedule-card">
+    <h2>Full Schedule</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Match</th>
+          <th>Home/Away</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>31 Mar 2026</td>
+          <td>7:30 pm IST</td>
+          <td>Punjab Kings vs Gujarat Titans</td>
+          <td><span class="status-icon" title="Away">&#9992;</span></td>
+        </tr>
+        <tr>
+          <td>4 Apr 2026</td>
+          <td>7:30 pm IST</td>
+          <td>Gujarat Titans vs Rajasthan Royals</td>
+          <td><span class="status-icon" title="Home">&#8962;</span></td>
+        </tr>
+        <tr>
+          <td>8 Apr 2026</td>
+          <td>7:30 pm IST</td>
+          <td>Delhi Capitals vs Gujarat Titans</td>
+          <td><span class="status-icon" title="Away">&#9992;</span></td>
+        </tr>
+        <tr>
+          <td>12 Apr 2026</td>
+          <td>3:30 pm IST</td>
+          <td>Lucknow Super Giants vs Gujarat Titans</td>
+          <td><span class="status-icon" title="Away">&#9992;</span></td>
+        </tr>
+        <tr>
+          <td>17 Apr 2026</td>
+          <td>7:30 pm IST</td>
+          <td>Gujarat Titans vs Kolkata Knight Riders</td>
+          <td><span class="status-icon" title="Home">&#8962;</span></td>
+        </tr>
+        <tr>
+          <td>20 Apr 2026</td>
+          <td>7:30 pm IST</td>
+          <td>Gujarat Titans vs Mumbai Indians</td>
+          <td><span class="status-icon" title="Home">&#8962;</span></td>
+        </tr>
+        <tr>
+          <td>24 Apr 2026</td>
+          <td>7:30 pm IST</td>
+          <td>Royal Challengers Bengaluru vs Gujarat Titans</td>
+          <td><span class="status-icon" title="Away">&#9992;</span></td>
+        </tr>
+        <tr>
+          <td>26 Apr 2026</td>
+          <td>3:30 pm IST</td>
+          <td>Gujarat Titans vs Chennai Super Kings</td>
+          <td><span class="status-icon" title="Home">&#8962;</span></td>
+        </tr>
+        <tr>
+          <td>30 Apr 2026</td>
+          <td>7:30 pm IST</td>
+          <td>Gujarat Titans vs Royal Challengers Bengaluru</td>
+          <td><span class="status-icon" title="Home">&#8962;</span></td>
+        </tr>
+        <tr>
+          <td>3 May 2026</td>
+          <td>7:30 pm IST</td>
+          <td>Gujarat Titans vs Punjab Kings</td>
+          <td><span class="status-icon" title="Home">&#8962;</span></td>
+        </tr>
+        <tr>
+          <td>9 May 2026</td>
+          <td>7:30 pm IST</td>
+          <td>Rajasthan Royals vs Gujarat Titans</td>
+          <td><span class="status-icon" title="Away">&#9992;</span></td>
+        </tr>
+        <tr>
+          <td>12 May 2026</td>
+          <td>7:30 pm IST</td>
+          <td>Gujarat Titans vs Sunrisers Hyderabad</td>
+          <td><span class="status-icon" title="Home">&#8962;</span></td>
+        </tr>
+        <tr>
+          <td>16 May 2026</td>
+          <td>7:30 pm IST</td>
+          <td>Kolkata Knight Riders vs Gujarat Titans</td>
+          <td><span class="status-icon" title="Away">&#9992;</span></td>
+        </tr>
+        <tr>
+          <td>21 May 2026</td>
+          <td>7:30 pm IST</td>
+          <td>Chennai Super Kings vs Gujarat Titans</td>
+          <td><span class="status-icon" title="Away">&#9992;</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+</body>
+</html>

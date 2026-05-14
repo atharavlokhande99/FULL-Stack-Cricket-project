@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rohit Sharma - IPL Journey</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:wght@400;700;900&display=swap');
+    body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+    .playfair { font-family: 'Playfair Display', serif; }
+    .hero {
+      background: linear-gradient(rgba(0,0,0,.7), rgba(2,6,23,.82)), url('https://images.news18.com/ibnlive/uploads/2024/03/rohit-sharma-mi-ipl-2024-03-4f3f1c34f1d333ea12f8fd1d4d6d6f84.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .ice { color: #7dd3fc; text-shadow: 0 0 8px rgba(125,211,252,.45); }
+    .card {
+      background: rgba(15,23,42,.72);
+      border: 1px solid rgba(56,189,248,.35);
+      backdrop-filter: blur(5px);
+      transition: all .28s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 24px rgba(14,165,233,.24);
+      border-color: rgba(125,211,252,.85);
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+
+  <section class="hero min-h-screen flex items-center justify-center text-center px-4">
+    <div class="max-w-4xl">
+      <h1 class="playfair text-4xl md:text-6xl font-bold mb-6 ice">ROHIT SHARMA - IPL JOURNEY</h1>
+      <p class="text-xl md:text-2xl italic mb-8">From Deccan Chargers youngster to Mumbai Indians icon.</p>
+      <a href="#batting" class="px-7 py-3 border border-sky-400 text-sky-300 rounded hover:bg-sky-400 hover:text-black transition">Explore Batting Skills</a>
+    </div>
+  </section>
+
+  <section id="batting" class="py-20 px-4 bg-gradient-to-b from-black to-sky-950">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="playfair text-3xl md:text-5xl font-bold text-center mb-14 ice">BATTING SKILLS AND MOMENTS</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <article class="card rounded-xl overflow-hidden">
+          <img src="https://img.etimg.com/thumb/msid-112087527,width-640,height-480,imgsize-63220,resizemode-4/rohit-sharma.jpg" alt="Deccan Chargers phase" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 ice">Deccan Chargers Beginnings (2008-2010)</h3>
+            <p class="text-gray-300">Rohit started as a fearless middle-order talent, showing timing and range that hinted at a special IPL career.</p>
+          </div>
+        </article>
+
+        <article class="card rounded-xl overflow-hidden">
+          <img src="https://images.news18.com/ibnlive/uploads/2022/04/rohit-sharma-mi.jpg" alt="Move to Mumbai Indians" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 ice">Move to Mumbai Indians (2011)</h3>
+            <p class="text-gray-300">The move unlocked consistency: smarter tempo control, better shot selection, and impact in pressure games.</p>
+          </div>
+        </article>
+
+        <article class="card rounded-xl overflow-hidden">
+          <img src="https://www.hindustantimes.com/ht-img/img/2024/05/01/1600x900/rohit_sharma_1714544851531_1714544869250.jpg" alt="Powerplay hitting" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 ice">Powerplay Dominance</h3>
+            <p class="text-gray-300">When opening, Rohit attacks gaps and short balls early, giving Mumbai fast starts and scoreboard control.</p>
+          </div>
+        </article>
+
+        <article class="card rounded-xl overflow-hidden">
+          <img src="https://images.news18.com/ibnlive/uploads/2021/04/1617260064_rohit-sharma.jpg" alt="Pull shot" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 ice">The Pull Shot Trademark</h3>
+            <p class="text-gray-300">His pull shot against pace is one of IPL's cleanest scoring options and a key reason for his big innings.</p>
+          </div>
+        </article>
+
+        <article class="card rounded-xl overflow-hidden">
+          <img src="https://www.hindustantimes.com/ht-img/img/2023/04/18/1600x900/rohit_sharma_mi_1681826132593_1681826146838.jpg" alt="Big match batting" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 ice">Big Match Temperament</h3>
+            <p class="text-gray-300">Rohit often raises his level in playoffs and crunch league games with calm decision-making and clean striking.</p>
+          </div>
+        </article>
+
+        <article class="card rounded-xl overflow-hidden">
+          <img src="https://images.indianexpress.com/2024/03/rohit-sharma-ipl.jpg" alt="Longevity" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2 ice">Longevity and Evolution</h3>
+            <p class="text-gray-300">From young hitter to complete batter, he adapted role and pace while staying one of IPL's most watched players.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#ipl-captaincy" class="inline-block px-8 py-3 bg-sky-400 text-black font-semibold rounded hover:bg-sky-300 transition">IPL Captaincy</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="ipl-captaincy" class="py-20 px-4 bg-gradient-to-b from-sky-950 to-black">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="playfair text-3xl md:text-5xl font-bold text-center mb-14 ice">FIVE IPL TROPHIES - CAPTAINCY MOMENTS</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <article class="card rounded-xl overflow-hidden">
+          <img src="https://images.news18.com/ibnlive/uploads/2020/05/1588326439_ipl-2013-mumbai-indians.jpg" alt="MI IPL 2013 Trophy" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-bold ice mb-2">2013 - First Crown</h3>
+            <p class="text-gray-300">Rohit's first IPL trophy as MI captain, built on brave bowling calls in pressure overs.</p>
+          </div>
+        </article>
+
+        <article class="card rounded-xl overflow-hidden">
+          <img src="https://images.news18.com/ibnlive/uploads/2020/05/1588326420_ipl-2015-mumbai-indians.jpg" alt="MI IPL 2015 Trophy" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-bold ice mb-2">2015 - Second Title</h3>
+            <p class="text-gray-300">A complete campaign and composed final execution delivered MI's second title under Rohit.</p>
+          </div>
+        </article>
+
+        <article class="card rounded-xl overflow-hidden">
+          <img src="https://images.news18.com/ibnlive/uploads/2020/05/1588326405_ipl-2017-mumbai-indians.jpg" alt="MI IPL 2017 Trophy" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-bold ice mb-2">2017 - Thriller Finish</h3>
+            <p class="text-gray-300">In one of IPL's closest finals, Rohit's calm strategy helped MI seal a famous win.</p>
+          </div>
+        </article>
+
+        <article class="card rounded-xl overflow-hidden">
+          <img src="https://images.news18.com/ibnlive/uploads/2020/05/1588326390_ipl-2019-mumbai-indians.jpg" alt="MI IPL 2019 Trophy" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-bold ice mb-2">2019 - Nerve Hold</h3>
+            <p class="text-gray-300">Another tight final, another tactical masterclass as MI lifted trophy number four.</p>
+          </div>
+        </article>
+
+        <article class="card rounded-xl overflow-hidden md:col-span-2 lg:col-span-1">
+          <img src="https://images.news18.com/ibnlive/uploads/2020/11/1604671360_mumbai-indians-ipl-2020.jpg" alt="MI IPL 2020 Trophy" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-bold ice mb-2">2020 - Five-Star Legacy</h3>
+            <p class="text-gray-300">In the UAE season, MI looked unstoppable and Rohit completed his five-title captaincy legacy.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-12 flex flex-wrap justify-center gap-4">
+        <a href="rohit.html" class="px-7 py-3 bg-sky-400 text-black font-semibold rounded hover:bg-sky-300 transition">Back to Rohit Tribute</a>
+        <a href="index.html" class="px-7 py-3 border border-sky-400 text-sky-300 rounded hover:bg-sky-400 hover:text-black transition">Back to Home</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
+

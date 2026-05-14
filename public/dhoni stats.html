@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MS Dhoni Stats</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .tab-active {
+      background-color: #fbbf24;
+      color: black;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-900 text-white min-h-screen">
+
+  <div class="max-w-4xl mx-auto py-10 px-4">
+    <h1 class="text-4xl font-bold text-amber-400 text-center mb-6">
+      MS DHONI – Career Stats
+    </h1>
+
+    <!-- Tabs -->
+    <div class="flex justify-center gap-4 mb-8">
+      <button class="tab-btn px-4 py-2 rounded-lg bg-slate-700 hover:bg-amber-400 hover:text-black transition" data-tab="odi">ODI</button>
+      <button class="tab-btn px-4 py-2 rounded-lg bg-slate-700 hover:bg-amber-400 hover:text-black transition" data-tab="t20">T20I</button>
+      <button class="tab-btn px-4 py-2 rounded-lg bg-slate-700 hover:bg-amber-400 hover:text-black transition" data-tab="test">TEST</button>
+      <button class="tab-btn px-4 py-2 rounded-lg bg-slate-700 hover:bg-amber-400 hover:text-black transition" data-tab="ipl">IPL</button>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div id="content-area" class="space-y-6"></div>
+
+  </div>
+
+  <script>
+    // Dhoni Stats Data
+    const dhoniStats = {
+      odi: {
+        title: "ODI Career Stats",
+        stats: [
+          { label: "Matches", value: "350" },
+          { label: "Runs", value: "10,773" },
+          { label: "Average", value: "50.57" },
+          { label: "Centuries", value: "10" },
+          { label: "Fifties", value: "73" },
+          { label: "Highest Score", value: "183*" },
+        ],
+      },
+
+      t20: {
+        title: "T20I Career Stats",
+        stats: [
+          { label: "Matches", value: "98" },
+          { label: "Runs", value: "1,617" },
+          { label: "Average", value: "37.6" },
+          { label: "Strike Rate", value: "126.1" },
+          { label: "Highest Score", value: "56" },
+        ],
+      },
+
+      test: {
+        title: "Test Career Stats",
+        stats: [
+          { label: "Matches", value: "90" },
+          { label: "Runs", value: "4,876" },
+          { label: "Average", value: "38.1" },
+          { label: "Centuries", value: "6" },
+          { label: "Fifties", value: "33" },
+          { label: "Highest Score", value: "224" },
+        ],
+      },
+
+      ipl: {
+        title: "IPL Career Stats",
+        stats: [
+          { label: "Matches", value: "264" },
+          { label: "Runs", value: "5,243" },
+          { label: "Strike Rate", value: "135.7" },
+          { label: "Average", value: "39.3" },
+          { label: "Fifties", value: "24" },
+          { label: "Highest Score", value: "84*" },
+        ],
+      },
+    };
+
+    const contentArea = document.getElementById("content-area");
+    const tabButtons = document.querySelectorAll(".tab-btn");
+
+    // Load default (ODI)
+    loadContent("odi");
+    document.querySelector(`[data-tab="odi"]`).classList.add("tab-active");
+
+    // Tab switching logic
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        tabButtons.forEach((b) => b.classList.remove("tab-active"));
+        btn.classList.add("tab-active");
+
+        loadContent(btn.dataset.tab);
+      });
+    });
+
+    // Function to load stats
+    function loadContent(type) {
+      const data = dhoniStats[type];
+
+      contentArea.innerHTML = `
+        <h2 class="text-2xl font-bold text-amber-300">${data.title}</h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          ${data.stats
+            .map(
+              (s) => `
+            <div class="bg-slate-800 p-5 rounded-xl shadow-lg hover:scale-105 hover:bg-slate-700 transition cursor-pointer">
+              <h3 class="text-lg font-semibold text-amber-400">${s.label}</h3>
+              <p class="text-2xl font-bold mt-2">${s.value}</p>
+            </div>`
+            )
+            .join("")}
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
+
